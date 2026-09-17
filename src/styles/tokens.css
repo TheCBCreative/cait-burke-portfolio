@@ -81,7 +81,6 @@
   --content-padding-mobile: 1.5rem;
   --content-padding-tablet: 2.5rem;
   --content-padding-desktop: 4rem;
-  --masthead-height: 4.0625rem; /* measured render height of Masthead at desktop — used to bleed the Homepage hero's edge tab up through the header */
 
   /* ---------------------------------------------------------------- */
   /* Motion / misc                                                     */

@@ -46,17 +46,32 @@
 
 .availability {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: var(--space-2);
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+.badgeCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
   flex-shrink: 0;
-  background-color: #9fd8a3;
-  box-shadow: 0 0 0 3px rgba(159, 216, 163, 0.3);
+  border-radius: 50%;
+  border: 1px solid var(--color-on-dark-line);
+  background-color: rgba(23, 37, 32, 0.55);
+  color: var(--color-on-dark);
+}
+
+.badgeLabel {
+  width: 4.75rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-on-dark-soft);
 }
 
 .main {
@@ -90,7 +105,7 @@
 .bottomRow {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 @media (min-width: 700px) {
