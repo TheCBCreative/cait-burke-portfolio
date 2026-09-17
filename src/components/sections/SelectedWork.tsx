@@ -2,6 +2,7 @@ import { SectionHeading } from '../ui';
 import { PageContainer } from '../layout';
 import { PROJECT_SUMMARIES } from '../../data/projects';
 import { WorkCard } from './WorkCard';
+import { WorkTeaser } from './WorkTeaser';
 import styles from './SelectedWork.module.css';
 
 /** The project grid linking out to each case study. */
@@ -18,6 +19,7 @@ export function SelectedWork() {
           {PROJECT_SUMMARIES.map((project) => (
             <WorkCard key={project.slug} project={project} />
           ))}
+          <WorkTeaser />
         </ul>
       </PageContainer>
     </section>

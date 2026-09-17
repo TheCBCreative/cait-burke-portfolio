@@ -44,15 +44,13 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
       buttonLabel: 'Try the live demo →',
       // Not deployed yet — leave unlinked until a real demo URL exists.
       buttonHref: undefined,
-      note: 'github.com/TheCBCreative/blog-admin',
-      noteHref: 'https://github.com/TheCBCreative/blog-admin',
     },
     heroImage: { alt: 'Blog Composer dashboard overview', caption: 'Fig. 01 — Dashboard overview' },
     sections: [
       {
         eyebrow: '01 — The context',
-        heading: 'Client sites kept needing the same thing.',
-        body: 'Running The CB Creative, I kept hitting the same wall: small business clients needed a simple way to publish blog content, but the usual options were either too heavy (a full CMS platform) or too fragile (a one-off admin bolted onto a static site). I wanted something I could drop into any client stack and theme to match.',
+        heading: 'Getting found mattered more than getting online.',
+        body: "Through The CB Creative, I kept building sites for small businesses who needed more than a homepage — they needed to actually get found, in search results and, increasingly, in AI-generated answers. Blogging is one of the clearest levers for that: businesses that blog see 55% more website traffic, and B2B companies publishing blog content generate 67% more leads than those that don't (HubSpot, Fundera). It wasn't a one-off ask, either — it was something I knew I'd want to offer every content-minded client, so instead of rebuilding a publishing tool from scratch each time, I built one I could scale across future projects.",
       },
       {
         eyebrow: '02 — The approach',
@@ -82,7 +80,6 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
       role: 'Brand & web design/development, solo',
       stack: 'Node.js · Custom static site generator · Vercel',
       links: [
-        { label: 'View live site →', href: 'https://www.thecbcreative.com' },
         { label: 'View on GitHub →', href: 'https://github.com/TheCBCreative/thecbcreative' },
       ],
     },
@@ -92,8 +89,6 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
       body: 'The actual production site — brand, layout, and code all built and deployed by me.',
       buttonLabel: 'View live site →',
       buttonHref: 'https://www.thecbcreative.com',
-      note: 'github.com/TheCBCreative/thecbcreative',
-      noteHref: 'https://github.com/TheCBCreative/thecbcreative',
     },
     heroImage: { alt: 'The CB Creative homepage', caption: 'Fig. 01 — Homepage' },
     sections: [

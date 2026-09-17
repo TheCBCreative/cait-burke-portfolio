@@ -20,12 +20,13 @@ export function LandingPage() {
       <div className={styles.content}>
         <div className={styles.topRow}>
           <Eyebrow tone="on-dark">{SITE.roleTagline}</Eyebrow>
-          <span className={styles.location}>{SITE.location}</span>
-        </div>
-
-        <div className={styles.availability}>
-          <span className={styles.dot} aria-hidden="true" />
-          <Eyebrow tone="on-dark">{SITE.availability}</Eyebrow>
+          <div className={styles.locationGroup}>
+            <span className={styles.location}>{SITE.location}</span>
+            <div className={styles.availability}>
+              <span className={styles.dot} aria-hidden="true" />
+              <Eyebrow tone="on-dark">{SITE.availability}</Eyebrow>
+            </div>
+          </div>
         </div>
 
         <div className={styles.main}>
