@@ -1,4 +1,5 @@
 import { Eyebrow, Divider, TagList, Button } from '../components/ui';
+import { LandingBackground } from '../components/landing';
 import { SITE } from '../data/site';
 import styles from './LandingPage.module.css';
 
@@ -6,15 +7,11 @@ import styles from './LandingPage.module.css';
  * The full-bleed splash screen visitors land on first. Its only job is to
  * set tone and send people on to the full homepage via the CTA — so it
  * has no masthead/footer of its own.
- *
- * The background is a placeholder gradient standing in for a photo asset
- * (see `.background` in LandingPage.module.css) — swap in the real image
- * there once it's ready; everything else on this page is unaffected.
  */
 export function LandingPage() {
   return (
     <main className={styles.page}>
-      <div className={styles.background} aria-hidden="true" />
+      <LandingBackground />
       <div className={styles.scrim} aria-hidden="true" />
 
       <div className={styles.content}>

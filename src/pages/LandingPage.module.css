@@ -5,15 +5,6 @@
   overflow: hidden;
 }
 
-/* Placeholder stand-in for the botanical background photo. Swap the
-   background-image in here once the real asset is ready — nothing else
-   on the page needs to change. */
-.background {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 75% 30%, var(--color-moss) 0%, var(--color-ink) 65%);
-}
-
 .scrim {
   position: absolute;
   inset: 0;

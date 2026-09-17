@@ -45,7 +45,11 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
       // Not deployed yet — leave unlinked until a real demo URL exists.
       buttonHref: undefined,
     },
-    heroImage: { alt: 'Blog Composer dashboard overview', caption: 'Fig. 01 — Dashboard overview' },
+    heroImage: {
+      src: '/images/blog-composer/dashboard.jpg',
+      alt: 'Blog Composer dashboard overview',
+      caption: 'Fig. 01 — Dashboard overview',
+    },
     sections: [
       {
         eyebrow: '01 — The context',
@@ -64,8 +68,16 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
       },
     ],
     imagePair: [
-      { alt: 'Blog Composer post editor with rich-text formatting', caption: 'Fig. 02 — Post editor' },
-      { alt: 'Blog Composer media library', caption: 'Fig. 03 — Media library' },
+      {
+        src: '/images/blog-composer/post-editor.jpg',
+        alt: 'Blog Composer post editor with rich-text formatting',
+        caption: 'Fig. 02 — Post editor',
+      },
+      {
+        src: '/images/blog-composer/media-library.jpg',
+        alt: 'Blog Composer media library',
+        caption: 'Fig. 03 — Media library',
+      },
     ],
     nextProjectSlug: 'the-cb-creative',
   },
