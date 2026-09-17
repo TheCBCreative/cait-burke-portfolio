@@ -54,7 +54,9 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--color-surface-2);
+  flex-shrink: 0;
+  background-color: #9fd8a3;
+  box-shadow: 0 0 0 3px rgba(159, 216, 163, 0.3);
 }
 
 .main {

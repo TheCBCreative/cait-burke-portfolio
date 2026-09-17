@@ -1,4 +1,5 @@
-import { SectionHeading, Button, ImagePlaceholder } from '../ui';
+import { SectionHeading, Button } from '../ui';
+import { FernClip } from '../media';
 import { PageContainer } from '../layout';
 import { SITE, CAPABILITIES } from '../../data/site';
 import styles from './About.module.css';
@@ -26,10 +27,10 @@ export function About() {
           </Button>
         </div>
 
-        <ImagePlaceholder
-          className={styles.photo}
-          aspectRatio="3 / 4"
-          image={{ alt: 'Portrait of Cait Burke' }}
+        <FernClip
+          variant="mobile"
+          className={`${styles.photo} ${styles.photoMedia}`}
+          alt="Fern detail — placeholder until a portrait is in"
         />
 
         <ul className={styles.capabilities}>

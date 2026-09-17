@@ -1,4 +1,5 @@
-import { Eyebrow, Button, MetaList } from '../ui';
+import { Fragment } from 'react';
+import { Eyebrow, Button, MetaList, EdgeTab } from '../ui';
 import { PageContainer } from '../layout';
 import { SITE, SOCIAL_LINKS } from '../../data/site';
 import styles from './Hero.module.css';
@@ -10,11 +11,17 @@ const emailLink = SOCIAL_LINKS.find((link) => link.label === 'Email');
 export function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-heading">
+      <EdgeTab label={SITE.name} />
       <PageContainer className={styles.grid}>
         <div className={styles.copy}>
           <Eyebrow>{SITE.roleTagline}</Eyebrow>
           <h1 id="hero-heading" className={styles.name}>
-            {SITE.name}
+            {SITE.name.split(' ').map((word, index, words) => (
+              <Fragment key={word}>
+                {word}
+                {index < words.length - 1 ? <br /> : null}
+              </Fragment>
+            ))}
           </h1>
           <p className={styles.lede}>{SITE.heroLede}</p>
           <p className={styles.bio}>{SITE.heroBio}</p>

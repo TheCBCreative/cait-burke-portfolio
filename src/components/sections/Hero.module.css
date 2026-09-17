@@ -1,4 +1,5 @@
 .hero {
+  position: relative;
   background-color: var(--color-surface);
 }
 
@@ -19,8 +20,9 @@
 .name {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: var(--font-size-display-h1);
-  line-height: var(--line-height-tight);
+  font-size: clamp(2.75rem, 6vw + 1rem, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
 }
 
 .lede {

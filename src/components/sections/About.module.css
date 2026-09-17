@@ -23,6 +23,13 @@
   max-width: 24rem;
 }
 
+.photoMedia {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
 .capabilities {
   display: grid;
   gap: var(--space-6);

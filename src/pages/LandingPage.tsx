@@ -1,4 +1,4 @@
-import { Eyebrow, Divider, TagList, Button } from '../components/ui';
+import { Eyebrow, Divider, TagList, Button, EdgeTab } from '../components/ui';
 import { LandingBackground } from '../components/landing';
 import { SITE } from '../data/site';
 import styles from './LandingPage.module.css';
@@ -13,6 +13,7 @@ export function LandingPage() {
     <main className={styles.page}>
       <LandingBackground />
       <div className={styles.scrim} aria-hidden="true" />
+      <EdgeTab label={SITE.name} tone="on-dark" />
 
       <div className={styles.content}>
         <div className={styles.topRow}>

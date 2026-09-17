@@ -1,0 +1,1 @@
+export { FernClip } from './FernClip';

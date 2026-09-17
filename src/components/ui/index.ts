@@ -6,3 +6,4 @@ export { LinkStack } from './LinkStack';
 export { TagList } from './TagList';
 export { SectionHeading } from './SectionHeading';
 export { ImagePlaceholder } from './ImagePlaceholder';
+export { EdgeTab } from './EdgeTab';
