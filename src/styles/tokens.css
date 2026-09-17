@@ -1,0 +1,92 @@
+/**
+ * Design tokens — the single source of truth for color, type, spacing, and
+ * other reusable values. Every component should read from these custom
+ * properties instead of hardcoding a value, so a future rebrand (new
+ * palette, new typeface) is a change in one file, not a hunt through
+ * every component.
+ *
+ * Color values mirror the "Portfolio Colors" variable collection in the
+ * Figma file, so design and code stay in sync.
+ */
+
+:root {
+  /* ---------------------------------------------------------------- */
+  /* Color                                                             */
+  /* ---------------------------------------------------------------- */
+  --color-paper: #f4f1ea; /* warm off-white — page background, alternating sections */
+  --color-surface: #ffffff; /* default section background */
+  --color-surface-2: #ebe5d4; /* tan — image placeholders, secondary surfaces */
+  --color-ink: #172520; /* primary text, dark section backgrounds */
+  --color-ink-soft: #52645b; /* secondary text (body copy on light backgrounds) */
+  --color-ink-faint: #627067; /* tertiary text (labels, meta, captions) — darkened from initial pick to clear 4.5:1 on paper/surface */
+  --color-line: #d9d2be; /* hairline borders and dividers */
+  --color-accent: #4f6b58; /* links, buttons, emphasis */
+  --color-slate: #33495a; /* reserved accent (unused by default palette) */
+  --color-moss: #3a4f41; /* reserved accent (unused by default palette) */
+
+  /* Text/backgrounds when a section sits on the dark --color-ink surface */
+  --color-on-dark: #f4f1ea;
+  --color-on-dark-soft: #b7c2ba;
+  --color-on-dark-faint: #818f87; /* lightened from initial pick to clear 4.5:1 on --color-ink */
+  --color-on-dark-line: rgba(244, 241, 234, 0.16);
+
+  /* ---------------------------------------------------------------- */
+  /* Typography                                                        */
+  /* ---------------------------------------------------------------- */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Fluid display sizes: clamp scales headline sizes smoothly between the
+     mobile and desktop values captured from the Figma frames, rather than
+     jumping at a single breakpoint. */
+  --font-size-display-hero: clamp(2.75rem, 6vw + 1rem, 6.5rem); /* "Cait Burke" on Landing */
+  --font-size-display-h1: clamp(2.125rem, 4vw + 1rem, 3.5rem); /* Homepage hero name / case study title */
+  --font-size-display-h2: clamp(1.625rem, 2.5vw + 1rem, 2.625rem); /* Section headings */
+  --font-size-display-h3: clamp(1.375rem, 1.5vw + 1rem, 1.625rem); /* CTA block headings */
+
+  --font-size-lede: clamp(1.0625rem, 0.5vw + 1rem, 1.1875rem);
+  --font-size-body: 1rem;
+  --font-size-body-sm: 0.875rem;
+  --font-size-mono-label: 0.8125rem;
+  --font-size-mono-eyebrow: 0.75rem;
+  --font-size-mono-sm: 0.6875rem;
+
+  --line-height-tight: 1.1;
+  --line-height-heading: 1.25;
+  --line-height-body: 1.55;
+
+  --letter-spacing-eyebrow: 0.14em;
+  --letter-spacing-label: 0.08em;
+
+  /* ---------------------------------------------------------------- */
+  /* Spacing (4px base scale)                                          */
+  /* ---------------------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5rem;
+  --space-11: 7rem;
+
+  /* ---------------------------------------------------------------- */
+  /* Layout                                                             */
+  /* ---------------------------------------------------------------- */
+  --content-max-width: 1312px; /* matches the Figma desktop content column */
+  --content-padding-mobile: 1.5rem;
+  --content-padding-tablet: 2.5rem;
+  --content-padding-desktop: 4rem;
+
+  /* ---------------------------------------------------------------- */
+  /* Motion / misc                                                     */
+  /* ---------------------------------------------------------------- */
+  --transition-fast: 150ms ease;
+  --radius-sm: 4px;
+  --focus-ring: 2px solid var(--color-accent);
+  --focus-ring-offset: 2px;
+}

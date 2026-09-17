@@ -1,0 +1,102 @@
+/**
+ * Global base styles: a minimal reset plus the site's default typography,
+ * applied once here so individual components only need to describe how
+ * they differ from the baseline.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Respect the user's OS/browser font-size setting; every rem-based token
+     above scales from this rather than a fixed pixel value. */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+/* A single, consistent keyboard-focus style everywhere, instead of the
+   browser default outline (which this design's dark sections would make
+   hard to see) or no indicator at all. */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Skip link: visually hidden until it receives keyboard focus, then jumps
+   above the page content so keyboard/screen-reader users can bypass the
+   masthead on every page. */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 100;
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--color-ink);
+  color: var(--color-on-dark);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-label);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus-visible {
+  top: var(--space-4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

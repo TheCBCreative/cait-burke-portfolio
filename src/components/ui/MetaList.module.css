@@ -1,0 +1,53 @@
+.list {
+  margin: 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.value {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-label);
+  color: var(--color-ink);
+  line-height: var(--line-height-heading);
+}
+
+.value a {
+  text-decoration: none;
+}
+
+.value a:hover {
+  text-decoration: underline;
+}
+
+/* On wider screens the design pairs label and value on one line, right-
+   aligned — narrower screens keep the stacked layout above. */
+@media (min-width: 700px) {
+  .row {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .value {
+    text-align: right;
+  }
+}

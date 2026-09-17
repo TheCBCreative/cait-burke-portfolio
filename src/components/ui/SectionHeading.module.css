@@ -1,0 +1,21 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--font-size-display-h2);
+  line-height: var(--line-height-tight);
+  color: var(--color-ink);
+}
+
+.h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--font-size-display-h3);
+  line-height: var(--line-height-heading);
+  color: var(--color-ink);
+}

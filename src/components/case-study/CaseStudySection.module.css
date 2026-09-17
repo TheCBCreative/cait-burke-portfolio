@@ -1,0 +1,25 @@
+.section {
+  scroll-margin-top: var(--space-8);
+}
+
+.paper {
+  background-color: var(--color-paper);
+}
+
+.surface {
+  background-color: var(--color-surface);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-block: var(--space-9);
+  max-width: 44rem;
+}
+
+.body {
+  color: var(--color-ink-soft);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}

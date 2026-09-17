@@ -1,0 +1,27 @@
+.frame {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+/* Placeholder-only look: a flat tan fill with a faint diagonal hatch, so
+   it reads clearly as "art goes here" rather than a finished block color. */
+div.frame {
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-3);
+  background-color: var(--color-surface-2);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(23, 37, 32, 0.04) 0,
+    rgba(23, 37, 32, 0.04) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  color: var(--color-ink-faint);
+}

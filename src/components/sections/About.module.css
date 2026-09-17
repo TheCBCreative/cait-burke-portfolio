@@ -1,0 +1,66 @@
+.about {
+  background-color: var(--color-paper);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: var(--space-9);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.emphasis {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.photo {
+  max-width: 24rem;
+}
+
+.capabilities {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.capability {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.capabilityTitle {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-label);
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+}
+
+.capabilityDescription {
+  color: var(--color-ink-soft);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body);
+}
+
+@media (min-width: 700px) {
+  .capabilities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid {
+    grid-template-columns: minmax(0, 18rem) minmax(0, 22rem) 1fr;
+    align-items: start;
+  }
+
+  .photo {
+    max-width: none;
+  }
+}

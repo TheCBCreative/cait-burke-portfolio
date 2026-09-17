@@ -1,0 +1,112 @@
+.page {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Placeholder stand-in for the botanical background photo. Swap the
+   background-image in here once the real asset is ready — nothing else
+   on the page needs to change. */
+.background {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 75% 30%, var(--color-moss) 0%, var(--color-ink) 65%);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-ink);
+  opacity: 0.35;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-6) var(--content-padding-mobile) var(--space-5);
+  gap: var(--space-8);
+}
+
+.topRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.location {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-on-dark-soft);
+}
+
+.availability {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-surface-2);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 40rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--font-size-display-hero);
+  line-height: var(--line-height-tight);
+  color: var(--color-on-dark);
+}
+
+.tagline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--font-size-display-h3);
+  color: var(--color-on-dark);
+}
+
+.cta {
+  border: 1px solid var(--color-on-dark);
+  padding: var(--space-4) var(--space-6);
+  width: fit-content;
+}
+
+.bottomRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (min-width: 700px) {
+  .content {
+    padding: var(--space-8) var(--content-padding-tablet) var(--space-6);
+  }
+
+  .topRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1100px) {
+  .content {
+    padding: var(--space-9) var(--content-padding-desktop) var(--space-7);
+  }
+}

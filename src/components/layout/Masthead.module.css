@@ -1,0 +1,44 @@
+.masthead {
+  background-color: var(--color-surface);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-5);
+}
+
+.name {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+}
+
+.name:hover {
+  color: var(--color-ink);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.backLink {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  color: var(--color-ink);
+}

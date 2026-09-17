@@ -1,0 +1,15 @@
+.tags {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+}
+
+.default {
+  color: var(--color-ink-faint);
+}
+
+.on-dark {
+  color: var(--color-on-dark-faint);
+}
