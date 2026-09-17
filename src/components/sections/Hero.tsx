@@ -11,7 +11,10 @@ const emailLink = SOCIAL_LINKS.find((link) => link.label === 'Email');
 export function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-heading">
-      <EdgeTab label={SITE.name} />
+      {/* Extends up past this section's own top edge to bleed through the
+          masthead above it, so the tab reads as one continuous panel from
+          the top of the page rather than starting only at the hero. */}
+      <EdgeTab label={SITE.name} style={{ top: 'calc(-1 * var(--masthead-height))' }} />
       <PageContainer className={styles.grid}>
         <div className={styles.copy}>
           <Eyebrow>{SITE.roleTagline}</Eyebrow>

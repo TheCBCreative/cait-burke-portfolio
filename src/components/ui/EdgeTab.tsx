@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { FernClip } from '../media/FernClip';
 import styles from './EdgeTab.module.css';
 
@@ -7,6 +8,9 @@ interface EdgeTabProps {
    * dark or video background, where a lighter border reads better than
    * a hard edge. */
   tone?: 'default' | 'on-dark';
+  /** Escape hatch for a one-off position tweak — e.g. extending the tab
+   * upward to bleed through a masthead that sits above its section. */
+  style?: CSSProperties;
 }
 
 /**
@@ -18,11 +22,11 @@ interface EdgeTabProps {
  * Desktop-only: below the widescreen breakpoint the space is worth more
  * as ordinary content padding.
  */
-export function EdgeTab({ label, tone = 'default' }: EdgeTabProps) {
+export function EdgeTab({ label, tone = 'default', style }: EdgeTabProps) {
   const toneClass = tone === 'on-dark' ? styles.onDark : styles.default;
 
   return (
-    <div className={[styles.tab, toneClass].join(' ')} aria-hidden="true">
+    <div className={[styles.tab, toneClass].join(' ')} style={style} aria-hidden="true">
       <FernClip className={styles.clip} />
       <div className={styles.scrim} />
       <span className={styles.label}>{label}</span>

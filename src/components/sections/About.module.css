@@ -70,4 +70,16 @@
   .photo {
     max-width: none;
   }
+
+  /* Bleed the photo to the section's own top/bottom edges instead of
+     sitting inset within the grid's vertical padding — the row's height
+     is still set by the copy/capabilities columns; this just stretches
+     to match and spills into the padding on both sides. */
+  .photoMedia {
+    align-self: stretch;
+    aspect-ratio: auto;
+    height: calc(100% + var(--space-9) * 2);
+    margin-block: calc(-1 * var(--space-9));
+    border-radius: 0;
+  }
 }
