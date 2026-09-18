@@ -10,6 +10,8 @@ const taglineLines = SITE.landingTagline.split('. ').map((line, index, lines) =>
   index < lines.length - 1 ? `${line}.` : line,
 );
 
+const nameWords = SITE.name.split(' ');
+
 /**
  * The full-bleed splash screen visitors land on first. Its only job is to
  * set tone and send people on to the full homepage via the CTA — so it
@@ -20,7 +22,7 @@ export function LandingPage() {
     <main className={styles.page}>
       <LandingBackground />
       <div className={styles.scrim} aria-hidden="true" />
-      <EdgeTab label={SITE.name} tone="on-dark" />
+      <EdgeTab label="Portfolio" tone="on-dark" />
 
       <div className={styles.content}>
         <div className={styles.topRow}>
@@ -40,7 +42,14 @@ export function LandingPage() {
 
         <div className={styles.main}>
           <Eyebrow tone="on-dark">Portfolio</Eyebrow>
-          <h1 className={styles.name}>{SITE.name}</h1>
+          <h1 className={styles.name}>
+            {nameWords.map((word, index) => (
+              <Fragment key={word}>
+                {word}
+                {index < nameWords.length - 1 ? <br /> : null}
+              </Fragment>
+            ))}
+          </h1>
           <p className={styles.tagline}>
             {taglineLines.map((line, index) => (
               <Fragment key={line}>

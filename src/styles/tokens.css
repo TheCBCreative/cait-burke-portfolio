@@ -81,6 +81,9 @@
   --content-padding-mobile: 1.5rem;
   --content-padding-tablet: 2.5rem;
   --content-padding-desktop: 4rem;
+  /* Extra inline-start padding for a section that also renders an EdgeTab
+     at this breakpoint, so copy doesn't sit flush against the tab's edge. */
+  --content-padding-desktop-tab: calc(var(--content-padding-desktop) + var(--space-6));
 
   /* ---------------------------------------------------------------- */
   /* Motion / misc                                                     */

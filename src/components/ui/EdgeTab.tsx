@@ -16,11 +16,12 @@ interface EdgeTabProps {
 /**
  * A slim vertical panel along a hero section's left edge — a decorative
  * spine/brand mark, filled with a cropped loop of the same fern clip used
- * on the Landing background, so the motif recurs across both heroes. It's
- * `aria-hidden` because the same name is always present in the section's
- * real heading content; this is a visual echo, not new information.
- * Desktop-only: below the widescreen breakpoint the space is worth more
- * as ordinary content padding.
+ * on the Landing background, so the motif recurs across every hero on the
+ * site. It's `aria-hidden` since the label is a purely decorative flourish
+ * (site identity/section context that's already conveyed elsewhere, e.g.
+ * the page title), not information unique to this element. Desktop-only:
+ * below the widescreen breakpoint the space is worth more as ordinary
+ * content padding.
  */
 export function EdgeTab({ label, tone = 'default', style }: EdgeTabProps) {
   const toneClass = tone === 'on-dark' ? styles.onDark : styles.default;

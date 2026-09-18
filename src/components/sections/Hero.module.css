@@ -53,12 +53,22 @@
   .grid {
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     padding-block: var(--space-9) var(--space-10);
   }
 
   .specimen {
     flex-shrink: 0;
     width: 24rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  /* Extra specificity (.hero .grid, not just .grid) so this reliably wins
+     over PageContainer's own padding-inline regardless of CSS import
+     order — the edge tab only appears at this breakpoint, so the copy
+     needs the wider gutter starting here, not at the 1000px row switch. */
+  .hero .grid {
+    padding-inline-start: var(--content-padding-desktop-tab);
   }
 }

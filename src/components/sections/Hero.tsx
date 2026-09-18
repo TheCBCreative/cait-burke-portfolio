@@ -11,7 +11,7 @@ const emailLink = SOCIAL_LINKS.find((link) => link.label === 'Email');
 export function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-heading">
-      <EdgeTab label={SITE.name} />
+      <EdgeTab label="Portfolio" />
       <PageContainer className={styles.grid}>
         <div className={styles.copy}>
           <Eyebrow>{SITE.roleTagline}</Eyebrow>

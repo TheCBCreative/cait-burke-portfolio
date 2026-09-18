@@ -1,4 +1,4 @@
-import { MetaList, LinkStack } from '../ui';
+import { MetaList, LinkStack, EdgeTab } from '../ui';
 import { PageContainer } from '../layout';
 import type { CaseStudyContent } from '../../data/types';
 import styles from './CaseStudyHero.module.css';
@@ -11,6 +11,7 @@ interface CaseStudyHeroProps {
 export function CaseStudyHero({ content }: CaseStudyHeroProps) {
   return (
     <header className={styles.hero}>
+      <EdgeTab label="Portfolio" />
       <PageContainer className={styles.inner}>
         <p className={styles.kicker}>
           {content.index} · {content.category}
