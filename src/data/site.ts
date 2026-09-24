@@ -25,7 +25,7 @@ export const SITE = {
 } as const;
 
 export const SOCIAL_LINKS: LinkItem[] = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thecaitburke' },
   { label: 'GitHub', href: 'https://github.com/TheCBCreative' },
   { label: 'Email', href: 'mailto:hello@caitburke.dev' },
 ];
