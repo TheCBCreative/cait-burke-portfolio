@@ -8,7 +8,9 @@ import {
   ImagePair,
   CaseStudyFooterNav,
 } from '../components/case-study';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { CASE_STUDIES } from '../data/projects';
+import { SITE } from '../data/site';
 
 /**
  * One template renders every case study — Blog Composer and The CB
@@ -18,6 +20,12 @@ import { CASE_STUDIES } from '../data/projects';
 export function CaseStudyPage() {
   const { slug } = useParams<{ slug: string }>();
   const content = slug ? CASE_STUDIES[slug] : undefined;
+
+  // Called unconditionally (before the not-found redirect below) since
+  // hooks can't follow an early return — falls back to the site name when
+  // there's no matching project, which only ever shows for the instant
+  // before the redirect takes effect.
+  useDocumentTitle(content ? `${content.title} — ${SITE.name}` : SITE.name);
 
   if (!content) {
     return <Navigate to="/home" replace />;

@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { Eyebrow, Divider, TagList, Button, EdgeTab } from '../components/ui';
 import { LandingBackground } from '../components/landing';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { SITE } from '../data/site';
 import styles from './LandingPage.module.css';
 
@@ -18,6 +19,8 @@ const nameWords = SITE.name.split(' ');
  * has no masthead/footer of its own.
  */
 export function LandingPage() {
+  useDocumentTitle(`${SITE.name} — Portfolio`);
+
   return (
     <main className={styles.page}>
       <LandingBackground />
