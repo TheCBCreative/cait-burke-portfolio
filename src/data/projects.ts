@@ -22,8 +22,7 @@ export const PROJECTS: Project[] = [
       heading: 'See it running, not just described.',
       body: 'A seeded demo — no real client data. Click around the dashboard and the publishing flow yourself.',
       buttonLabel: 'Try the live demo →',
-      // No demo deployed yet.
-      buttonHref: undefined,
+      buttonHref: 'https://www.caitburke.dev/work/blog-composer/demo',
     },
     heroImage: {
       src: '/images/blog-composer/dashboard.jpg',
