@@ -19,7 +19,7 @@ export const SITE = {
   heroLede:
     'Building thoughtful, user-centered interfaces at the intersection of design and front-end engineering.',
   heroBio:
-    "I'm a frontend developer with 5 years at Amazon, building user-focused web experiences in React and TypeScript — partnering closely with UX and product teams to turn complex requirements into interfaces that feel simple. I'm especially drawn to the intersection of design and engineering: designing in Figma and translating that work directly into production code. Outside of that, I run The CB Creative and use Claude Code daily to move from concept to shipped fast.",
+    "I'm a designer and frontend developer with 5 years at Amazon, building user-focused web experiences in React and TypeScript — partnering closely with UX and product teams to turn complex requirements into interfaces that feel simple. I'm especially drawn to the intersection of design and engineering: designing in Figma and translating that work directly into production code. Outside of that, I run The CB Creative and use Claude Code daily to move from concept to shipped fast.",
 
   aboutHeadingLead: 'I design in Figma —',
   aboutHeadingEmphasis: 'then build it in code.',
