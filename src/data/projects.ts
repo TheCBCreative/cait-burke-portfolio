@@ -127,7 +127,11 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
       },
     ],
     imagePair: [
-      { alt: 'The CB Creative brand system — logo, palette, and typefaces', caption: 'Fig. 02 — Brand system' },
+      {
+        src: '/images/the-cb-creative/brand-system.jpg',
+        alt: 'The CB Creative brand system — logo, palette, and typefaces',
+        caption: 'Fig. 02 — Brand system',
+      },
       {
         src: '/images/the-cb-creative/contact-section.jpg',
         alt: 'The CB Creative contact section',
