@@ -13,7 +13,7 @@ export function ImageBlock({ image }: ImageBlockProps) {
     <section className={styles.section}>
       <PageContainer>
         <figure className={styles.figure}>
-          <ImagePlaceholder image={image} aspectRatio="16 / 9" />
+          <ImagePlaceholder image={image} aspectRatio="16 / 9" enlargeable />
           {image.caption && <figcaption className={styles.caption}>{image.caption}</figcaption>}
         </figure>
       </PageContainer>

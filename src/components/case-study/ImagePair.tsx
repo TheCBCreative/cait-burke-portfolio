@@ -15,7 +15,7 @@ export function ImagePair({ images }: ImagePairProps) {
       <PageContainer className={styles.grid}>
         {images.map((image) => (
           <figure className={styles.figure} key={image.alt}>
-            <ImagePlaceholder image={image} aspectRatio="16 / 9" />
+            <ImagePlaceholder image={image} aspectRatio="16 / 9" enlargeable />
             {image.caption && <figcaption className={styles.caption}>{image.caption}</figcaption>}
           </figure>
         ))}
