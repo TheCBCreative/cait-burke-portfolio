@@ -14,12 +14,12 @@ export function CaseStudyCallout({ content }: CaseStudyCalloutProps) {
     <section className={styles.callout} aria-label={content.eyebrow}>
       <PageContainer className={styles.inner}>
         <div className={styles.copy}>
-          <Eyebrow tone="accent">{content.eyebrow}</Eyebrow>
+          <Eyebrow tone="on-accent">{content.eyebrow}</Eyebrow>
           <h2 className={styles.heading}>{content.heading}</h2>
           <p className={styles.body}>{content.body}</p>
         </div>
         <div className={styles.action}>
-          <Button href={content.buttonHref} variant="solid">
+          <Button href={content.buttonHref} variant="solid" tone="on-dark">
             {content.buttonLabel}
           </Button>
           {content.note && (

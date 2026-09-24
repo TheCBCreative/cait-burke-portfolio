@@ -6,7 +6,7 @@ interface EyebrowProps {
   /** Render as a heading element when this eyebrow doubles as a section's
    * accessible label; defaults to a plain span for decorative use. */
   as?: ElementType;
-  tone?: 'faint' | 'accent' | 'on-dark';
+  tone?: 'faint' | 'accent' | 'on-dark' | 'on-accent';
   className?: string;
 }
 
