@@ -36,7 +36,7 @@ export function CaseStudyPage() {
         <ImagePair images={content.imagePair} />
         <CaseStudySection content={content.sections[2]} background="paper" />
       </main>
-      <CaseStudyFooterNav nextProjectSlug={content.nextProjectSlug} />
+      <CaseStudyFooterNav currentSlug={content.slug} nextProjectSlug={content.nextProjectSlug} />
     </>
   );
 }
