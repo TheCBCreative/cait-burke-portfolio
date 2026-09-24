@@ -17,42 +17,35 @@
   }
 }
 
-.clip {
+.clip,
+.scrim {
   position: absolute;
   inset: 0;
-  z-index: 0;
+}
+
+.clip {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.scrim {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
 .default .scrim {
-  background: linear-gradient(to top, rgba(23, 37, 32, 0.82), rgba(23, 37, 32, 0.62));
+  background: linear-gradient(to top, rgb(var(--color-ink-rgb) / 0.82), rgb(var(--color-ink-rgb) / 0.62));
 }
 
-.onDark .scrim {
-  background: linear-gradient(to top, rgba(23, 37, 32, 0.58), rgba(23, 37, 32, 0.3));
-}
-
-.onDark {
+.on-dark {
   border-right: 1px solid var(--color-on-dark-line);
 }
 
+.on-dark .scrim {
+  background: linear-gradient(to top, rgb(var(--color-ink-rgb) / 0.58), rgb(var(--color-ink-rgb) / 0.3));
+}
+
 .label {
+  composes: label from '../../styles/typography.module.css';
   position: relative;
-  z-index: 1;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-sm);
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
   white-space: nowrap;
   color: var(--color-on-dark-soft);
 }

@@ -18,7 +18,3 @@
 .on-dark {
   color: var(--color-on-dark-soft);
 }
-
-.on-accent {
-  color: var(--color-on-accent-soft);
-}

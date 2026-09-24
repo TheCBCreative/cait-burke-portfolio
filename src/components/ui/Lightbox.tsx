@@ -8,52 +8,40 @@ interface LightboxProps {
   onClose: () => void;
 }
 
-/** Full-screen overlay showing one case study image at a larger size.
- * Closes on Escape, a backdrop click, or the close button, and locks
- * page scroll while open. Portaled to `document.body` so it always
- * covers the full viewport regardless of where it's triggered from. */
+/** Full-screen view of one image. A native modal <dialog>, so focus
+ * trapping, Escape, and focus return are handled by the browser. */
 export function Lightbox({ image, onClose }: LightboxProps) {
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    closeButtonRef.current?.focus();
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', handleKeyDown);
+    const dialog = dialogRef.current;
+    if (dialog && !dialog.open) dialog.showModal();
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = previousOverflow;
     };
-  }, [onClose]);
+  }, []);
+
+  const close = () => dialogRef.current?.close();
 
   return createPortal(
-    <div className={styles.backdrop} onClick={onClose}>
-      <button
-        ref={closeButtonRef}
-        type="button"
-        className={styles.close}
-        onClick={onClose}
-        aria-label="Close enlarged image"
-      >
+    <dialog
+      ref={dialogRef}
+      className={styles.dialog}
+      aria-label={image.alt}
+      onClose={onClose}
+      onClick={(event) => event.target === event.currentTarget && close()}
+    >
+      <button type="button" className={styles.close} onClick={close} aria-label="Close enlarged image" autoFocus>
         ×
       </button>
-      <div
-        className={styles.dialog}
-        role="dialog"
-        aria-modal="true"
-        aria-label={image.alt}
-        onClick={(event) => event.stopPropagation()}
-      >
-        {image.src && <img src={image.src} alt={image.alt} className={styles.image} />}
-        {image.caption && <p className={styles.caption}>{image.caption}</p>}
-      </div>
-    </div>,
-    document.body
+      <figure className={styles.content}>
+        <img src={image.src} alt={image.alt} className={styles.image} />
+        {image.caption && <figcaption className={styles.caption}>{image.caption}</figcaption>}
+      </figure>
+    </dialog>,
+    document.body,
   );
 }

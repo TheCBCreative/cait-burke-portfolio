@@ -1,0 +1,18 @@
+/* Slow push-in on an image when its link or button is hovered or focused.
+   The image's container should clip it (overflow: hidden). */
+
+.target {
+  transition: transform var(--hover-zoom-duration) var(--reveal-ease);
+}
+
+.trigger:hover .target,
+.trigger:focus-visible .target {
+  transform: scale(var(--hover-zoom-scale));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger:hover .target,
+  .trigger:focus-visible .target {
+    transform: none;
+  }
+}

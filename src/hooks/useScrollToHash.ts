@@ -1,12 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-/**
- * React Router doesn't scroll to an in-page anchor on navigation the way a
- * plain <a href="#id"> does — this restores that behavior for links like
- * "/home#selected-work" coming from another page (e.g. a case study's
- * "Back to all work" link).
- */
+/** Scrolls to the URL's #hash after navigation (React Router doesn't), or to the top without one. */
 export function useScrollToHash() {
   const { hash, pathname } = useLocation();
 
@@ -15,7 +10,6 @@ export function useScrollToHash() {
       window.scrollTo({ top: 0 });
       return;
     }
-    const target = document.querySelector(hash);
-    target?.scrollIntoView();
+    document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView();
   }, [hash, pathname]);
 }

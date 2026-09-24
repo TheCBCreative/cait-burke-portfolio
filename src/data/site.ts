@@ -1,10 +1,4 @@
-/**
- * Site-wide copy and links that aren't tied to a single project — the
- * kind of content that shows up in the Landing hero, the Homepage hero,
- * and the Contact section. Centralized so a wording or link change only
- * has to happen once.
- */
-import type { LinkItem } from './types';
+import type { Capability, LinkItem } from './types';
 
 export const SITE = {
   name: 'Cait Burke',
@@ -12,7 +6,7 @@ export const SITE = {
   location: 'Greater Seattle Area',
   availability: 'Available for work',
   status: 'Open to design + frontend roles',
-  stackSummary: 'React · TypeScript · Figma · Node.js · AWS',
+  stackSummary: 'Figma · React · TypeScript · Node.js',
   aiSummary: 'Claude Code · Figma AI',
 
   landingTagline: 'Design that holds up. Code that ships.',
@@ -25,7 +19,7 @@ export const SITE = {
   aboutHeadingLead: 'I design in Figma —',
   aboutHeadingEmphasis: 'then build it in code.',
 
-  contactHeading: 'Currently open to design + front-end roles.',
+  contactHeading: 'Currently open to design + frontend roles.',
 
   footerTagline: 'Design · Development · Accessibility-minded',
 } as const;
@@ -33,13 +27,8 @@ export const SITE = {
 export const SOCIAL_LINKS: LinkItem[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/' },
   { label: 'GitHub', href: 'https://github.com/TheCBCreative' },
-  { label: 'Email', href: 'mailto:cait@thecbcreative.com' },
+  { label: 'Email', href: 'mailto:hello@caitburke.dev' },
 ];
-
-export interface Capability {
-  title: string;
-  description: string;
-}
 
 export const CAPABILITIES: Capability[] = [
   {

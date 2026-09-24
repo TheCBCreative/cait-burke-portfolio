@@ -1,21 +1,14 @@
-import type { ElementType, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { cx } from '../../utils/cx';
 import styles from './Eyebrow.module.css';
 
 interface EyebrowProps {
   children: ReactNode;
-  /** Render as a heading element when this eyebrow doubles as a section's
-   * accessible label; defaults to a plain span for decorative use. */
-  as?: ElementType;
-  tone?: 'faint' | 'accent' | 'on-dark' | 'on-accent';
+  tone?: 'faint' | 'accent' | 'on-dark';
   className?: string;
 }
 
-/** Small uppercase mono label used above headings throughout the site
- * (e.g. "ABOUT", "01 — THE CONTEXT"). */
-export function Eyebrow({ children, as: Tag = 'span', tone = 'faint', className }: EyebrowProps) {
-  return (
-    <Tag className={[styles.eyebrow, styles[tone], className].filter(Boolean).join(' ')}>
-      {children}
-    </Tag>
-  );
+/** Small uppercase label above a heading. */
+export function Eyebrow({ children, tone = 'faint', className }: EyebrowProps) {
+  return <span className={cx(styles.eyebrow, styles[tone], className)}>{children}</span>;
 }

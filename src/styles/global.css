@@ -1,9 +1,3 @@
-/**
- * Global base styles: a minimal reset plus the site's default typography,
- * applied once here so individual components only need to describe how
- * they differ from the baseline.
- */
-
 *,
 *::before,
 *::after {
@@ -11,8 +5,6 @@
 }
 
 html {
-  /* Respect the user's OS/browser font-size setting; every rem-based token
-     above scales from this rather than a fixed pixel value. */
   -webkit-text-size-adjust: 100%;
 }
 
@@ -28,7 +20,8 @@ body {
 
 img,
 picture,
-svg {
+svg,
+video {
   display: block;
   max-width: 100%;
 }
@@ -56,21 +49,26 @@ h1,
 h2,
 h3,
 h4,
-p {
+p,
+figure,
+blockquote {
   margin: 0;
 }
 
-/* A single, consistent keyboard-focus style everywhere, instead of the
-   browser default outline (which this design's dark sections would make
-   hard to see) or no indicator at all. */
 :focus-visible {
-  outline: var(--focus-ring);
-  outline-offset: var(--focus-ring-offset);
+  outline: var(--focus-width) solid var(--focus-color);
+  outline-offset: var(--focus-offset);
 }
 
-/* Skip link: visually hidden until it receives keyboard focus, then jumps
-   above the page content so keyboard/screen-reader users can bypass the
-   masthead on every page. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .skip-link {
   position: absolute;
   top: -100%;

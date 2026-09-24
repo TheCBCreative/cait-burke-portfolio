@@ -1,55 +1,33 @@
-/**
- * Design tokens — the single source of truth for color, type, spacing, and
- * other reusable values. Every component should read from these custom
- * properties instead of hardcoding a value, so a future rebrand (new
- * palette, new typeface) is a change in one file, not a hunt through
- * every component.
- *
- * Color values mirror the "Portfolio Colors" variable collection in the
- * Figma file, so design and code stay in sync.
- */
+/* Design tokens. Colors mirror the "Portfolio Colors" collection in Figma. */
 
 :root {
-  /* ---------------------------------------------------------------- */
-  /* Color                                                             */
-  /* ---------------------------------------------------------------- */
-  --color-paper: #f4f1ea; /* warm off-white — page background, alternating sections */
-  --color-surface: #ffffff; /* default section background */
-  --color-surface-2: #ebe5d4; /* tan — image placeholders, secondary surfaces */
-  --color-ink: #172520; /* primary text, dark section backgrounds */
-  --color-ink-soft: #52645b; /* secondary text (body copy on light backgrounds) */
-  --color-ink-faint: #627067; /* tertiary text (labels, meta, captions) — darkened from initial pick to clear 4.5:1 on paper/surface */
-  --color-line: #d9d2be; /* hairline borders and dividers */
-  --color-accent: #4f6b58; /* links, buttons, emphasis */
-  --color-slate: #33495a; /* reserved accent (unused by default palette) */
-  --color-moss: #3a4f41; /* reserved accent (unused by default palette) */
+  /* Color */
+  --color-paper: #f4f1ea;
+  --color-surface: #ffffff;
+  --color-surface-2: #ebe5d4;
+  --color-ink: #172520;
+  --color-ink-rgb: 23 37 32; /* for translucent ink: rgb(var(--color-ink-rgb) / 0.5) */
+  --color-ink-soft: #52645b;
+  --color-ink-faint: #627067; /* darkest shade that still reads as tertiary; 4.5:1 on paper */
+  --color-line: #d9d2be;
+  --color-accent: #4f6b58;
+  --color-accent-on-dark: #7b9e86; /* 4.5:1 on ink */
 
-  /* Text/backgrounds when a section sits on the dark --color-ink surface */
   --color-on-dark: #f4f1ea;
   --color-on-dark-soft: #b7c2ba;
-  --color-on-dark-faint: #818f87; /* lightened from initial pick to clear 4.5:1 on --color-ink */
+  --color-on-dark-faint: #818f87; /* 4.5:1 on ink */
   --color-on-dark-line: rgba(244, 241, 234, 0.16);
 
-  /* Text when a section sits on the lighter --color-accent surface (e.g.
-     the case study "live site" callout) — --color-on-dark-soft only
-     clears 3.2:1 against this lighter green, so it needs its own tint. */
-  --color-on-accent-soft: #dfe6e1; /* clears 4.5:1 on --color-accent */
-
-  /* ---------------------------------------------------------------- */
-  /* Typography                                                        */
-  /* ---------------------------------------------------------------- */
+  /* Typography */
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "IBM Plex Sans", -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  /* Fluid display sizes: clamp scales headline sizes smoothly between the
-     mobile and desktop values captured from the Figma frames, rather than
-     jumping at a single breakpoint. */
-  --font-size-display-hero: clamp(2.75rem, 6vw + 1rem, 6.5rem); /* "Cait Burke" on Landing */
-  --font-size-display-h1: clamp(2.125rem, 4vw + 1rem, 3.5rem); /* Homepage hero name / case study title */
-  --font-size-display-h2: clamp(1.625rem, 2.5vw + 1rem, 2.625rem); /* Section headings */
-  --font-size-display-h3: clamp(1.375rem, 1.5vw + 1rem, 1.625rem); /* CTA block headings */
-
+  /* The landing name is also capped by viewport height so it fits short windows. */
+  --font-size-display-hero: clamp(2.25rem, min(6vw + 1rem, 11svh), 6.5rem);
+  --font-size-display-h1: clamp(2.125rem, 4vw + 1rem, 3.5rem);
+  --font-size-display-h2: clamp(1.625rem, 2.5vw + 1rem, 2.625rem);
+  --font-size-display-h3: clamp(1.375rem, 1.5vw + 1rem, 1.625rem);
   --font-size-lede: clamp(1.0625rem, 0.5vw + 1rem, 1.1875rem);
   --font-size-body: 1rem;
   --font-size-body-sm: 0.875rem;
@@ -64,9 +42,7 @@
   --letter-spacing-eyebrow: 0.14em;
   --letter-spacing-label: 0.08em;
 
-  /* ---------------------------------------------------------------- */
-  /* Spacing (4px base scale)                                          */
-  /* ---------------------------------------------------------------- */
+  /* Spacing (4px base) */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -77,24 +53,32 @@
   --space-8: 3rem;
   --space-9: 4rem;
   --space-10: 5rem;
-  --space-11: 7rem;
 
-  /* ---------------------------------------------------------------- */
-  /* Layout                                                             */
-  /* ---------------------------------------------------------------- */
-  --content-max-width: 1312px; /* matches the Figma desktop content column */
+  /* Layout */
+  --content-max-width: 1312px;
   --content-padding-mobile: 1.5rem;
   --content-padding-tablet: 2.5rem;
   --content-padding-desktop: 4rem;
-  /* Extra inline-start padding for a section that also renders an EdgeTab
-     at this breakpoint, so copy doesn't sit flush against the tab's edge. */
-  --content-padding-desktop-tab: calc(var(--content-padding-desktop) + var(--space-6));
+  --content-padding-desktop-tab: calc(var(--content-padding-desktop) + var(--space-6)); /* clears the EdgeTab */
 
-  /* ---------------------------------------------------------------- */
-  /* Motion / misc                                                     */
-  /* ---------------------------------------------------------------- */
-  --transition-fast: 150ms ease;
+  /* Shape */
   --radius-sm: 4px;
-  --focus-ring: 2px solid var(--color-accent);
-  --focus-ring-offset: 2px;
+  --radius-pill: 999px;
+  /* Dark sections set --focus-color to --color-accent-on-dark for 3:1 contrast. */
+  --focus-color: var(--color-accent);
+  --focus-width: 2px;
+  --focus-offset: 2px;
+
+  /* Motion */
+  --transition-fast: 150ms ease;
+  --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-duration: 1400ms;
+  --reveal-wipe-ease: cubic-bezier(0.76, 0, 0.24, 1);
+  --reveal-wipe-duration: 1600ms;
+  /* Opacity-only fades need an even curve; the ease-out above reads as a pop without movement. */
+  --reveal-dissolve-ease: cubic-bezier(0.45, 0, 0.35, 1);
+  --reveal-dissolve-duration: 3200ms;
+  --enter-duration: 2200ms;
+  --hover-zoom-scale: 1.04;
+  --hover-zoom-duration: 900ms;
 }

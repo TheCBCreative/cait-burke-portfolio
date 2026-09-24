@@ -1,21 +1,22 @@
-import { SectionHeading } from '../ui';
+import { SectionHeading, Reveal } from '../ui';
 import { PageContainer } from '../layout';
-import type { CaseStudySection as CaseStudySectionContent } from '../../data/types';
+import type { SectionContent } from '../../data/types';
+import { cx } from '../../utils/cx';
 import styles from './CaseStudySection.module.css';
 
 interface CaseStudySectionProps {
-  content: CaseStudySectionContent;
-  /** Alternates the background so the context/approach/outcome beats read
-   * as distinct steps while scrolling. */
+  content: SectionContent;
   background: 'paper' | 'surface';
 }
 
 export function CaseStudySection({ content, background }: CaseStudySectionProps) {
   return (
-    <section className={[styles.section, styles[background]].join(' ')}>
+    <section className={cx(styles.section, styles[background])}>
       <PageContainer className={styles.inner}>
         <SectionHeading eyebrow={content.eyebrow} heading={content.heading} />
-        <p className={styles.body}>{content.body}</p>
+        <Reveal variant="fade" delay={200}>
+          <p className={styles.body}>{content.body}</p>
+        </Reveal>
       </PageContainer>
     </section>
   );

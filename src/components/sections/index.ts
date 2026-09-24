@@ -1,5 +1,4 @@
-export { Hero } from './Hero';
 export { About } from './About';
+export { Hero } from './Hero';
 export { SelectedWork } from './SelectedWork';
-export { WorkCard } from './WorkCard';
-export { WorkTeaser } from './WorkTeaser';
+export { Testimonial } from './Testimonial';

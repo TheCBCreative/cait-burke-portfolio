@@ -10,43 +10,23 @@
   padding-block: var(--space-6) var(--space-8);
 }
 
-.kicker {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-eyebrow);
-  font-weight: 500;
-  letter-spacing: var(--letter-spacing-eyebrow);
-  text-transform: uppercase;
-  color: var(--color-accent);
-}
-
 .title {
-  font-family: var(--font-display);
-  font-weight: 600;
+  composes: display from '../../styles/typography.module.css';
   font-size: var(--font-size-display-h1);
   line-height: var(--line-height-tight);
 }
 
-.dek {
+.summary {
   max-width: 42rem;
-  font-size: var(--font-size-body);
   color: var(--color-ink-soft);
-  line-height: var(--line-height-body);
 }
 
 .meta {
   margin-top: var(--space-4);
-  max-width: 48rem;
-}
-
-@media (min-width: 700px) {
-  .meta {
-    max-width: none;
-  }
 }
 
 @media (min-width: 1100px) {
-  /* See Hero.module.css for why this needs the extra .hero specificity. */
+  /* .hero raises specificity over PageContainer's own padding. */
   .hero .inner {
     padding-inline-start: var(--content-padding-desktop-tab);
   }

@@ -1,0 +1,22 @@
+/* Shared text styles, pulled into component classes with `composes`. */
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+/* Small uppercase mono text: tags, meta labels, captions. */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+}
+
+/* A step up from .label, for links and titles. */
+.labelLg {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+}

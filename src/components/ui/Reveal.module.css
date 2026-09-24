@@ -1,0 +1,54 @@
+.rise,
+.fade {
+  opacity: 0;
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease) var(--reveal-delay, 0ms),
+    transform var(--reveal-duration) var(--reveal-ease) var(--reveal-delay, 0ms);
+}
+
+.rise {
+  transform: translateY(2rem);
+}
+
+.fade {
+  transform: translateY(1rem);
+}
+
+.rise[data-revealed],
+.fade[data-revealed] {
+  opacity: 1;
+  transform: none;
+}
+
+/* The mask opens bottom-up while the image inside settles from a slight zoom. */
+.wipe {
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path var(--reveal-wipe-duration) var(--reveal-wipe-ease) var(--reveal-delay, 0ms);
+}
+
+.wipe > * {
+  transform: scale(1.1);
+  transition: transform var(--reveal-wipe-duration) var(--reveal-wipe-ease) var(--reveal-delay, 0ms);
+}
+
+.wipe[data-revealed] {
+  clip-path: inset(0);
+}
+
+.wipe[data-revealed] > * {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .fade,
+  .wipe,
+  .wipe > * {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+}

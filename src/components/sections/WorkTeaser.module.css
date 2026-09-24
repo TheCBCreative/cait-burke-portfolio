@@ -1,6 +1,5 @@
-.stripe {
+.teaser {
   grid-column: 1 / -1;
-  list-style: none;
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -17,15 +16,12 @@
 }
 
 .title {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-label);
+  composes: labelLg from '../../styles/typography.module.css';
   font-weight: 500;
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
   color: var(--color-ink-soft);
 }
 
-.tag {
+.note {
   font-size: var(--font-size-body-sm);
   color: var(--color-ink-faint);
 }

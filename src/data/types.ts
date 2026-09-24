@@ -1,12 +1,4 @@
-/**
- * Shared content types. Keeping these in one place means every page reads
- * project/case-study content through the same shape, so adding a new
- * project later is a data change, not a component change.
- */
-
-/** A single image slot. `src` is left undefined until real screenshots are
- * ready — components render a placeholder in that case, but always render
- * `alt` so the page stays meaningful to screen readers either way. */
+/** An image, or a placeholder until `src` is set. */
 export interface ImageSlot {
   src?: string;
   alt: string;
@@ -18,14 +10,9 @@ export interface LinkItem {
   href: string;
 }
 
-/** One "Selected Work" card on the homepage. */
-export interface ProjectSummary {
-  slug: string;
-  index: string; // display index, e.g. "01"
+export interface Capability {
   title: string;
-  tag: string; // short category line, e.g. "Admin UI · CMS"
-  skills: string[]; // what kind of work this demonstrates, e.g. ["Design", "Development"]
-  thumbnail: ImageSlot;
+  description: string;
 }
 
 export interface CaseStudyMeta {
@@ -34,32 +21,41 @@ export interface CaseStudyMeta {
   links: LinkItem[];
 }
 
-export interface CaseStudyCallout {
+export interface CalloutContent {
   eyebrow: string;
   heading: string;
   body: string;
   buttonLabel: string;
   buttonHref?: string;
-  note?: string;
-  noteHref?: string;
 }
 
-export interface CaseStudySection {
+export interface SectionContent {
   eyebrow: string;
   heading: string;
   body: string;
 }
 
-export interface CaseStudyContent {
+/** One project: its card on the homepage and its case study page. */
+export interface Project {
   slug: string;
-  index: string;
-  category: string;
+  index: string; // "01"
+  category: string; // "Admin UI · CMS"
   title: string;
-  dek: string;
+  skills: string[];
+  thumbnail: ImageSlot;
+  summary: string;
   meta: CaseStudyMeta;
-  callout: CaseStudyCallout;
+  callout: CalloutContent;
   heroImage: ImageSlot;
-  sections: [CaseStudySection, CaseStudySection, CaseStudySection];
+  sections: [SectionContent, SectionContent, SectionContent];
   imagePair: [ImageSlot, ImageSlot];
-  nextProjectSlug: string;
+}
+
+/** Quoted from a real recommendation; `source` says where it was published. */
+export interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  date: string;
+  source: string;
 }

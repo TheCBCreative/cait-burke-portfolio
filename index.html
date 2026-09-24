@@ -10,35 +10,28 @@
     />
     <title>Cait Burke — Portfolio</title>
 
-    <!-- Open Graph / Twitter Card — these are read by link-unfurlers (Slack,
-         LinkedIn, iMessage, etc.) that don't execute JS, so they stay static
-         and site-wide rather than per-page. Image paths are root-relative,
-         which unfurlers resolve against the page's own domain. -->
+    <!-- Share previews: read by link unfurlers that don't run JS, so site-wide. -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://caitburke.dev/" />
     <meta property="og:site_name" content="Cait Burke — Portfolio" />
     <meta property="og:title" content="Cait Burke — Design + Front-End Engineering" />
     <meta
       property="og:description"
       content="Building thoughtful, user-centered interfaces at the intersection of design and front-end engineering."
     />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image" content="https://caitburke.dev/og-image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Cait Burke — Design + Front-End Engineering" />
     <meta
       name="twitter:description"
       content="Building thoughtful, user-centered interfaces at the intersection of design and front-end engineering."
     />
-    <meta name="twitter:image" content="/og-image.jpg" />
+    <meta name="twitter:image" content="https://caitburke.dev/og-image.jpg" />
 
     <!-- Fraunces (display serif), IBM Plex Sans (body), IBM Plex Mono (labels/eyebrows) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Fraunces is loaded with its full opsz (optical size) axis open
-         (9..144) rather than pinned to one value, so the browser's default
-         optical sizing can shift in the font's higher-contrast, more
-         "display" letterforms at large headline sizes and keep the more
-         even text-weight forms at small sizes — one @font-face, no manual
-         per-size overrides. -->
+    <!-- Fraunces keeps its full optical-size axis, so large headings get its display forms. -->
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"

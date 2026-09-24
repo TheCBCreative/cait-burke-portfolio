@@ -1,11 +1,10 @@
 import { SectionHeading } from '../ui';
 import { PageContainer } from '../layout';
-import { PROJECT_SUMMARIES } from '../../data/projects';
+import { PROJECTS } from '../../data/projects';
 import { WorkCard } from './WorkCard';
 import { WorkTeaser } from './WorkTeaser';
 import styles from './SelectedWork.module.css';
 
-/** The project grid linking out to each case study. */
 export function SelectedWork() {
   return (
     <section id="selected-work" className={styles.section} aria-labelledby="selected-work-heading">
@@ -16,8 +15,8 @@ export function SelectedWork() {
           heading="Different projects, one throughline."
         />
         <ul className={styles.grid}>
-          {PROJECT_SUMMARIES.map((project) => (
-            <WorkCard key={project.slug} project={project} />
+          {PROJECTS.map((project, index) => (
+            <WorkCard key={project.slug} project={project} revealDelay={index * 200} />
           ))}
           <WorkTeaser />
         </ul>

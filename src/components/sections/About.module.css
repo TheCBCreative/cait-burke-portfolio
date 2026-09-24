@@ -1,5 +1,6 @@
 .about {
-  background-color: var(--color-paper);
+  --focus-color: var(--color-accent-on-dark);
+  background-color: var(--color-ink);
 }
 
 .grid {
@@ -15,19 +16,23 @@
 }
 
 .emphasis {
-  color: var(--color-accent);
+  color: var(--color-accent-on-dark);
   font-style: italic;
 }
 
-.photo {
-  max-width: 24rem;
-}
-
-.photoMedia {
+/* Opacity only: movement would open a gap where the clip bleeds to the section edge. */
+.clip {
   width: 100%;
+  max-width: 24rem;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: var(--radius-sm);
+  opacity: 0;
+  transition: opacity var(--reveal-dissolve-duration) var(--reveal-dissolve-ease) 200ms;
+}
+
+.clipRevealed {
+  opacity: 1;
 }
 
 .capabilities {
@@ -42,17 +47,14 @@
 }
 
 .capabilityTitle {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-label);
+  composes: labelLg from '../../styles/typography.module.css';
   font-weight: 500;
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
+  color: var(--color-on-dark);
 }
 
 .capabilityDescription {
-  color: var(--color-ink-soft);
+  color: var(--color-on-dark-soft);
   font-size: var(--font-size-body-sm);
-  line-height: var(--line-height-body);
 }
 
 @media (min-width: 700px) {
@@ -67,19 +69,20 @@
     align-items: start;
   }
 
-  .photo {
+  /* Stretch to the row's height and bleed through the section's vertical padding. */
+  .clip {
     max-width: none;
-  }
-
-  /* Bleed the photo to the section's own top/bottom edges instead of
-     sitting inset within the grid's vertical padding — the row's height
-     is still set by the copy/capabilities columns; this just stretches
-     to match and spills into the padding on both sides. */
-  .photoMedia {
     align-self: stretch;
     aspect-ratio: auto;
     height: calc(100% + var(--space-9) * 2);
     margin-block: calc(-1 * var(--space-9));
     border-radius: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clip {
+    opacity: 1;
+    transition: none;
   }
 }

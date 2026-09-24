@@ -1,3 +1,4 @@
+import { cx } from '../../utils/cx';
 import styles from './TagList.module.css';
 
 interface TagListProps {
@@ -6,12 +7,7 @@ interface TagListProps {
   className?: string;
 }
 
-/** Inline list of short labels separated by a middle dot, e.g.
- * "Design · Development · Accessibility-minded". */
+/** Short labels separated by middle dots, e.g. "Design · Development". */
 export function TagList({ tags, tone = 'default', className }: TagListProps) {
-  return (
-    <p className={[styles.tags, styles[tone], className].filter(Boolean).join(' ')}>
-      {tags.join(' · ')}
-    </p>
-  );
+  return <p className={cx(styles.tags, styles[tone], className)}>{tags.join(' · ')}</p>;
 }

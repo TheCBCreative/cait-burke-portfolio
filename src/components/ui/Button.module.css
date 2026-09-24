@@ -1,11 +1,8 @@
 .button {
+  composes: labelLg from '../../styles/typography.module.css';
   display: inline-flex;
   align-items: center;
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-label);
   font-weight: 500;
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
   text-decoration: none;
   border-radius: var(--radius-sm);
   transition: opacity var(--transition-fast), background-color var(--transition-fast);
@@ -30,7 +27,6 @@
   opacity: 0.9;
 }
 
-/* Overrides .text's ink color for use on dark sections (Landing, Contact). */
 .text.on-dark {
   color: var(--color-on-dark);
 }
@@ -40,12 +36,8 @@
   background-color: var(--color-on-dark);
 }
 
-/* Placeholder state: same footprint as a real button, clearly non-interactive. */
-[aria-disabled='true'] {
+.disabled,
+.disabled:hover {
   cursor: default;
-  opacity: 0.5;
-}
-
-[aria-disabled='true']:hover {
   opacity: 0.5;
 }

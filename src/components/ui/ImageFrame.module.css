@@ -1,0 +1,70 @@
+.frame {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.placeholder {
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-3);
+  background-color: var(--color-surface-2);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgb(var(--color-ink-rgb) / 0.04) 0 1px,
+    transparent 1px 12px
+  );
+}
+
+.placeholderLabel {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  color: var(--color-ink-faint);
+}
+
+.trigger {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  cursor: zoom-in;
+}
+
+/* Drawn as an overlay: an outline would be clipped by the reveal wipe
+   outside the frame, and painted over by the zoomed image inside it. */
+.trigger:focus-visible {
+  outline: none;
+}
+
+.trigger:focus-visible::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  /* Two-tone, so it shows on light and dark screenshots alike. */
+  box-shadow:
+    inset 0 0 0 var(--focus-width) var(--focus-color),
+    inset 0 0 0 calc(var(--focus-width) * 2) var(--color-surface);
+  pointer-events: none;
+}
+
+.zoomHint {
+  composes: label from '../../styles/typography.module.css';
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background-color: rgb(var(--color-ink-rgb) / 0.72);
+  color: var(--color-on-dark);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+
+.trigger:hover .zoomHint,
+.trigger:focus-visible .zoomHint {
+  opacity: 1;
+}

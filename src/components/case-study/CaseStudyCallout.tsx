@@ -1,38 +1,23 @@
-import { Eyebrow, Button } from '../ui';
+import { Eyebrow, Button, Reveal } from '../ui';
 import { PageContainer } from '../layout';
-import type { CaseStudyCallout as CaseStudyCalloutContent } from '../../data/types';
+import type { CalloutContent } from '../../data/types';
 import styles from './CaseStudyCallout.module.css';
 
-interface CaseStudyCalloutProps {
-  content: CaseStudyCalloutContent;
-}
-
-/** The "Live Demo" / "Live Site" banner just under the hero, pointing to
- * the real, working thing this case study describes. */
-export function CaseStudyCallout({ content }: CaseStudyCalloutProps) {
+/** The banner linking to the live demo or site. */
+export function CaseStudyCallout({ content }: { content: CalloutContent }) {
   return (
     <section className={styles.callout} aria-label={content.eyebrow}>
       <PageContainer className={styles.inner}>
-        <div className={styles.copy}>
-          <Eyebrow tone="on-accent">{content.eyebrow}</Eyebrow>
+        <Reveal variant="fade" className={styles.copy}>
+          <Eyebrow tone="on-dark">{content.eyebrow}</Eyebrow>
           <h2 className={styles.heading}>{content.heading}</h2>
           <p className={styles.body}>{content.body}</p>
-        </div>
-        <div className={styles.action}>
+        </Reveal>
+        <Reveal variant="fade" delay={200} className={styles.action}>
           <Button href={content.buttonHref} variant="solid" tone="on-dark">
             {content.buttonLabel}
           </Button>
-          {content.note && (
-            <a
-              href={content.noteHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.note}
-            >
-              {content.note}
-            </a>
-          )}
-        </div>
+        </Reveal>
       </PageContainer>
     </section>
   );

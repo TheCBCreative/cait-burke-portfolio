@@ -1,39 +1,31 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { cx } from '../../utils/cx';
+import { ExternalLink } from './ExternalLink';
 import styles from './Button.module.css';
 
 interface ButtonProps {
   children: ReactNode;
-  /** Omit to render a disabled placeholder (e.g. a demo link before it's
-   * deployed) — the label still shows, but it isn't clickable or announced
-   * as a link to assistive tech. */
+  /** Omit for a not-yet-live link: it renders as plain, dimmed text. */
   href?: string;
   variant?: 'solid' | 'text';
-  /** Use "on-dark" when the button sits on a dark section (Landing,
-   * Contact) so its text stays readable against that background. */
   tone?: 'default' | 'on-dark';
   className?: string;
 }
 
-const isInternalPath = (href: string) => href.startsWith('/');
-
-/** A link styled as either a solid CTA button or an inline text link with
- * an arrow. Renders as a real anchor (internal via react-router, external
- * with a plain <a>) whenever an href is given, and as an inert, visually
- * matching element when it isn't — so a not-yet-live link never looks or
- * behaves like a working one. */
 export function Button({ children, href, variant = 'text', tone = 'default', className }: ButtonProps) {
-  const classes = [styles.button, styles[variant], styles[tone], className].filter(Boolean).join(' ');
+  const classes = cx(styles.button, styles[variant], styles[tone], !href && styles.disabled, className);
 
   if (!href) {
     return (
-      <span className={classes} aria-disabled="true">
+      <span className={classes}>
         {children}
+        <span className="visually-hidden"> (coming soon)</span>
       </span>
     );
   }
 
-  if (isInternalPath(href)) {
+  if (href.startsWith('/')) {
     return (
       <Link to={href} className={classes}>
         {children}
@@ -41,13 +33,16 @@ export function Button({ children, href, variant = 'text', tone = 'default', cla
     );
   }
 
-  const isExternal = href.startsWith('http');
+  if (href.startsWith('http')) {
+    return (
+      <ExternalLink href={href} className={classes}>
+        {children}
+      </ExternalLink>
+    );
+  }
+
   return (
-    <a
-      href={href}
-      className={classes}
-      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-    >
+    <a href={href} className={classes}>
       {children}
     </a>
   );

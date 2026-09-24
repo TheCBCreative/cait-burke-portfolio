@@ -1,5 +1,6 @@
 .callout {
-  background-color: var(--color-moss);
+  --focus-color: var(--color-accent-on-dark);
+  background-color: var(--color-ink);
 }
 
 .inner {
@@ -17,28 +18,14 @@
 }
 
 .heading {
-  font-family: var(--font-display);
-  font-weight: 600;
+  composes: display from '../../styles/typography.module.css';
   font-size: var(--font-size-display-h3);
   color: var(--color-on-dark);
 }
 
 .body {
-  color: var(--color-on-accent-soft);
+  color: var(--color-on-dark-soft);
   font-size: var(--font-size-body-sm);
-}
-
-.action {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-3);
-}
-
-.note {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-sm);
-  color: var(--color-on-accent-soft);
 }
 
 @media (min-width: 900px) {
@@ -49,7 +36,6 @@
   }
 
   .action {
-    align-items: flex-end;
     flex-shrink: 0;
   }
 }

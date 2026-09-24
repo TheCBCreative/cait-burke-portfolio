@@ -1,4 +1,5 @@
-.footer {
+.nav {
+  --focus-color: var(--color-accent-on-dark);
   background-color: var(--color-ink);
   color: var(--color-on-dark);
 }
@@ -10,24 +11,20 @@
   padding-block: var(--space-9) var(--space-8);
 }
 
-.nextLink {
-  font-family: var(--font-display);
-  font-weight: 600;
+.primaryLink {
+  composes: display from '../../styles/typography.module.css';
   font-size: var(--font-size-display-h2);
   color: var(--color-on-dark);
   text-decoration: none;
   width: fit-content;
 }
 
-.nextLink:hover {
+.primaryLink:hover {
   color: var(--color-on-dark-soft);
 }
 
 .backLink {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-label);
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
+  composes: labelLg from '../../styles/typography.module.css';
   color: var(--color-on-dark-soft);
   text-decoration: none;
   width: fit-content;

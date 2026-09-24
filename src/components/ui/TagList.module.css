@@ -1,9 +1,5 @@
 .tags {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-sm);
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
+  composes: label from '../../styles/typography.module.css';
 }
 
 .default {

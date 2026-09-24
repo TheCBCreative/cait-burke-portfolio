@@ -1,37 +1,15 @@
-/**
- * Project content — the "Selected Work" cards and the full case studies.
- * Both case studies are rendered by the same <CaseStudyPage> template, so
- * adding a third project later means adding an entry here, not building a
- * new page.
- */
-import type { CaseStudyContent, ProjectSummary } from './types';
+import type { Project } from './types';
 
-export const PROJECT_SUMMARIES: ProjectSummary[] = [
+/** In display order: the home grid, and each case study's "next project" link. */
+export const PROJECTS: Project[] = [
   {
-    slug: 'blog-composer',
-    index: '01',
-    title: 'Blog Composer',
-    tag: 'Admin UI · CMS',
-    skills: ['Design', 'Development'],
-    thumbnail: { alt: 'Blog Composer admin dashboard' },
-  },
-  {
-    slug: 'the-cb-creative',
-    index: '02',
-    title: 'The CB Creative',
-    tag: 'Brand · Studio Site',
-    skills: ['Branding', 'Design', 'Development'],
-    thumbnail: { alt: 'The CB Creative studio site homepage' },
-  },
-];
-
-export const CASE_STUDIES: Record<string, CaseStudyContent> = {
-  'blog-composer': {
     slug: 'blog-composer',
     index: '01',
     category: 'Admin UI · CMS',
     title: 'Blog Composer',
-    dek: "A self-hosted, themeable blog admin built to slot into any client site — so publishing doesn't mean wrestling a bloated platform.",
+    skills: ['Design', 'Development'],
+    thumbnail: { src: '/images/blog-composer/dashboard.jpg', alt: 'Blog Composer admin dashboard' },
+    summary: "A self-hosted, themeable blog admin built to slot into any client site — so publishing doesn't mean wrestling a bloated platform.",
     meta: {
       role: 'Design & development, solo',
       stack: 'TypeScript · Astro · Neon Postgres · Better-Auth · Resend',
@@ -44,7 +22,7 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
       heading: 'See it running, not just described.',
       body: 'A seeded demo — no real client data. Click around the dashboard and the publishing flow yourself.',
       buttonLabel: 'Try the live demo →',
-      // Not deployed yet — leave unlinked until a real demo URL exists.
+      // No demo deployed yet.
       buttonHref: undefined,
     },
     heroImage: {
@@ -81,15 +59,18 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
         caption: 'Fig. 03 — Media library',
       },
     ],
-    nextProjectSlug: 'the-cb-creative',
   },
-
-  'the-cb-creative': {
+  {
     slug: 'the-cb-creative',
     index: '02',
     category: 'Brand · Studio Site',
     title: 'The CB Creative',
-    dek: "A solo design studio's brand and site, designed and built from the ground up — logo system, design system, and production code, all my own.",
+    skills: ['Branding', 'Design', 'Development'],
+    thumbnail: {
+      src: '/images/the-cb-creative/homepage-thumb.jpg',
+      alt: 'The CB Creative studio site homepage',
+    },
+    summary: "A solo design studio's brand and site, designed and built from the ground up — logo system, design system, and production code, all my own.",
     meta: {
       role: 'Brand & web design/development, solo',
       stack: 'Node.js · Custom static site generator · Vercel',
@@ -138,6 +119,13 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
         caption: 'Fig. 03 — Contact section',
       },
     ],
-    nextProjectSlug: 'blog-composer',
   },
+];
+
+export const getProject = (slug: string) => PROJECTS.find((project) => project.slug === slug);
+
+/** The project after this one, or undefined for the last. */
+export const getNextProject = (slug: string) => {
+  const index = PROJECTS.findIndex((project) => project.slug === slug);
+  return PROJECTS[index + 1];
 };

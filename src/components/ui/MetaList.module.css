@@ -1,5 +1,4 @@
 .list {
-  margin: 0;
   border-top: 1px solid var(--color-line);
 }
 
@@ -12,12 +11,9 @@
 }
 
 .label {
+  composes: label from '../../styles/typography.module.css';
   margin: 0;
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-sm);
   font-weight: 500;
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
   color: var(--color-ink-faint);
 }
 
@@ -37,8 +33,6 @@
   text-decoration: underline;
 }
 
-/* On wider screens the design pairs label and value on one line, right-
-   aligned — narrower screens keep the stacked layout above. */
 @media (min-width: 700px) {
   .row {
     flex-direction: row;

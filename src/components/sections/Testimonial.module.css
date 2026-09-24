@@ -1,0 +1,53 @@
+.testimonial {
+  background-color: var(--color-paper);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  padding-block: var(--space-9);
+  text-align: center;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  max-width: 44rem;
+}
+
+.quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: var(--font-size-display-h3);
+  line-height: var(--line-height-heading);
+  color: var(--color-ink);
+}
+
+.attribution {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.name {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-label);
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.role {
+  font-size: var(--font-size-body-sm);
+  color: var(--color-ink-soft);
+}
+
+.source {
+  composes: label from '../../styles/typography.module.css';
+  color: var(--color-ink-faint);
+}

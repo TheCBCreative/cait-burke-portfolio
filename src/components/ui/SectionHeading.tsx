@@ -1,29 +1,33 @@
 import type { ReactNode } from 'react';
+import { cx } from '../../utils/cx';
 import { Eyebrow } from './Eyebrow';
+import { Reveal } from './Reveal';
 import styles from './SectionHeading.module.css';
 
 interface SectionHeadingProps {
   eyebrow: string;
   heading: ReactNode;
-  /** Heading level — keep this matched to the page's real outline rather
-   * than choosing by visual size alone. */
-  level?: 2 | 3;
-  /** Set when a parent landmark needs `aria-labelledby` to point at this
-   * heading. */
   headingId?: string;
+  tone?: 'default' | 'on-dark';
+  /** See Reveal's `revealed`. */
+  revealed?: boolean;
   className?: string;
 }
 
-/** The "eyebrow + heading" pattern repeated at the top of every content
- * section (About, Selected Work, each case study section). */
-export function SectionHeading({ eyebrow, heading, level = 2, headingId, className }: SectionHeadingProps) {
-  const HeadingTag = level === 2 ? 'h2' : 'h3';
+export function SectionHeading({
+  eyebrow,
+  heading,
+  headingId,
+  tone = 'default',
+  revealed,
+  className,
+}: SectionHeadingProps) {
   return (
-    <div className={[styles.wrap, className].filter(Boolean).join(' ')}>
-      <Eyebrow>{eyebrow}</Eyebrow>
-      <HeadingTag id={headingId} className={level === 2 ? styles.h2 : styles.h3}>
+    <Reveal className={cx(styles.wrap, className)} revealed={revealed}>
+      <Eyebrow tone={tone === 'on-dark' ? 'on-dark' : 'faint'}>{eyebrow}</Eyebrow>
+      <h2 id={headingId} className={cx(styles.heading, styles[tone])}>
         {heading}
-      </HeadingTag>
-    </div>
+      </h2>
+    </Reveal>
   );
 }

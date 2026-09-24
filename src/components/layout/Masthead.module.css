@@ -9,36 +9,17 @@
   padding-block: var(--space-5);
 }
 
-.name {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-sm);
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
+.link {
+  composes: label from '../../styles/typography.module.css';
   color: var(--color-ink-soft);
   text-decoration: none;
 }
 
-.name:hover {
+.link:hover {
   color: var(--color-ink);
-}
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-sm);
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
-  color: var(--color-ink-faint);
 }
 
 .backLink {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-sm);
-  letter-spacing: var(--letter-spacing-label);
-  text-transform: uppercase;
+  composes: link;
   color: var(--color-ink-faint);
-  text-decoration: none;
-}
-
-.backLink:hover {
-  color: var(--color-ink);
 }

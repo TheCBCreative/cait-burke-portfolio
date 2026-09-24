@@ -1,6 +1,6 @@
-export { CaseStudyHero } from './CaseStudyHero';
 export { CaseStudyCallout } from './CaseStudyCallout';
+export { CaseStudyHero } from './CaseStudyHero';
+export { CaseStudySection } from './CaseStudySection';
 export { ImageBlock } from './ImageBlock';
 export { ImagePair } from './ImagePair';
-export { CaseStudySection } from './CaseStudySection';
-export { CaseStudyFooterNav } from './CaseStudyFooterNav';
+export { NextProjectNav } from './NextProjectNav';

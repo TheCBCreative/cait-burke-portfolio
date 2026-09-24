@@ -1,44 +1,34 @@
-import { MetaList, LinkStack, EdgeTab } from '../ui';
+import { Eyebrow, MetaList, LinkStack, EdgeTab, EntranceLines, entrance, entranceStep as step } from '../ui';
 import { PageContainer } from '../layout';
-import type { CaseStudyContent } from '../../data/types';
+import type { Project } from '../../data/types';
+import { cx } from '../../utils/cx';
 import styles from './CaseStudyHero.module.css';
 
-interface CaseStudyHeroProps {
-  content: CaseStudyContent;
-}
-
-/** Title, dek, and Role/Stack/Links meta at the top of a case study. */
-export function CaseStudyHero({ content }: CaseStudyHeroProps) {
+export function CaseStudyHero({ project }: { project: Project }) {
   return (
-    <header className={styles.hero}>
+    <header className={cx(styles.hero, entrance.heroPace)}>
       <EdgeTab label="Portfolio" />
       <PageContainer className={styles.inner}>
-        <p className={styles.kicker}>
-          {content.index} · {content.category}
+        <span className={entrance.enter} style={step(0)}>
+          <Eyebrow tone="accent">
+            {project.index} · {project.category}
+          </Eyebrow>
+        </span>
+        <h1 className={styles.title}>
+          <EntranceLines lines={[project.title]} firstStep={1} />
+        </h1>
+        <p className={cx(styles.summary, entrance.enter)} style={step(2)}>
+          {project.summary}
         </p>
-        <h1 className={styles.title}>{content.title}</h1>
-        <p className={styles.dek}>{content.dek}</p>
 
         <MetaList
           className={styles.meta}
+          rowClassName={entrance.enter}
+          rowStyle={(index) => step(3 + index)}
           items={[
-            { label: 'Role', value: content.meta.role },
-            { label: 'Stack', value: content.meta.stack },
-            {
-              label: 'Links',
-              value:
-                content.meta.links.length > 1 ? (
-                  <LinkStack links={content.meta.links} />
-                ) : (
-                  <a
-                    href={content.meta.links[0].href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {content.meta.links[0].label}
-                  </a>
-                ),
-            },
+            { label: 'Role', value: project.meta.role },
+            { label: 'Stack', value: project.meta.stack },
+            { label: 'Links', value: <LinkStack links={project.meta.links} /> },
           ]}
         />
       </PageContainer>

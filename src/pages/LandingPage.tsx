@@ -1,25 +1,36 @@
-import { Fragment } from 'react';
-import { Eyebrow, Divider, TagList, Button, EdgeTab } from '../components/ui';
+import { useEffect } from 'react';
+import {
+  Eyebrow,
+  Divider,
+  TagList,
+  Button,
+  EdgeTab,
+  EntranceLines,
+  entrance,
+  entranceStep as step,
+} from '../components/ui';
 import { LandingBackground } from '../components/landing';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { SITE } from '../data/site';
+import { cx } from '../utils/cx';
 import styles from './LandingPage.module.css';
 
-// Split "Sentence one. Sentence two." into its sentences, so each can sit
-// on its own line without hardcoding the break inside the data string.
-const taglineLines = SITE.landingTagline.split('. ').map((line, index, lines) =>
-  index < lines.length - 1 ? `${line}.` : line,
-);
+const nameLines = SITE.name.split(' ');
+// "One. Two." → ["One.", "Two."]
+const taglineLines = SITE.landingTagline.split(/(?<=\.)\s+/);
+const afterText = 5 + nameLines.length + taglineLines.length;
 
-const nameWords = SITE.name.split(' ');
-
-/**
- * The full-bleed splash screen visitors land on first. Its only job is to
- * set tone and send people on to the full homepage via the CTA — so it
- * has no masthead/footer of its own.
- */
+/** The full-screen splash that leads into /home. */
 export function LandingPage() {
   useDocumentTitle(`${SITE.name} — Portfolio`);
+
+  // Dark page background, so overscrolling past the splash doesn't flash white.
+  useEffect(() => {
+    const targets = [document.documentElement, document.body];
+    const previous = targets.map((el) => el.style.backgroundColor);
+    targets.forEach((el) => (el.style.backgroundColor = 'var(--color-ink)'));
+    return () => targets.forEach((el, i) => (el.style.backgroundColor = previous[i]));
+  }, []);
 
   return (
     <main className={styles.page}>
@@ -29,49 +40,48 @@ export function LandingPage() {
 
       <div className={styles.content}>
         <div className={styles.topRow}>
-          <Eyebrow tone="on-dark">{SITE.roleTagline}</Eyebrow>
-          <div className={styles.locationGroup}>
-            <span className={styles.location}>{SITE.location}</span>
-            <div className={styles.availability}>
-              <span className={styles.badgeCircle} aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0Z" />
-                </svg>
-              </span>
-              <span className={styles.badgeLabel}>{SITE.availability}</span>
-            </div>
+          <span className={entrance.enter} style={step(0)}>
+            <Eyebrow tone="on-dark">{SITE.roleTagline}</Eyebrow>
+          </span>
+          <div className={styles.status}>
+            <span className={cx(styles.statusText, entrance.enter)} style={step(1)}>
+              {SITE.location}
+            </span>
+            <span className={cx(styles.badge, entrance.enter)} style={step(2)} aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0Z" />
+              </svg>
+            </span>
+            <span className={cx(styles.statusText, styles.availability, entrance.enter)} style={step(3)}>
+              {SITE.availability}
+            </span>
           </div>
         </div>
 
         <div className={styles.main}>
-          <Eyebrow tone="on-dark">Portfolio</Eyebrow>
+          <span className={entrance.enter} style={step(4)}>
+            <Eyebrow tone="on-dark">Portfolio</Eyebrow>
+          </span>
           <h1 className={styles.name}>
-            {nameWords.map((word, index) => (
-              <Fragment key={word}>
-                {word}
-                {index < nameWords.length - 1 ? <br /> : null}
-              </Fragment>
-            ))}
+            <EntranceLines lines={nameLines} firstStep={5} />
           </h1>
           <p className={styles.tagline}>
-            {taglineLines.map((line, index) => (
-              <Fragment key={line}>
-                {line}
-                {index < taglineLines.length - 1 ? <br /> : null}
-              </Fragment>
-            ))}
+            <EntranceLines lines={taglineLines} firstStep={5 + nameLines.length} />
           </p>
-          <Button href="/home" variant="text" tone="on-dark" className={styles.cta}>
-            Check it out →
-          </Button>
+          <span className={entrance.enter} style={step(afterText)}>
+            <Button href="/home" tone="on-dark" className={styles.cta}>
+              Check it out →
+            </Button>
+          </span>
         </div>
 
         <div className={styles.bottomRow}>
-          <Divider tone="dark" />
-          <TagList
-            tags={['Design', 'Development', 'Accessibility-minded']}
-            tone="on-dark"
-          />
+          <div className={entrance.enter} style={step(afterText + 1)}>
+            <Divider tone="dark" />
+          </div>
+          <div className={entrance.enter} style={step(afterText + 2)}>
+            <TagList tags={['Design', 'Development', 'Accessibility-minded']} tone="on-dark" />
+          </div>
         </div>
       </div>
     </main>
