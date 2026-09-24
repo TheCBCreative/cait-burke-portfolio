@@ -12,6 +12,7 @@ export const PROJECT_SUMMARIES: ProjectSummary[] = [
     index: '01',
     title: 'Blog Composer',
     tag: 'Admin UI · CMS',
+    skills: ['Design', 'Development'],
     thumbnail: { alt: 'Blog Composer admin dashboard' },
   },
   {
@@ -19,6 +20,7 @@ export const PROJECT_SUMMARIES: ProjectSummary[] = [
     index: '02',
     title: 'The CB Creative',
     tag: 'Brand · Studio Site',
+    skills: ['Branding', 'Design', 'Development'],
     thumbnail: { alt: 'The CB Creative studio site homepage' },
   },
 ];

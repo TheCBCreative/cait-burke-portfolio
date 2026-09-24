@@ -24,6 +24,7 @@ export interface ProjectSummary {
   index: string; // display index, e.g. "01"
   title: string;
   tag: string; // short category line, e.g. "Admin UI · CMS"
+  skills: string[]; // what kind of work this demonstrates, e.g. ["Design", "Development"]
   thumbnail: ImageSlot;
 }
 

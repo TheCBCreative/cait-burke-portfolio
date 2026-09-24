@@ -18,6 +18,13 @@ export function WorkCard({ project }: WorkCardProps) {
           <span className={styles.index}>{project.index}</span>
           <span className={styles.title}>{project.title}</span>
           <span className={styles.tag}>{project.tag}</span>
+          <ul className={styles.skills}>
+            {project.skills.map((skill) => (
+              <li key={skill} className={styles.skill}>
+                {skill}
+              </li>
+            ))}
+          </ul>
         </div>
       </Link>
     </li>
