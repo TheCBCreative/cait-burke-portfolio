@@ -104,7 +104,11 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
       buttonLabel: 'View live site →',
       buttonHref: 'https://www.thecbcreative.com',
     },
-    heroImage: { alt: 'The CB Creative homepage', caption: 'Fig. 01 — Homepage' },
+    heroImage: {
+      src: '/images/the-cb-creative/homepage.jpg',
+      alt: 'The CB Creative homepage',
+      caption: 'Fig. 01 — Homepage',
+    },
     sections: [
       {
         eyebrow: '01 — The context',
@@ -124,7 +128,11 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
     ],
     imagePair: [
       { alt: 'The CB Creative brand system — logo, palette, and typefaces', caption: 'Fig. 02 — Brand system' },
-      { alt: 'The CB Creative contact section', caption: 'Fig. 03 — Contact section' },
+      {
+        src: '/images/the-cb-creative/contact-section.jpg',
+        alt: 'The CB Creative contact section',
+        caption: 'Fig. 03 — Contact section',
+      },
     ],
     nextProjectSlug: 'blog-composer',
   },
