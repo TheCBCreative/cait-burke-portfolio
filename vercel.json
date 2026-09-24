@@ -2,6 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
+      "source": "/work/blog-composer/demo/:path*",
+      "destination": "https://cb-blog-demo.vercel.app/:path*"
+    },
+    {
+      "source": "/_astro/:path*",
+      "destination": "https://cb-blog-demo.vercel.app/_astro/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
