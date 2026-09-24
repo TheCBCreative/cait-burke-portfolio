@@ -12,7 +12,8 @@ export const SITE = {
   location: 'Greater Seattle Area',
   availability: 'Available for work',
   status: 'Open to design + frontend roles',
-  stackSummary: 'React · TypeScript · Figma · Node.js · AWS · Claude Code',
+  stackSummary: 'React · TypeScript · Figma · Node.js · AWS',
+  aiSummary: 'Claude Code · Figma AI',
 
   landingTagline: 'Design that holds up. Code that ships.',
 

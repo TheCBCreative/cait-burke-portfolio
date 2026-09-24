@@ -39,6 +39,7 @@ export function Hero() {
           className={styles.specimen}
           items={[
             { label: 'Stack', value: SITE.stackSummary },
+            { label: 'AI', value: SITE.aiSummary },
             { label: 'Based', value: SITE.location },
             { label: 'Status', value: SITE.status },
           ]}
