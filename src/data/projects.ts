@@ -54,7 +54,7 @@ export const CASE_STUDIES: Record<string, CaseStudyContent> = {
       {
         eyebrow: '01 — The context',
         heading: 'Getting found mattered more than getting online.',
-        body: "Through The CB Creative, I kept building sites for small businesses who needed more than a homepage — they needed to actually get found, in search results and, increasingly, in AI-generated answers. Blogging is one of the clearest levers for that: businesses that blog see 55% more website traffic, and B2B companies publishing blog content generate 67% more leads than those that don't (HubSpot, Fundera). It wasn't a one-off ask, either — it was something I knew I'd want to offer every content-minded client, so instead of rebuilding a publishing tool from scratch each time, I built one I could scale across future projects.",
+        body: "Through The CB Creative, I was building every site with AEO — answer engine optimization — in mind, since getting found today means showing up in AI-generated answers, not just search results. A blog is one of the easiest, highest-leverage things you can add to improve a site's AEO: businesses that blog see 55% more website traffic, and B2B companies publishing blog content generate 67% more leads than those that don't (HubSpot, Fundera). So I designed a way to implement one that I could drop into any site I build, rather than bolting together a one-off blog for every client.",
       },
       {
         eyebrow: '02 — The approach',
