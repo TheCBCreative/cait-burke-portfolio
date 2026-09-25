@@ -1,4 +1,4 @@
-import { Eyebrow, MetaList, LinkStack, EdgeTab, EntranceLines, entrance, entranceStep as step } from '../ui';
+import { Eyebrow, MetaList, LinkStack, EdgeTab, EntranceLines, ScrollCue, entrance, entranceStep as step } from '../ui';
 import { PageContainer } from '../layout';
 import type { Project } from '../../data/types';
 import { cx } from '../../utils/cx';
@@ -32,6 +32,7 @@ export function CaseStudyHero({ project }: { project: Project }) {
           ]}
         />
       </PageContainer>
+      <ScrollCue step={7} />
     </header>
   );
 }

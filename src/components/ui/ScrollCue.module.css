@@ -1,0 +1,67 @@
+/* Pinned to the bottom of the screen while the page is at the top, then faded
+   out on scroll. A soft glow, rather than a hard shape, keeps it readable when
+   it sits over text (phones, short windows). */
+.cue {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-3);
+  z-index: 2;
+  translate: -50% 0;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.glow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+}
+
+.light .glow {
+  background: radial-gradient(
+    circle,
+    var(--color-surface) 0%,
+    rgb(255 255 255 / 0.85) 35%,
+    rgb(255 255 255 / 0) 70%
+  );
+  color: var(--color-ink-soft);
+}
+
+.dark .glow {
+  background: radial-gradient(
+    circle,
+    var(--color-ink) 0%,
+    rgb(var(--color-ink-rgb) / 0.85) 35%,
+    rgb(var(--color-ink-rgb) / 0) 70%
+  );
+  color: var(--color-on-dark-soft);
+}
+
+.icon {
+  display: block;
+  animation: cue-bounce 2.4s var(--reveal-ease) infinite;
+}
+
+@keyframes cue-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(6px);
+  }
+}
+
+@media (min-width: 1100px) {
+  /* Centered on the content area to the right of the EdgeTab. */
+  .cue {
+    left: calc(50% + var(--content-padding-desktop) / 2);
+  }
+}

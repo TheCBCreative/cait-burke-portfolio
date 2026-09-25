@@ -1,4 +1,4 @@
-import { Eyebrow, Button, MetaList, EdgeTab, EntranceLines, entrance, entranceStep as step } from '../ui';
+import { Eyebrow, Button, MetaList, EdgeTab, EntranceLines, ScrollCue, entrance, entranceStep as step } from '../ui';
 import { PageContainer } from '../layout';
 import { SITE, SOCIAL_LINKS } from '../../data/site';
 import { cx } from '../../utils/cx';
@@ -44,6 +44,8 @@ export function Hero() {
           ]}
         />
       </PageContainer>
+
+      <ScrollCue step={afterName + 8} />
     </section>
   );
 }

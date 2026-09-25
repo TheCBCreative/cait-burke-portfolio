@@ -9,5 +9,6 @@ export { ImageFrame } from './ImageFrame';
 export { LinkStack } from './LinkStack';
 export { MetaList } from './MetaList';
 export { Reveal } from './Reveal';
+export { ScrollCue } from './ScrollCue';
 export { SectionHeading } from './SectionHeading';
 export { TagList } from './TagList';

@@ -1,5 +1,11 @@
 .hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Fills the first screen, so the next section's reveal happens on scroll
+     rather than peeking in. */
+  min-height: 100svh;
   background-color: var(--color-surface);
 }
 
