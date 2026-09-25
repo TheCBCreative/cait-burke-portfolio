@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import {
   Eyebrow,
   Divider,
@@ -10,6 +9,7 @@ import {
   entranceStep as step,
 } from '../components/ui';
 import { LandingBackground } from '../components/landing';
+import { useDarkPageBackground } from '../hooks/useDarkPageBackground';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { SITE } from '../data/site';
 import { cx } from '../utils/cx';
@@ -24,13 +24,7 @@ const afterText = 5 + nameLines.length + taglineLines.length;
 export function LandingPage() {
   useDocumentTitle(`${SITE.name} — Portfolio`);
 
-  // Dark page background, so overscrolling past the splash doesn't flash white.
-  useEffect(() => {
-    const targets = [document.documentElement, document.body];
-    const previous = targets.map((el) => el.style.backgroundColor);
-    targets.forEach((el) => (el.style.backgroundColor = 'var(--color-ink)'));
-    return () => targets.forEach((el, i) => (el.style.backgroundColor = previous[i]));
-  }, []);
+  useDarkPageBackground();
 
   return (
     <main className={styles.page}>

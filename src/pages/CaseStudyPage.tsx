@@ -1,5 +1,4 @@
-import { Fragment } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ContactFooter, Masthead, SkipLink } from '../components/layout';
 import {
   CaseStudyHero,
@@ -12,20 +11,26 @@ import {
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { getProject } from '../data/projects';
 import { SITE } from '../data/site';
+import type { Project } from '../data/types';
+import { NotFoundPage } from './NotFoundPage';
 
 export function CaseStudyPage() {
   const { slug = '' } = useParams<{ slug: string }>();
   const project = getProject(slug);
 
-  useDocumentTitle(project ? `${project.title} — ${SITE.name}` : SITE.name);
-
   if (!project) {
-    return <Navigate to="/home" replace />;
+    return <NotFoundPage />;
   }
 
   // Keyed so switching projects remounts the page and replays its animations.
+  return <CaseStudy key={project.slug} project={project} />;
+}
+
+function CaseStudy({ project }: { project: Project }) {
+  useDocumentTitle(`${project.title} — ${SITE.name}`);
+
   return (
-    <Fragment key={project.slug}>
+    <>
       <SkipLink />
       <Masthead />
       <main id="main-content">
@@ -39,6 +44,6 @@ export function CaseStudyPage() {
       </main>
       <NextProjectNav currentSlug={project.slug} />
       <ContactFooter showHeading={false} />
-    </Fragment>
+    </>
   );
 }

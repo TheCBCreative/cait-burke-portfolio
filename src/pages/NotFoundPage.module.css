@@ -1,0 +1,114 @@
+.page {
+  --focus-color: var(--color-accent-on-dark);
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  overflow: hidden;
+  background-color: var(--color-ink);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(var(--color-ink-rgb) / 0.45);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-8) var(--content-padding-mobile);
+  text-align: center;
+}
+
+/* A translucent, blurred card so the text reads over the brightest fronds.
+   Scoped for specificity: the entrance's `display: block` would otherwise win. */
+.content > .panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(var(--space-3), 3svh, var(--space-5));
+  max-width: 46rem;
+  padding: var(--space-7) var(--space-5);
+  border: 1px solid var(--color-on-dark-line);
+  border-radius: var(--radius-sm);
+  background-color: rgb(var(--color-ink-rgb) / 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.35);
+}
+
+.title {
+  composes: display from '../styles/typography.module.css';
+  font-size: var(--font-size-display-h1);
+  line-height: var(--line-height-tight);
+  color: var(--color-on-dark);
+}
+
+.summary {
+  max-width: 34rem;
+  color: var(--color-on-dark-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5) var(--space-6);
+  margin-top: var(--space-3);
+}
+
+/* Cream fills in from the left on hover and keyboard focus. Scoped under
+   .actions to outrank the Button's own on-dark color and hover opacity. */
+.actions .cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--color-on-dark);
+  padding: var(--space-4) var(--space-6);
+  transition: color 500ms var(--reveal-ease);
+}
+
+.actions .cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-on-dark);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 500ms var(--reveal-ease);
+}
+
+.actions .cta:hover,
+.actions .cta:focus-visible {
+  color: var(--color-ink);
+  opacity: 1;
+}
+
+.actions .cta:hover::before,
+.actions .cta:focus-visible::before {
+  transform: scaleX(1);
+}
+
+@media (min-width: 700px) {
+  .content {
+    padding-inline: var(--content-padding-tablet);
+  }
+
+  .content > .panel {
+    padding: var(--space-9) var(--space-8);
+  }
+}
+
+@media (min-width: 1100px) {
+  /* Equal on both sides so the EdgeTab doesn't pull the content off center. */
+  .content {
+    padding-inline: var(--content-padding-desktop-tab);
+  }
+}
