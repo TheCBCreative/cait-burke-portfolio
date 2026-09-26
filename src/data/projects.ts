@@ -305,7 +305,6 @@ raw.trim().replace(
             title: 'A performance budget in CI',
             body: 'Fail the build if a page gets too heavy or too slow, the same way a11y-gate already fails it on accessibility issues.',
           },
-          { title: 'Run the studio blog on Blog Composer', body: 'Use the same admin I hand to clients, so I’m my own first customer.' },
           {
             title: 'FAQ and service schema',
             body: 'The site already publishes ProfessionalService data; the Why not AI answers and each service could be marked up too, so AI assistants can quote them directly.',
