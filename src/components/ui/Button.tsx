@@ -8,7 +8,7 @@ interface ButtonProps {
   children: ReactNode;
   /** Omit for a not-yet-live link: it renders as plain, dimmed text. */
   href?: string;
-  variant?: 'solid' | 'text';
+  variant?: 'solid' | 'outline' | 'text';
   tone?: 'default' | 'on-dark';
   className?: string;
 }

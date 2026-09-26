@@ -63,7 +63,7 @@ export function LandingPage() {
             <EntranceLines lines={taglineLines} firstStep={5 + nameLines.length} />
           </p>
           <span className={entrance.enter} style={step(afterText)}>
-            <Button href="/home" tone="on-dark" className={styles.cta}>
+            <Button href="/home" variant="outline" tone="on-dark" className={styles.cta}>
               Check it out →
             </Button>
           </span>

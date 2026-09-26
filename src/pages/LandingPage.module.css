@@ -83,7 +83,6 @@
 }
 
 .cta {
-  border: 1px solid var(--color-on-dark);
   padding: clamp(var(--space-3), 2svh, var(--space-4)) var(--space-6);
 }
 

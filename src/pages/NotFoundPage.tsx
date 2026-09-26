@@ -37,7 +37,7 @@ export function NotFoundPage() {
               page.
             </p>
             <div className={cx(styles.actions, entrance.enter)} style={step(3)}>
-              <Button href="/home#selected-work" tone="on-dark" className={styles.cta}>
+              <Button href="/home#selected-work" variant="outline" tone="on-dark">
                 View selected work →
               </Button>
               <Button href="/home" tone="on-dark">

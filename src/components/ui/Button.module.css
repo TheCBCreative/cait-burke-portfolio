@@ -17,27 +17,80 @@
   opacity: 0.7;
 }
 
-.solid {
-  color: var(--color-paper);
-  background-color: var(--color-accent);
-  padding: var(--space-4) var(--space-6);
-}
-
-.solid:hover {
-  opacity: 0.9;
-}
-
 .text.on-dark {
   color: var(--color-on-dark);
 }
 
+/* Boxed CTAs: the inverse color fills in from the left on hover, keyboard focus
+   and press, and the label flips to the original background color. */
+.solid,
+.outline {
+  --fill: var(--color-ink);
+  --label-filled: var(--color-paper);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--color-ink);
+  padding: var(--space-4) var(--space-6);
+  transition: color 500ms var(--reveal-ease);
+}
+
+.solid::before,
+.outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--fill);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 500ms var(--reveal-ease);
+}
+
+.outline {
+  color: var(--color-ink);
+}
+
+.outline.on-dark {
+  --fill: var(--color-on-dark);
+  --label-filled: var(--color-ink);
+  color: var(--color-on-dark);
+  border-color: var(--color-on-dark);
+}
+
+.solid {
+  --fill: var(--color-paper);
+  --label-filled: var(--color-accent);
+  color: var(--color-paper);
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
 .solid.on-dark {
+  --fill: var(--color-ink);
+  --label-filled: var(--color-on-dark);
   color: var(--color-ink);
   background-color: var(--color-on-dark);
+  border-color: var(--color-on-dark);
+}
+
+/* After the tone rules so the filled label color wins over each tone's resting color. */
+.solid:not(.disabled):is(:hover, :focus-visible, :active),
+.outline:not(.disabled):is(:hover, :focus-visible, :active) {
+  color: var(--label-filled);
+}
+
+.solid:not(.disabled):is(:hover, :focus-visible, :active)::before,
+.outline:not(.disabled):is(:hover, :focus-visible, :active)::before {
+  transform: scaleX(1);
 }
 
 .disabled,
 .disabled:hover {
   cursor: default;
   opacity: 0.5;
+}
+
+.disabled::before {
+  display: none;
 }
