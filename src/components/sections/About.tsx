@@ -1,11 +1,17 @@
-import { ImageFrame, Reveal, SectionHeading } from '../ui';
+import { useRef } from 'react';
+import { Reveal, SectionHeading } from '../ui';
+import { useScrollLinked } from '../../hooks/useScrollLinked';
 import { PageContainer } from '../layout';
 import { CAPABILITIES, SITE } from '../../data/site';
 import { cx } from '../../utils/cx';
+import scrollLinked from '../../styles/scrollLinked.module.css';
 import surfaces from '../../styles/surfaces.module.css';
 import styles from './About.module.css';
 
 export function About() {
+  const portraitRef = useRef<HTMLImageElement>(null);
+  useScrollLinked(portraitRef, 'settle');
+
   return (
     <section className={cx(styles.about, surfaces.ink)} aria-labelledby="about-heading">
       <PageContainer className={styles.inner}>
@@ -13,7 +19,16 @@ export function About() {
 
         <div className={styles.body}>
           <Reveal variant="wipe" className={styles.portrait}>
-            <ImageFrame image={SITE.portrait} aspectRatio="10 / 13" />
+            <div className={styles.portraitFrame}>
+              <img
+                ref={portraitRef}
+                src={SITE.portrait.src}
+                alt={SITE.portrait.alt}
+                loading="lazy"
+                decoding="async"
+                className={cx(styles.portraitImage, scrollLinked.settle)}
+              />
+            </div>
           </Reveal>
 
           <div className={styles.details}>

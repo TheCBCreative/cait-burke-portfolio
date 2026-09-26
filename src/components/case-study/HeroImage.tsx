@@ -1,11 +1,9 @@
 import type { ImageSlot } from '../../data/types';
-import { entrance, entranceStep } from '../ui';
-import { cx } from '../../utils/cx';
 import styles from './HeroImage.module.css';
 
 interface HeroImageProps {
   image: ImageSlot;
-  /** Shares a view transition name with the project's home row image. */
+  /** Shares a view transition name with the project's home row image, so one morphs into the other. */
   slug: string;
 }
 
@@ -18,8 +16,8 @@ export function HeroImage({ image, slug }: HeroImageProps) {
         alt={image.alt}
         decoding="async"
         fetchPriority="high"
-        className={cx(styles.image, entrance.enter)}
-        style={{ ...entranceStep(5), objectPosition: image.position, viewTransitionName: `project-${slug}` }}
+        className={styles.image}
+        style={{ objectPosition: image.position, viewTransitionName: `project-${slug}` }}
       />
     </div>
   );

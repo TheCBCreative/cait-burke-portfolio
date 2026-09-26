@@ -2,8 +2,10 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Eyebrow, Reveal, nudgeOnHover } from '../ui';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { useScrollLinked } from '../../hooks/useScrollLinked';
 import type { Project } from '../../data/types';
 import { cx } from '../../utils/cx';
+import scrollLinked from '../../styles/scrollLinked.module.css';
 import styles from './WorkRow.module.css';
 
 interface WorkRowProps {
@@ -14,6 +16,8 @@ interface WorkRowProps {
 
 export function WorkRow({ project, reversed = false }: WorkRowProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  useScrollLinked(imageRef, 'drift');
   const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const canPreview = Boolean(project.preview) && !prefersReducedMotion;
   const href = `/work/${project.slug}`;
@@ -33,11 +37,12 @@ export function WorkRow({ project, reversed = false }: WorkRowProps) {
         {/* A second way into the case study for pointer users; the text link below is the accessible one. */}
         <Link to={href} viewTransition className={styles.media} tabIndex={-1} aria-hidden="true">
           <img
+            ref={imageRef}
             src={project.thumbnail.src}
             alt=""
             loading="lazy"
             decoding="async"
-            className={styles.image}
+            className={cx(styles.image, scrollLinked.drift)}
             style={{ objectPosition: project.thumbnail.position, viewTransitionName: `project-${project.slug}` }}
           />
           {canPreview && (

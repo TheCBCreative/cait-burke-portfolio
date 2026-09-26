@@ -1,0 +1,45 @@
+/* Scroll-linked image motion. Browsers without view timelines get the same
+   curve from useScrollLinked. The image's container should clip it. */
+
+@supports (animation-timeline: view()) {
+  .drift,
+  .settle {
+    animation: linear both;
+    animation-timeline: view();
+  }
+
+  .drift {
+    animation-name: drift;
+  }
+
+  .settle {
+    animation-name: settle;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(40px) scale(1.08);
+  }
+  to {
+    transform: translateY(-40px) scale(1);
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.04);
+  }
+  50%,
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift,
+  .settle {
+    animation: none;
+    transform: none !important;
+  }
+}

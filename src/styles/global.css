@@ -98,3 +98,28 @@ blockquote {
     scroll-behavior: auto !important;
   }
 }
+
+/* Page changes: the page crossfades while a project's image morphs from its
+   home row into the case study hero (they share a view-transition-name). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 200ms;
+}
+
+::view-transition-group(*) {
+  animation-duration: 600ms;
+  animation-timing-function: var(--reveal-wipe-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 200ms;
+  }
+
+  /* Crossfade only: no image morph. */
+  img[style*='view-transition-name'] {
+    view-transition-name: none !important;
+  }
+}

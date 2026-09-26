@@ -16,7 +16,7 @@ export function NextProjectNav({ currentSlug }: { currentSlug: string }) {
       <PageContainer inset>
         <Reveal className={styles.inner}>
           <Eyebrow tone="on-dark">Next project</Eyebrow>
-          <Link to={`/work/${nextProject.slug}`} className={styles.link}>
+          <Link to={`/work/${nextProject.slug}`} className={styles.link} viewTransition>
             {nextProject.title}
             <span className={styles.arrow} aria-hidden="true">
               →
