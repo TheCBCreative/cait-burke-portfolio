@@ -1,0 +1,41 @@
+.layout {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.decisions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.decision {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.title {
+  composes: display from '../../styles/typography.module.css';
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-heading);
+}
+
+.body {
+  color: var(--color-ink-soft);
+  line-height: 1.58;
+}
+
+@media (min-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 45rem) minmax(0, 23rem);
+    justify-content: space-between;
+    align-items: start;
+    gap: var(--space-9);
+  }
+}

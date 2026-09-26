@@ -1,5 +1,5 @@
 import { Button, EdgeTab, EntranceLines, Eyebrow, entrance, entranceStep as step } from '../components/ui';
-import { LandingBackground } from '../components/landing';
+import { FernBackground } from '../components/media';
 import { SkipLink } from '../components/layout';
 import { useDarkPageBackground } from '../hooks/useDarkPageBackground';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
@@ -20,7 +20,7 @@ export function NotFoundPage() {
     <>
       <SkipLink />
       <main id="main-content" className={cx(styles.page, entrance.heroPace)}>
-        <LandingBackground />
+        <FernBackground />
         <div className={styles.scrim} aria-hidden="true" />
         <EdgeTab label="Portfolio" tone="on-dark" />
 

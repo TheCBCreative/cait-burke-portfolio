@@ -1,0 +1,23 @@
+.pin {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.5625rem;
+  height: 1.5625rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-sm);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.placed {
+  position: absolute;
+  z-index: 1;
+  translate: -50% -50%;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.2);
+  pointer-events: none;
+}

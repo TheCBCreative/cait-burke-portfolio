@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section className={cx(styles.hero, entrance.heroPace)} aria-labelledby="hero-heading">
       <EdgeTab label="Portfolio" />
-      <PageContainer className={styles.inner}>
+      <PageContainer inset className={styles.inner}>
         <div className={styles.statement}>
           <span className={entrance.enter} style={step(0)}>
             <Eyebrow>{SITE.heroEyebrow}</Eyebrow>

@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: var(--space-5);
+  height: var(--masthead-height);
 }
 
 .link {

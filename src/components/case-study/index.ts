@@ -1,6 +1,13 @@
+export { Architecture } from './Architecture';
+export { BreakImage } from './BreakImage';
 export { CaseStudyCallout } from './CaseStudyCallout';
 export { CaseStudyHero } from './CaseStudyHero';
 export { CaseStudySection } from './CaseStudySection';
-export { ImageBlock } from './ImageBlock';
-export { ImagePair } from './ImagePair';
+export { CodeDecisions } from './CodeDecisions';
+export { DesignDecisions } from './DesignDecisions';
+export { HeroImage } from './HeroImage';
 export { NextProjectNav } from './NextProjectNav';
+export { NextSteps } from './NextSteps';
+export { NoteRow } from './NoteRow';
+export { StatList } from './StatList';
+export { Tradeoffs } from './Tradeoffs';

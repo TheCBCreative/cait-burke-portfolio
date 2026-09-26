@@ -15,4 +15,8 @@
   .container {
     padding-inline: var(--content-padding-desktop);
   }
+
+  .container.inset {
+    padding-inline-start: var(--content-padding-desktop-tab);
+  }
 }

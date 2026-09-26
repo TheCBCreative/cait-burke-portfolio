@@ -1,0 +1,42 @@
+.list {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-line);
+}
+
+.title {
+  composes: display from '../../styles/typography.module.css';
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-heading);
+}
+
+.body {
+  color: var(--color-ink-soft);
+  line-height: 1.58;
+}
+
+.tradeoff {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  line-height: 1.58;
+}
+
+.label {
+  composes: label from '../../styles/typography.module.css';
+  color: var(--color-ink-faint);
+}
+
+@media (min-width: 900px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7);
+  }
+}

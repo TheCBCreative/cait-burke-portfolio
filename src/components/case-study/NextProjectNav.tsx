@@ -1,37 +1,29 @@
 import { Link } from 'react-router-dom';
-import { Eyebrow, Reveal, Divider } from '../ui';
+import { Eyebrow, Reveal } from '../ui';
 import { PageContainer } from '../layout';
 import { getNextProject } from '../../data/projects';
+import { cx } from '../../utils/cx';
+import surfaces from '../../styles/surfaces.module.css';
 import styles from './NextProjectNav.module.css';
 
-/** Links to the next case study, or back to the grid after the last one. */
+/** A large link to the next case study. */
 export function NextProjectNav({ currentSlug }: { currentSlug: string }) {
   const nextProject = getNextProject(currentSlug);
+  if (!nextProject || nextProject.slug === currentSlug) return null;
 
   return (
-    <nav className={styles.nav} aria-label="More work">
-      <PageContainer>
+    <nav className={cx(styles.nav, surfaces.ink)} aria-label="Next project">
+      <PageContainer inset>
         <Reveal className={styles.inner}>
-          {nextProject ? (
-            <>
-              <Eyebrow tone="on-dark">Next project</Eyebrow>
-              <Link to={`/work/${nextProject.slug}`} className={styles.primaryLink}>
-                {nextProject.title} →
-              </Link>
-              <Link to="/home#selected-work" className={styles.backLink}>
-                ← Back to all work
-              </Link>
-            </>
-          ) : (
-            <>
-              <Eyebrow tone="on-dark">More work</Eyebrow>
-              <Link to="/home#selected-work" className={styles.primaryLink}>
-                View all work →
-              </Link>
-            </>
-          )}
+          <Eyebrow tone="on-dark">Next project</Eyebrow>
+          <Link to={`/work/${nextProject.slug}`} className={styles.link}>
+            {nextProject.title}
+            <span className={styles.arrow} aria-hidden="true">
+              →
+            </span>
+          </Link>
+          <p className={styles.category}>{nextProject.category}</p>
         </Reveal>
-        <Divider tone="dark" />
       </PageContainer>
     </nav>
   );

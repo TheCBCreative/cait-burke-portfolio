@@ -1,13 +1,11 @@
 export { Button } from './Button';
 export { nudgeOnHover } from './nudge';
-export { Divider } from './Divider';
 export { EdgeTab } from './EdgeTab';
 export { entrance, entranceStep } from './entrance';
 export { EntranceLines } from './EntranceLines';
 export { ExternalLink } from './ExternalLink';
 export { Eyebrow } from './Eyebrow';
 export { ImageFrame } from './ImageFrame';
-export { LinkStack } from './LinkStack';
 export { MetaList } from './MetaList';
 export { Reveal } from './Reveal';
 export { ScrollCue } from './ScrollCue';

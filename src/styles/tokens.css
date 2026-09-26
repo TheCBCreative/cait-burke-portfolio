@@ -32,6 +32,7 @@
   --font-size-next: clamp(2rem, 0.7rem + 5.333vw, 5.5rem);
   --font-size-lg: clamp(2.25rem, 1.6rem + 2.667vw, 4rem);
   --font-size-h2: clamp(2.125rem, 1.614rem + 2.095vw, 3.5rem);
+  --font-size-h2-sm: clamp(2.125rem, 1.843rem + 1.143vw, 2.875rem);
   --font-size-stat: clamp(3.5rem, 2.571rem + 3.81vw, 6rem);
   --font-size-tagline: clamp(1.75rem, 1.379rem + 1.524vw, 2.75rem);
   --font-size-link-lg: clamp(1.375rem, 1.05rem + 1.333vw, 2.25rem);
@@ -78,6 +79,7 @@
   --content-padding-desktop-tab: calc(var(--content-padding-desktop) + var(--space-6)); /* clears the EdgeTab */
   --section-padding: clamp(var(--space-9), 2.5rem + 6vw, var(--space-12));
   --edge-tab-width: 4rem;
+  --masthead-height: 4.0625rem;
 
   /* Shape */
   --radius-sm: 4px;

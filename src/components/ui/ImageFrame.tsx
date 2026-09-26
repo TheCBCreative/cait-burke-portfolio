@@ -34,7 +34,7 @@ export function ImageFrame({ image, aspectRatio, className, enlargeable = false 
       loading="lazy"
       decoding="async"
       className={cx(classes, enlargeable && hoverZoom.target)}
-      style={{ aspectRatio }}
+      style={{ aspectRatio, objectPosition: image.position }}
     />
   );
 

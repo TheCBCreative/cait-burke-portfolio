@@ -1,0 +1,49 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-line);
+}
+
+.label {
+  composes: label from '../../styles/typography.module.css';
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+.content {
+  line-height: 1.58;
+}
+
+.row:has(.display) .label {
+  font-size: var(--font-size-mono-label);
+  font-weight: 500;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: var(--line-height-heading);
+}
+
+.on-dark {
+  border-color: var(--color-on-dark-line);
+}
+
+.on-dark .label {
+  color: var(--color-accent-on-dark);
+}
+
+.on-dark .content {
+  color: var(--color-on-dark-soft);
+}
+
+@media (min-width: 700px) {
+  .row {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--space-4);
+  }
+}

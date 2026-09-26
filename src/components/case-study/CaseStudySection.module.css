@@ -2,24 +2,41 @@
   scroll-margin-top: var(--space-8);
 }
 
-.paper {
-  background-color: var(--color-paper);
-}
-
-.surface {
-  background-color: var(--color-surface);
-}
-
 .inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
-  padding-block: var(--space-9);
-  max-width: 44rem;
+  gap: var(--space-9);
+  padding-block: var(--space-10);
 }
 
-.body {
+.top {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 45rem;
+}
+
+.intro {
+  composes: lede from '../../styles/typography.module.css';
   color: var(--color-ink-soft);
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
+}
+
+
+@media (min-width: 1000px) {
+  .inner {
+    gap: var(--space-9);
+    padding-block: var(--space-12);
+  }
+
+  .split {
+    grid-template-columns: minmax(0, 42.25rem) minmax(0, 23.75rem);
+    justify-content: space-between;
+    align-items: start;
+    gap: var(--space-11);
+  }
 }

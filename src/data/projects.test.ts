@@ -15,11 +15,48 @@ describe('getNextProject', () => {
   it('returns the project after the current one', () => {
     expect(getNextProject(PROJECTS[0].slug)).toBe(PROJECTS[1]);
   });
+
+  it('wraps from the last project back to the first', () => {
+    expect(getNextProject(PROJECTS[PROJECTS.length - 1].slug)).toBe(PROJECTS[0]);
+  });
+
+  it('returns undefined for an unknown slug', () => {
+    expect(getNextProject('nope')).toBeUndefined();
+  });
+});
+
+describe.each(PROJECTS)('$title data', (project) => {
+  const study = project.caseStudy;
+
+  it('has site-relative image paths with alt text', () => {
+    for (const image of [project.thumbnail, study.heroImage, study.breakImage]) {
+      expect(image.src).toMatch(/^\/images\//);
+      expect(image.alt.length).toBeGreaterThan(0);
+    }
+  });
+
+  it('keeps figure pins on the figure and one decision per pin', () => {
+    const { figure, decisions } = study.design;
+    if (figure.kind !== 'screenshot') return;
+    expect(figure.pins.length).toBeLessThanOrEqual(decisions.length);
+    for (const pin of figure.pins) {
+      expect(pin.x).toBeGreaterThanOrEqual(0);
+      expect(pin.x).toBeLessThanOrEqual(100);
+      expect(pin.y).toBeGreaterThanOrEqual(0);
+      expect(pin.y).toBeLessThanOrEqual(100);
+    }
+  });
+
+  it('links out over https', () => {
+    for (const href of [project.live.href, study.github, study.callout.buttonHref]) {
+      expect(href).toMatch(/^https:\/\//);
+    }
+  });
 });
 
 describe('PROJECTS', () => {
-  it('has unique slugs', () => {
-    const slugs = PROJECTS.map((project) => project.slug);
-    expect(new Set(slugs).size).toBe(slugs.length);
+  it('has unique slugs and indexes', () => {
+    expect(new Set(PROJECTS.map((p) => p.slug)).size).toBe(PROJECTS.length);
+    expect(new Set(PROJECTS.map((p) => p.index)).size).toBe(PROJECTS.length);
   });
 });

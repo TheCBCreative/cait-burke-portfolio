@@ -1,5 +1,5 @@
 import { Button, EdgeTab, Emphasis, EntranceLines, Eyebrow, entrance, entranceStep as step } from '../components/ui';
-import { LandingBackground } from '../components/landing';
+import { FernBackground } from '../components/media';
 import { useDarkPageBackground } from '../hooks/useDarkPageBackground';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { CREDENTIALS, SITE } from '../data/site';
@@ -16,7 +16,7 @@ export function LandingPage() {
 
   return (
     <main className={cx(styles.page, surfaces.ink)}>
-      <LandingBackground />
+      <FernBackground />
       <div className={styles.scrim} aria-hidden="true" />
       <EdgeTab label="Portfolio" tone="on-dark" />
 

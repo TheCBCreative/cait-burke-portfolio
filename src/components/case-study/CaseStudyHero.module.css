@@ -3,31 +3,90 @@
   background-color: var(--color-surface);
 }
 
+/* Runs up through the masthead so the strip spans the whole top of the page. */
+.tab {
+  top: calc(-1 * var(--masthead-height));
+}
+
 .inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
   padding-block: var(--space-6) var(--space-8);
 }
 
 .title {
-  composes: display from '../../styles/typography.module.css';
-  font-size: var(--font-size-h2);
-  line-height: var(--line-height-tight);
+  composes: displayTight from '../../styles/typography.module.css';
+  font-size: var(--font-size-title);
+  line-height: 0.96;
 }
 
-.summary {
-  max-width: 42rem;
+.dek {
+  max-width: 51rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--font-size-dek);
+  line-height: 1.45;
   color: var(--color-ink-soft);
 }
 
-.meta {
-  margin-top: var(--space-4);
+.glance {
+  display: grid;
+  margin: var(--space-3) 0 0;
+  border-top: 1px solid var(--color-line);
 }
 
-@media (min-width: 1100px) {
-  /* .hero raises specificity over PageContainer's own padding. */
-  .hero .inner {
-    padding-inline-start: var(--content-padding-desktop-tab);
+.glanceItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.glanceLabel {
+  composes: label from '../../styles/typography.module.css';
+  color: var(--color-ink-faint);
+}
+
+.glanceValue {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono-label);
+  letter-spacing: var(--letter-spacing-label);
+  line-height: 1.5;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+}
+
+.links a {
+  text-transform: none;
+  font-weight: 400;
+}
+
+@media (min-width: 900px) {
+  .inner {
+    padding-block: var(--space-10) var(--space-9);
+  }
+
+  .glance {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-6);
+    padding-top: var(--space-5);
+  }
+
+  .glanceItem {
+    gap: var(--space-2);
+    padding: 0;
+    border: none;
+  }
+
+  .glanceItem:first-child {
+    max-width: 16.5rem;
   }
 }

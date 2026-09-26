@@ -1,31 +1,38 @@
 .callout {
-  --focus-color: var(--color-accent-on-dark);
-  background-color: var(--color-ink);
+  overflow: hidden;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgb(var(--color-ink-rgb) / 0.86), rgb(var(--color-ink-rgb) / 0.55));
 }
 
 .inner {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  padding-block: var(--space-6);
+  padding-block: var(--space-10);
 }
 
 .copy {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
   max-width: 40rem;
 }
 
 .heading {
   composes: display from '../../styles/typography.module.css';
   font-size: var(--font-size-callout);
-  color: var(--color-on-dark);
+  line-height: var(--line-height-heading);
 }
 
 .body {
-  color: var(--color-on-dark-soft);
   font-size: var(--font-size-body-sm);
+  line-height: 1.5;
+  color: var(--color-on-dark-soft);
 }
 
 @media (min-width: 900px) {
@@ -33,6 +40,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding-block: var(--space-11);
   }
 
   .action {

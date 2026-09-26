@@ -1,0 +1,10 @@
+.frame {
+  overflow: hidden;
+  background-color: var(--color-paper);
+}
+
+.image {
+  width: 100%;
+  height: clamp(17.5rem, 47vw, 42.5rem);
+  object-fit: cover;
+}

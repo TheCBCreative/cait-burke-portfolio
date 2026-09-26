@@ -10,7 +10,7 @@ interface SectionHeadingProps {
   heading: Heading;
   headingId?: string;
   tone?: 'default' | 'on-dark';
-  size?: 'h2' | 'lg' | 'xl';
+  size?: 'h2-sm' | 'h2' | 'lg' | 'xl';
   /** See Reveal's `revealed`. */
   revealed?: boolean;
   className?: string;

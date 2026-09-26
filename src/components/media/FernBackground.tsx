@@ -1,8 +1,9 @@
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { FernClip } from '../media';
-import styles from './LandingBackground.module.css';
+import { FernClip } from './FernClip';
+import styles from './FernBackground.module.css';
 
-export function LandingBackground() {
+/** The fern footage filling its positioned parent, as a decorative background. */
+export function FernBackground() {
   const variant = useMediaQuery('(min-width: 700px)') ? 'desktop' : 'mobile';
 
   return (
