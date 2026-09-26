@@ -28,3 +28,4 @@ playwright-report
 .idea
 .DS_Store
 *.sw?
+a11y-report.json

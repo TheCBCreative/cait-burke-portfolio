@@ -54,7 +54,7 @@
 .wordmarkThe {
   font-size: 0.75rem;
   font-weight: 300;
-  opacity: 0.55;
+  opacity: 0.7;
 }
 
 .type {
@@ -143,13 +143,13 @@
   margin-top: 0.25rem;
   font-family: var(--cb-mono);
   font-size: 0.6875rem;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 .pairing {
   margin-top: auto;
   font-size: 0.625rem;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 .ratio {
