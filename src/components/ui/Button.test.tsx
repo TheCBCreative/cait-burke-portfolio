@@ -16,6 +16,18 @@ describe('Button', () => {
     expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
+  it('opens site files like the résumé PDF in a new tab instead of routing to them', () => {
+    renderWithRouter(<Button href="/resume.pdf">Résumé</Button>);
+    const link = screen.getByRole('link', { name: /^Résumé ?\(opens in a new tab\)$/ });
+    expect(link).toHaveAttribute('href', '/resume.pdf');
+    expect(link).toHaveAttribute('target', '_blank');
+  });
+
+  it('keeps mailto links in the same tab', () => {
+    renderWithRouter(<Button href="mailto:hello@example.dev">Email</Button>);
+    expect(screen.getByRole('link', { name: 'Email' })).not.toHaveAttribute('target');
+  });
+
   it('hides the arrow from assistive tech', () => {
     renderWithRouter(
       <Button href="/home" arrow="right">

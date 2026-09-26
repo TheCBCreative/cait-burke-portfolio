@@ -77,9 +77,9 @@ Headings with an accent-italic second half are `{ lead, emphasis }` objects, ren
 
 The home row, the case study page and the next-project link all come from that one entry. `npm test` checks the data: image paths, alt text, pin positions and https links.
 
-### Adding a résumé
+### Updating the résumé
 
-Drop the PDF in `public/` and add `{ label: 'Résumé', href: '/<file>.pdf' }` to `SOCIAL_LINKS` in `site.ts`.
+Replace `public/cait-burke-resume.pdf`, keeping the file name. It's linked from the contact section through `SOCIAL_LINKS` in `site.ts`, and opens in a new tab.
 
 ## Images
 

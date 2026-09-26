@@ -49,19 +49,20 @@ export function Button({
     );
   }
 
+  // Files like the résumé PDF open in a new tab rather than going through the router.
+  if (href.startsWith('http') || (href.startsWith('/') && /\.\w+$/.test(href))) {
+    return (
+      <ExternalLink href={href} className={classes}>
+        {content}
+      </ExternalLink>
+    );
+  }
+
   if (href.startsWith('/')) {
     return (
       <Link to={href} className={classes} viewTransition={viewTransition}>
         {content}
       </Link>
-    );
-  }
-
-  if (href.startsWith('http')) {
-    return (
-      <ExternalLink href={href} className={classes}>
-        {content}
-      </ExternalLink>
     );
   }
 

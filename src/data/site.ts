@@ -45,10 +45,10 @@ export const CREDENTIALS: LabeledValue[] = [
   { label: 'Focus', value: 'Design systems · React · Accessibility' },
 ];
 
-/** Add a résumé by dropping the PDF in public/ and listing it here. */
 export const SOCIAL_LINKS: LinkItem[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thecaitburke' },
   { label: 'GitHub', href: 'https://github.com/TheCBCreative' },
+  { label: 'Résumé', href: '/cait-burke-resume.pdf' },
 ];
 
 export const CAPABILITIES: Capability[] = [
