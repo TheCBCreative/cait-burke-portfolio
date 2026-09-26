@@ -13,7 +13,7 @@
 
 .primaryLink {
   composes: display from '../../styles/typography.module.css';
-  font-size: var(--font-size-display-h2);
+  font-size: var(--font-size-h2);
   color: var(--color-on-dark);
   text-decoration: none;
   width: fit-content;

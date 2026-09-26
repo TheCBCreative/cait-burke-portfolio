@@ -12,3 +12,4 @@ export { Reveal } from './Reveal';
 export { ScrollCue } from './ScrollCue';
 export { SectionHeading } from './SectionHeading';
 export { TagList } from './TagList';
+export { Emphasis, TwoTone } from './TwoTone';

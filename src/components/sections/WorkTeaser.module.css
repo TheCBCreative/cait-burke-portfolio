@@ -10,7 +10,7 @@
 
 .plus {
   font-family: var(--font-display);
-  font-size: var(--font-size-display-h3);
+  font-size: var(--font-size-callout);
   line-height: 1;
   color: var(--color-ink-faint);
 }

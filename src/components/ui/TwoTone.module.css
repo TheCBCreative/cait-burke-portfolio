@@ -1,0 +1,5 @@
+.emphasis {
+  display: block;
+  font-style: italic;
+  color: var(--emphasis-color, var(--color-accent));
+}

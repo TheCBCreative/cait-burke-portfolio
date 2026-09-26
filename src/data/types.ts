@@ -1,13 +1,26 @@
+/** A heading whose second half is set in the accent italic. */
+export interface Heading {
+  lead: string;
+  emphasis?: string;
+}
+
 /** An image, or a placeholder until `src` is set. */
 export interface ImageSlot {
   src?: string;
   alt: string;
   caption?: string;
+  /** CSS object-position for crops, e.g. "left top". */
+  position?: string;
 }
 
 export interface LinkItem {
   label: string;
   href: string;
+}
+
+export interface LabeledValue {
+  label: string;
+  value: string;
 }
 
 export interface Capability {

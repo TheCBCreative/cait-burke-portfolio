@@ -4,7 +4,7 @@ import styles from './Eyebrow.module.css';
 
 interface EyebrowProps {
   children: ReactNode;
-  tone?: 'faint' | 'accent' | 'on-dark';
+  tone?: 'faint' | 'accent' | 'on-dark' | 'accent-on-dark';
   className?: string;
 }
 

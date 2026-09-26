@@ -12,6 +12,7 @@
   --color-line: #d9d2be;
   --color-accent: #4f6b58;
   --color-accent-on-dark: #7b9e86; /* 4.5:1 on ink */
+  --color-code: #0e1713;
 
   --color-on-dark: #f4f1ea;
   --color-on-dark-soft: #b7c2ba;
@@ -23,22 +24,35 @@
   --font-body: "IBM Plex Sans", -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  /* The landing name is also capped by viewport height so it fits short windows. */
-  --font-size-display-hero: clamp(2.25rem, min(6vw + 1rem, 11svh), 6.5rem);
-  --font-size-display-h1: clamp(2.125rem, 4vw + 1rem, 3.5rem);
-  --font-size-display-h2: clamp(1.625rem, 2.5vw + 1rem, 2.625rem);
-  --font-size-display-h3: clamp(1.375rem, 1.5vw + 1rem, 1.625rem);
-  --font-size-lede: clamp(1.0625rem, 0.5vw + 1rem, 1.1875rem);
+  /* Display sizes scale from the 390px mobile comp to the 1440px desktop comp. */
+  --font-size-hero: clamp(5.5rem, 4.386rem + 4.571vw, 8.5rem);
+  --font-size-statement: clamp(2.875rem, 1.343rem + 6.286vw, 7rem);
+  --font-size-title: clamp(3.5rem, 2.014rem + 6.095vw, 7.5rem);
+  --font-size-xl: clamp(2.75rem, 1.543rem + 4.952vw, 6rem);
+  --font-size-next: clamp(2rem, 0.7rem + 5.333vw, 5.5rem);
+  --font-size-lg: clamp(2.25rem, 1.6rem + 2.667vw, 4rem);
+  --font-size-h2: clamp(2.125rem, 1.614rem + 2.095vw, 3.5rem);
+  --font-size-stat: clamp(3.5rem, 2.571rem + 3.81vw, 6rem);
+  --font-size-tagline: clamp(1.75rem, 1.379rem + 1.524vw, 2.75rem);
+  --font-size-link-lg: clamp(1.375rem, 1.05rem + 1.333vw, 2.25rem);
+  --font-size-quote-mark: clamp(5.5rem, 3.829rem + 6.857vw, 10rem);
+  --font-size-quote: clamp(1.3125rem, 1.104rem + 0.857vw, 1.875rem);
+  --font-size-dek: clamp(1.25rem, 1.111rem + 0.571vw, 1.625rem);
+  --font-size-callout: clamp(1.375rem, 1.282rem + 0.381vw, 1.625rem);
+  --font-size-h3: clamp(1.1875rem, 1.118rem + 0.286vw, 1.375rem);
+  --font-size-lede: clamp(1rem, 0.93rem + 0.286vw, 1.1875rem);
   --font-size-body: 1rem;
   --font-size-body-sm: 0.875rem;
   --font-size-mono-label: 0.8125rem;
   --font-size-mono-eyebrow: 0.75rem;
   --font-size-mono-sm: 0.6875rem;
 
+  --line-height-display: 1;
   --line-height-tight: 1.1;
-  --line-height-heading: 1.25;
+  --line-height-heading: 1.18;
   --line-height-body: 1.55;
 
+  --letter-spacing-display: -0.015em;
   --letter-spacing-eyebrow: 0.14em;
   --letter-spacing-label: 0.08em;
 
@@ -53,6 +67,8 @@
   --space-8: 3rem;
   --space-9: 4rem;
   --space-10: 5rem;
+  --space-11: 6rem;
+  --space-12: 8rem;
 
   /* Layout */
   --content-max-width: 1312px;
@@ -60,9 +76,12 @@
   --content-padding-tablet: 2.5rem;
   --content-padding-desktop: 4rem;
   --content-padding-desktop-tab: calc(var(--content-padding-desktop) + var(--space-6)); /* clears the EdgeTab */
+  --section-padding: clamp(var(--space-9), 2.5rem + 6vw, var(--space-12));
+  --edge-tab-width: 4rem;
 
   /* Shape */
   --radius-sm: 4px;
+  --radius-md: 6px;
   --radius-pill: 999px;
   /* Dark sections set --focus-color to --color-accent-on-dark for 3:1 contrast. */
   --focus-color: var(--color-accent);
@@ -79,6 +98,8 @@
   --reveal-dissolve-ease: cubic-bezier(0.45, 0, 0.35, 1);
   --reveal-dissolve-duration: 3200ms;
   --enter-duration: 2200ms;
+  --hover-duration: 500ms;
+  --nudge-duration: 250ms;
   --hover-zoom-scale: 1.04;
   --hover-zoom-duration: 900ms;
 }

@@ -6,7 +6,7 @@
 
 .heading {
   composes: display from '../../styles/typography.module.css';
-  font-size: var(--font-size-display-h2);
+  font-size: var(--font-size-h2);
   line-height: var(--line-height-tight);
 }
 

@@ -23,7 +23,7 @@
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
-  font-size: var(--font-size-display-h3);
+  font-size: var(--font-size-callout);
   line-height: var(--line-height-heading);
   color: var(--color-ink);
 }

@@ -1,4 +1,4 @@
-import type { Capability, LinkItem } from './types';
+import type { Capability, Heading, LabeledValue, LinkItem } from './types';
 
 export const SITE = {
   name: 'Cait Burke',
@@ -9,7 +9,7 @@ export const SITE = {
   stackSummary: 'Figma · React · TypeScript · Node.js',
   aiSummary: 'Claude Code · Figma AI',
 
-  landingTagline: 'Design that holds up. Code that ships.',
+  landingTagline: { lead: 'Design that holds up.', emphasis: 'Code that ships.' } satisfies Heading,
 
   heroLede:
     'Building thoughtful, user-centered interfaces at the intersection of design and front-end engineering.',
@@ -23,6 +23,13 @@ export const SITE = {
 
   footerTagline: 'Design · Development · Accessibility-minded',
 } as const;
+
+/** The landing page's credential strip. */
+export const CREDENTIALS: LabeledValue[] = [
+  { label: 'Previously', value: 'Amazon Prime · AWS' },
+  { label: 'Now', value: 'The CB Creative' },
+  { label: 'Focus', value: 'Design systems · React · Accessibility' },
+];
 
 export const SOCIAL_LINKS: LinkItem[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thecaitburke' },
