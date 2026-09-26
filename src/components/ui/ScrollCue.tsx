@@ -68,20 +68,16 @@ export function ScrollCue({ step }: ScrollCueProps) {
 type Tone = 'light' | 'dark';
 
 /**
- * Works out whether the cue sits over something light or dark. The cue has
- * `pointer-events: none`, so hit-testing looks straight through it. Takes the
- * first opaque background at that point, skipping anything not yet revealed,
- * and reads the pixels of images, which have no background color of their own.
- * `onPending` is called when an image under the cue hasn't loaded yet.
+ * Whether the cue sits over something light or dark: the pixels of an image
+ * under it, else the first opaque background. `onPending` fires for an image
+ * that hasn't loaded yet.
  */
 function toneUnder(cue: HTMLElement, onPending: (img: HTMLImageElement) => void): Tone {
   const box = cue.getBoundingClientRect();
   const x = box.left + box.width / 2;
   const y = box.top + box.height / 2;
 
-  // Images first, by geometry. A case study image under the cue is still
-  // clipped by its wipe-in reveal for the first second, and clipped areas don't
-  // hit-test, so the stack below would see the white section behind it.
+  // Images by geometry: one mid-reveal is clipped, and clipped areas don't hit-test.
   const image = Array.from(document.images)
     .filter((img) => {
       const r = img.getBoundingClientRect();
@@ -126,8 +122,7 @@ function colorTone(color: string): Tone | undefined {
 function imageTone(img: HTMLImageElement, x: number, y: number): Tone | undefined {
   try {
     const rect = img.getBoundingClientRect();
-    // Map the point into the image's own pixels, allowing for object-fit: cover
-    // (centered), which crops the image to fill its box.
+    // Map the point into the image's pixels, allowing for a centered object-fit: cover crop.
     const cover = getComputedStyle(img).objectFit === 'cover';
     const scaleX = cover ? Math.max(rect.width / img.naturalWidth, rect.height / img.naturalHeight) : rect.width / img.naturalWidth;
     const scaleY = cover ? scaleX : rect.height / img.naturalHeight;
