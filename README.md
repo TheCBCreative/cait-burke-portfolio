@@ -22,7 +22,7 @@ npm run build        # type-check + production build into dist/
 npm run preview      # serve the production build
 npm run lint         # oxlint
 npm test             # unit and component tests
-npm run a11y         # axe-core audit of every route (build first)
+npm run a11y         # build, then run an axe-core audit of every route
 ```
 
 ## Project structure

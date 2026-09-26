@@ -17,6 +17,5 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
-      - run: npm run build
-      - name: Accessibility
+      - name: Build and check accessibility
         run: npm run a11y

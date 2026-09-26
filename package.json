@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "a11y": "a11y-gate"
+    "a11y": "npm run build && a11y-gate"
   },
   "dependencies": {
     "react": "^19.2.8",
