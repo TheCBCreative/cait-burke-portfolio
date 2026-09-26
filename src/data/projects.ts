@@ -319,8 +319,8 @@ raw.trim().replace(
 
 export const getProject = (slug: string) => PROJECTS.find((project) => project.slug === slug);
 
-/** The project after this one, wrapping around to the first. */
+/** The project after this one, or undefined for the last. */
 export const getNextProject = (slug: string) => {
   const index = PROJECTS.findIndex((project) => project.slug === slug);
-  return index === -1 ? undefined : PROJECTS[(index + 1) % PROJECTS.length];
+  return index === -1 ? undefined : PROJECTS[index + 1];
 };

@@ -64,7 +64,7 @@ public/
 All text and links live in `src/data/`, so content changes don't touch components.
 
 - **`site.ts`**: name, statements, bio, hero meta, landing credentials, capabilities, contact links
-- **`projects.ts`**: every project. Array order sets the homepage order and each case study's "next project" link (the last wraps to the first).
+- **`projects.ts`**: every project. Array order sets the homepage order and each case study's "next project" link (the last one links back to all work).
 - **`testimonials.ts`**: quotes from real recommendations, each with its source and date
 
 Headings with an accent-italic second half are `{ lead, emphasis }` objects, rendered by `TwoTone`.

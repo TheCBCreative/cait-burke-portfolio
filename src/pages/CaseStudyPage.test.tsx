@@ -23,11 +23,17 @@ describe.each(PROJECTS)('$title case study', (project) => {
     expect(items.map((item) => item.textContent)).toEqual(project.caseStudy.design.decisions.map((d) => d.title));
   });
 
-  it('links to the next project', () => {
+  it('links to the next project, or back to all work after the last', () => {
     renderRoute(`/work/${project.slug}`);
-    const nav = screen.getByRole('navigation', { name: 'Next project' });
-    const next = getNextProject(project.slug)!;
-    expect(within(nav).getByRole('link')).toHaveAttribute('href', `/work/${next.slug}`);
+    const next = getNextProject(project.slug);
+    const nav = screen.getByRole('navigation', { name: next ? 'Next project' : 'More work' });
+    const link = within(nav).getByRole('link');
+    if (next) {
+      expect(link).toHaveAttribute('href', `/work/${next.slug}`);
+    } else {
+      expect(link).toHaveTextContent('Back to all work');
+      expect(link).toHaveAttribute('href', '/home#selected-work');
+    }
   });
 });
 

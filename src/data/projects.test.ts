@@ -16,8 +16,8 @@ describe('getNextProject', () => {
     expect(getNextProject(PROJECTS[0].slug)).toBe(PROJECTS[1]);
   });
 
-  it('wraps from the last project back to the first', () => {
-    expect(getNextProject(PROJECTS[PROJECTS.length - 1].slug)).toBe(PROJECTS[0]);
+  it('returns undefined after the last project', () => {
+    expect(getNextProject(PROJECTS[PROJECTS.length - 1].slug)).toBeUndefined();
   });
 
   it('returns undefined for an unknown slug', () => {
