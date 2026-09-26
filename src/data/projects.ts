@@ -43,14 +43,14 @@ export const PROJECTS: Project[] = [
           kind: 'screenshot',
           image: {
             src: '/images/blog-composer/post-editor.jpg',
-            alt: 'Blog Composer post editor: the post body on the left, settings in a side column, and Save, Schedule and Publish buttons',
-            position: '41% top',
+            alt: 'Blog Composer post editor: the post body on the left, settings in a side column, and Preview, Save Draft, Schedule and Publish buttons',
           },
+          aspectRatio: '1636 / 1500',
           pins: [
-            { x: 10, y: 35 },
-            { x: 67, y: 29 },
-            { x: 74, y: 74 },
-            { x: 91, y: 57 },
+            { x: 40, y: 70 },
+            { x: 71.8, y: 94.5 },
+            { x: 66, y: 3.5 },
+            { x: 74.1, y: 71.9 },
           ],
         },
         decisions: [
@@ -146,7 +146,7 @@ types.setTypeParser(20,
       },
       breakImage: {
         src: '/images/blog-composer/media-library.jpg',
-        alt: 'Blog Composer media library with a grid of uploaded photos',
+        alt: 'Blog Composer media library: a grid of photos, four across, each with its size, a copy-URL button and a delete button',
         position: 'left top',
       },
       outcome: {

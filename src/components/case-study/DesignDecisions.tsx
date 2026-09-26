@@ -15,7 +15,7 @@ export function DesignDecisions({ figure, decisions }: DesignDecisionsProps) {
   return (
     <div className={styles.layout}>
       <Reveal variant="fade" className={styles.figure}>
-        {figure.kind === 'screenshot' ? <AnnotatedScreenshot image={figure.image} pins={figure.pins} /> : <BrandBoard />}
+        {figure.kind === 'screenshot' ? <AnnotatedScreenshot image={figure.image} aspectRatio={figure.aspectRatio} pins={figure.pins} /> : <BrandBoard />}
       </Reveal>
       <ol className={styles.decisions}>
         {decisions.map((decision, index) => (

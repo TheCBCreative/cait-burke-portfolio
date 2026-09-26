@@ -54,7 +54,7 @@ export interface Pin {
 }
 
 export type DesignFigure =
-  | { kind: 'screenshot'; image: ImageSlot; pins: Pin[] }
+  | { kind: 'screenshot'; image: ImageSlot; aspectRatio: string; pins: Pin[] }
   | { kind: 'brand-board' };
 
 export interface ArchitectureNode {
