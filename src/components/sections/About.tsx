@@ -1,58 +1,38 @@
-import { SectionHeading, Button, Reveal } from '../ui';
-import { FernClip } from '../media';
+import { ImageFrame, Reveal, SectionHeading } from '../ui';
 import { PageContainer } from '../layout';
-import { useReveal } from '../../hooks/useReveal';
-import { SITE, CAPABILITIES } from '../../data/site';
+import { CAPABILITIES, SITE } from '../../data/site';
 import { cx } from '../../utils/cx';
+import surfaces from '../../styles/surfaces.module.css';
 import styles from './About.module.css';
 
 export function About() {
-  // One trigger, at the top of the content, reveals the whole section in sequence.
-  const { ref: introRef, isRevealed } = useReveal<HTMLDivElement>();
-
   return (
-    <section className={styles.about} aria-labelledby="about-heading">
-      <PageContainer className={styles.grid}>
-        <div ref={introRef} className={styles.intro}>
-          <SectionHeading
-            eyebrow="About"
-            headingId="about-heading"
-            tone="on-dark"
-            revealed={isRevealed}
-            heading={
-              <>
-                {SITE.aboutHeadingLead}
-                <br />
-                <em className={styles.emphasis}>{SITE.aboutHeadingEmphasis}</em>
-              </>
-            }
-          />
-          <Button href="/home#selected-work" tone="on-dark">
-            View selected work →
-          </Button>
-        </div>
+    <section className={cx(styles.about, surfaces.ink)} aria-labelledby="about-heading">
+      <PageContainer className={styles.inner}>
+        <SectionHeading eyebrow="About" headingId="about-heading" heading={SITE.aboutHeading} tone="on-dark" size="xl" />
 
-        {/* Not wrapped in <Reveal>: on desktop the clip bleeds into the section padding as a grid item. */}
-        <FernClip
-          variant="mobile"
-          className={cx(styles.clip, isRevealed && styles.clipRevealed)}
-        />
+        <div className={styles.body}>
+          <Reveal variant="wipe" className={styles.portrait}>
+            <ImageFrame image={SITE.portrait} aspectRatio="10 / 13" />
+          </Reveal>
 
-        <ul className={styles.capabilities}>
-          {CAPABILITIES.map((capability, index) => (
-            <Reveal
-              as="li"
-              variant="fade"
-              delay={400 + index * 180}
-              revealed={isRevealed}
-              key={capability.title}
-              className={styles.capability}
-            >
-              <h3 className={styles.capabilityTitle}>{capability.title}</h3>
-              <p className={styles.capabilityDescription}>{capability.description}</p>
+          <div className={styles.details}>
+            <Reveal variant="fade">
+              <p className={styles.bio}>{SITE.aboutBio}</p>
             </Reveal>
-          ))}
-        </ul>
+            <ol className={styles.capabilities}>
+              {CAPABILITIES.map((capability, index) => (
+                <Reveal as="li" variant="fade" delay={200 + index * 150} key={capability.title} className={styles.capability}>
+                  <h3 className={styles.capabilityTitle}>
+                    <span className={styles.number}>{String(index + 1).padStart(2, '0')}</span>
+                    {capability.title}
+                  </h3>
+                  <p className={styles.capabilityDescription}>{capability.description}</p>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
+        </div>
       </PageContainer>
     </section>
   );

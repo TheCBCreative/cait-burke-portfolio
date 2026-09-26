@@ -13,7 +13,7 @@ export function CaseStudySection({ content, background }: CaseStudySectionProps)
   return (
     <section className={cx(styles.section, styles[background])}>
       <PageContainer className={styles.inner}>
-        <SectionHeading eyebrow={content.eyebrow} heading={content.heading} />
+        <SectionHeading eyebrow={content.eyebrow} heading={{ lead: content.heading }} />
         <Reveal variant="fade" delay={200}>
           <p className={styles.body}>{content.body}</p>
         </Reveal>

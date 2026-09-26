@@ -5,49 +5,75 @@
 .inner {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
-  padding-block: var(--space-9);
-  text-align: center;
+  padding-block: var(--section-padding);
+}
+
+.mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: var(--font-size-quote-mark);
+  line-height: 0.8;
+  height: 0.45em;
+  color: var(--color-accent);
 }
 
 .figure {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-5);
-  max-width: 44rem;
+  gap: var(--space-6);
+  flex: 1;
 }
 
 .quote {
+  max-width: 54rem;
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 500;
-  font-size: var(--font-size-callout);
-  line-height: var(--line-height-heading);
+  font-weight: 600;
+  font-size: var(--font-size-quote);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
   color: var(--color-ink);
 }
 
 .attribution {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-1);
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-line);
 }
 
 .name {
   font-family: var(--font-mono);
   font-size: var(--font-size-mono-label);
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-label);
   color: var(--color-ink);
 }
 
 .role {
-  font-size: var(--font-size-body-sm);
+  flex-basis: 100%;
   color: var(--color-ink-soft);
 }
 
 .source {
   composes: label from '../../styles/typography.module.css';
   color: var(--color-ink-faint);
+}
+
+@media (min-width: 900px) {
+  .inner {
+    flex-direction: row;
+    gap: var(--space-9);
+  }
+
+  .mark {
+    height: auto;
+  }
+
+  .role {
+    flex-basis: auto;
+  }
 }

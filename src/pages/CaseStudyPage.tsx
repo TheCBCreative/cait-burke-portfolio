@@ -43,7 +43,7 @@ function CaseStudy({ project }: { project: Project }) {
         <CaseStudySection content={project.sections[2]} background="paper" />
       </main>
       <NextProjectNav currentSlug={project.slug} />
-      <ContactFooter showHeading={false} />
+      <ContactFooter variant="compact" />
     </>
   );
 }

@@ -11,8 +11,8 @@ export function HomePage() {
       <SkipLink />
       <main id="main-content">
         <Hero />
-        <About />
         <SelectedWork />
+        <About />
         <Testimonial />
       </main>
       <ContactFooter />

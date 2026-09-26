@@ -1,75 +1,75 @@
-.footer {
-  --focus-color: var(--color-accent-on-dark);
-  background-color: var(--color-ink);
-  color: var(--color-on-dark);
-}
-
 .inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
-  padding-block: var(--space-10) var(--space-6);
+  gap: var(--space-9);
+  padding-block: var(--space-11) var(--space-6);
 }
 
-.top {
+.compact .inner {
+  gap: var(--space-8);
+  padding-block-start: var(--space-10);
+}
+
+.main {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
-  max-width: 42rem;
+  align-items: flex-start;
+  gap: var(--space-6);
 }
 
 .heading {
-  composes: display from '../../styles/typography.module.css';
-  font-size: var(--font-size-h2);
-  line-height: var(--line-height-tight);
+  composes: displayTight from '../../styles/typography.module.css';
+  max-width: 60rem;
+  font-size: var(--font-size-xl);
 }
 
-.primaryLink {
+.email {
   composes: display from '../../styles/typography.module.css';
-  font-size: var(--font-size-callout);
+  font-size: var(--font-size-link-lg);
+  line-height: 1.08;
+  letter-spacing: -0.005em;
   color: var(--color-on-dark);
   text-decoration: none;
-  width: fit-content;
-}
-
-.primaryLink:hover {
-  color: var(--color-on-dark-soft);
-}
-
-.secondaryLinks {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-}
-
-.secondaryLink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-on-dark-soft);
   transition: color var(--transition-fast);
 }
 
-.secondaryLink:hover {
-  color: var(--color-on-dark);
+.compact .email {
+  font-size: var(--font-size-callout);
+}
+
+.email:hover {
+  color: var(--color-on-dark-soft);
+}
+
+.arrow {
+  display: inline-block;
+  margin-inline-start: 0.3em;
+  transition: translate var(--nudge-duration) var(--reveal-ease);
+}
+
+.email:is(:hover, :focus-visible) .arrow {
+  translate: 4px 0;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-7);
 }
 
 .bottom {
+  composes: label from '../../styles/typography.module.css';
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-}
-
-.copyright {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-mono-sm);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-on-dark-line);
   color: var(--color-on-dark-faint);
 }
 
 @media (min-width: 700px) {
   .bottom {
     flex-direction: row;
-    align-items: baseline;
     justify-content: space-between;
   }
 }

@@ -56,7 +56,11 @@ export interface Project {
   title: string;
   skills: string[];
   thumbnail: ImageSlot;
+  /** Short muted clip of the real UI, played when the home row is hovered. */
+  preview?: string;
   summary: string;
+  highlights: { design: string[]; engineering: string[] };
+  live: LinkItem;
   meta: CaseStudyMeta;
   callout: CalloutContent;
   heroImage: ImageSlot;

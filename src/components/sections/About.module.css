@@ -1,88 +1,80 @@
-.about {
-  --focus-color: var(--color-accent-on-dark);
-  background-color: var(--color-ink);
-}
-
-.grid {
-  display: grid;
-  gap: var(--space-8);
-  padding-block: var(--space-9);
-}
-
-.intro {
+.inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-8);
+  padding-block: var(--section-padding);
 }
 
-.emphasis {
-  color: var(--color-accent-on-dark);
-  font-style: italic;
+.body {
+  display: grid;
+  gap: var(--space-8);
 }
 
-/* Opacity only: movement would open a gap where the clip bleeds to the section edge. */
-.clip {
-  width: 100%;
-  max-width: 24rem;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-  opacity: 0;
-  transition: opacity var(--reveal-dissolve-duration) var(--reveal-dissolve-ease) 200ms;
+.portrait {
+  max-width: 25rem;
 }
 
-.clipRevealed {
-  opacity: 1;
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.bio {
+  composes: lede from '../../styles/typography.module.css';
+  color: var(--color-on-dark-soft);
 }
 
 .capabilities {
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-5) var(--space-7);
 }
 
 .capability {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-on-dark-line);
 }
 
 .capabilityTitle {
   composes: labelLg from '../../styles/typography.module.css';
-  font-weight: 500;
+  display: flex;
+  gap: var(--space-3);
+  font-weight: 600;
   color: var(--color-on-dark);
 }
 
+.number {
+  font-size: var(--font-size-mono-sm);
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--color-accent-on-dark);
+}
+
 .capabilityDescription {
-  color: var(--color-on-dark-soft);
   font-size: var(--font-size-body-sm);
+  line-height: 1.4;
+  color: var(--color-on-dark-soft);
 }
 
 @media (min-width: 700px) {
   .capabilities {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1100px) {
-  .grid {
-    grid-template-columns: minmax(0, 18rem) minmax(0, 22rem) 1fr;
     align-items: start;
   }
-
-  /* Stretch to the row's height and bleed through the section's vertical padding. */
-  .clip {
-    max-width: none;
-    align-self: stretch;
-    aspect-ratio: auto;
-    height: calc(100% + var(--space-9) * 2);
-    margin-block: calc(-1 * var(--space-9));
-    border-radius: 0;
-  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .clip {
-    opacity: 1;
-    transition: none;
+@media (min-width: 1000px) {
+  .inner {
+    gap: var(--space-10);
+  }
+
+  .body {
+    grid-template-columns: minmax(0, 25rem) minmax(0, 44rem);
+    justify-content: space-between;
+    align-items: start;
+    gap: var(--space-10);
   }
 }

@@ -1,51 +1,48 @@
-import { Eyebrow, Button, MetaList, EdgeTab, EntranceLines, ScrollCue, entrance, entranceStep as step } from '../ui';
+import { Button, EdgeTab, Emphasis, EntranceLines, Eyebrow, MetaList, ScrollCue, entrance, entranceStep as step } from '../ui';
 import { PageContainer } from '../layout';
-import { SITE, SOCIAL_LINKS } from '../../data/site';
+import { HERO_META, SITE } from '../../data/site';
 import { cx } from '../../utils/cx';
 import styles from './Hero.module.css';
 
-const emailLink = SOCIAL_LINKS.find((link) => link.label === 'Email');
-const nameLines = SITE.name.split(' ');
-const afterName = 1 + nameLines.length;
+const statement = SITE.heroStatement;
 
 export function Hero() {
   return (
     <section className={cx(styles.hero, entrance.heroPace)} aria-labelledby="hero-heading">
       <EdgeTab label="Portfolio" />
-      <PageContainer className={styles.grid}>
-        <div className={styles.copy}>
+      <PageContainer className={styles.inner}>
+        <div className={styles.statement}>
           <span className={entrance.enter} style={step(0)}>
-            <Eyebrow>{SITE.roleTagline}</Eyebrow>
+            <Eyebrow>{SITE.heroEyebrow}</Eyebrow>
           </span>
-          <h1 id="hero-heading" className={styles.name}>
-            <EntranceLines lines={nameLines} firstStep={1} />
+          <h1 id="hero-heading" className={styles.heading}>
+            <EntranceLines lines={[statement.lead, <Emphasis key="emphasis">{statement.emphasis}</Emphasis>]} firstStep={1} />
           </h1>
-          <p className={cx(styles.lede, entrance.enter)} style={step(afterName)}>
-            {SITE.heroLede}
-          </p>
-          <p className={cx(styles.bio, entrance.enter)} style={step(afterName + 1)}>
-            {SITE.heroBio}
-          </p>
-          <div className={cx(styles.ctaRow, entrance.enter)} style={step(afterName + 2)}>
-            <Button href="/home#selected-work">View the work →</Button>
-            <Button href={emailLink?.href}>Say hello</Button>
-          </div>
         </div>
 
-        <MetaList
-          className={styles.specimen}
-          rowClassName={entrance.enter}
-          rowStyle={(index) => step(afterName + 3 + index)}
-          items={[
-            { label: 'Stack', value: SITE.stackSummary },
-            { label: 'AI', value: SITE.aiSummary },
-            { label: 'Based', value: SITE.location },
-            { label: 'Status', value: SITE.status },
-          ]}
-        />
+        <div className={styles.bottomRow}>
+          <div className={styles.intro}>
+            <p className={cx(styles.bio, entrance.enter)} style={step(3)}>
+              {SITE.heroBio}
+            </p>
+            <div className={cx(styles.ctas, entrance.enter)} style={step(4)}>
+              <Button href="/home#selected-work" arrow="right">
+                View the work
+              </Button>
+              <Button href={`mailto:${SITE.email}`}>Say hello</Button>
+            </div>
+          </div>
+
+          <MetaList
+            className={styles.meta}
+            rowClassName={entrance.enter}
+            rowStyle={(index) => step(4 + index)}
+            items={HERO_META}
+          />
+        </div>
       </PageContainer>
 
-      <ScrollCue step={afterName + 8} />
+      <ScrollCue step={10} />
     </section>
   );
 }

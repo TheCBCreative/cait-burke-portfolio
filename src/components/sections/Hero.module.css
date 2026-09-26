@@ -1,74 +1,77 @@
 .hero {
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* Fills the first screen, so the next section's reveal happens on scroll
-     rather than peeking in. */
+  /* Fills the first screen, so the next section reveals on scroll rather than peeking in. */
   min-height: 100svh;
   background-color: var(--color-surface);
 }
 
-.grid {
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-9);
+  padding-block: var(--space-8) var(--space-11);
+}
+
+.statement {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-block: auto;
+  max-width: 52rem;
+}
+
+.heading {
+  composes: displayTight from '../../styles/typography.module.css';
+  font-size: var(--font-size-statement);
+  line-height: 1.02;
+}
+
+.bottomRow {
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
-  padding-block: var(--space-6) var(--space-9);
 }
 
-.copy {
+.intro {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  max-width: 42rem;
-}
-
-.name {
-  composes: display from '../../styles/typography.module.css';
-  font-size: clamp(4.5rem, 24vw + 0.5rem, 6.25rem);
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-}
-
-.lede {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: var(--font-size-lede);
-  color: var(--color-ink-soft);
+  gap: var(--space-6);
+  max-width: 39rem;
 }
 
 .bio {
+  composes: lede from '../../styles/typography.module.css';
   color: var(--color-ink-soft);
 }
 
-.ctaRow {
+.ctas {
   display: flex;
-  gap: var(--space-6);
-  padding-top: var(--space-2);
-}
-
-.specimen {
-  max-width: 26rem;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
 }
 
 @media (min-width: 1000px) {
-  .grid {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-block: var(--space-9) var(--space-10);
+  .inner {
+    padding-block: var(--space-9) var(--space-11);
   }
 
-  .specimen {
+  .bottomRow {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .meta {
     flex-shrink: 0;
-    width: 24rem;
+    width: 22.5rem;
   }
 }
 
 @media (min-width: 1100px) {
   /* .hero raises specificity over PageContainer's own padding. */
-  .hero .grid {
+  .hero .inner {
     padding-inline-start: var(--content-padding-desktop-tab);
   }
 }

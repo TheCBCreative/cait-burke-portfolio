@@ -8,8 +8,13 @@ export const PROJECTS: Project[] = [
     category: 'Admin UI · CMS',
     title: 'Blog Composer',
     skills: ['Design', 'Development'],
-    thumbnail: { src: '/images/blog-composer/dashboard.jpg', alt: 'Blog Composer admin dashboard' },
-    summary: "A self-hosted, themeable blog admin built to slot into any client site — so publishing doesn't mean wrestling a bloated platform.",
+    thumbnail: { src: '/images/blog-composer/dashboard.jpg', alt: 'Blog Composer admin dashboard', position: 'left top' },
+    summary: "A self-hosted, themeable blog admin that slots into any client site — so publishing doesn't mean wrestling a bloated platform.",
+    highlights: {
+      design: ['Admin UI themed with each client’s own design tokens', 'Editor, media library and scheduling flows'],
+      engineering: ['Framework-agnostic TypeScript core, running on Astro', 'Better-Auth sessions, server-side sanitizing'],
+    },
+    live: { label: 'Live demo', href: 'https://www.caitburke.dev/work/blog-composer/demo' },
     meta: {
       role: 'Design & development, solo',
       stack: 'TypeScript · Astro · Neon Postgres · Better-Auth · Resend',
@@ -66,10 +71,16 @@ export const PROJECTS: Project[] = [
     title: 'The CB Creative',
     skills: ['Branding', 'Design', 'Development'],
     thumbnail: {
-      src: '/images/the-cb-creative/homepage-thumb.jpg',
+      src: '/images/the-cb-creative/homepage.jpg',
       alt: 'The CB Creative studio site homepage',
+      position: 'left top',
     },
-    summary: "A solo design studio's brand and site, designed and built from the ground up — logo system, design system, and production code, all my own.",
+    summary: "A solo design studio's brand and site, designed and built from the ground up — logo system, design system, and production code.",
+    highlights: {
+      design: ['Logo system, palette and type built from scratch', 'WCAG AA contrast across every page'],
+      engineering: ['Custom static site generator in Node', 'Serverless contact form, covered by tests'],
+    },
+    live: { label: 'Live site', href: 'https://www.thecbcreative.com' },
     meta: {
       role: 'Brand & web design/development, solo',
       stack: 'Node.js · Custom static site generator · Vercel',
