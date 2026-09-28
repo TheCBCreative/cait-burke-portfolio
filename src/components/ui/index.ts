@@ -1,3 +1,4 @@
+export { BrowserFrame } from './BrowserFrame';
 export { Button } from './Button';
 export { nudgeOnHover } from './nudge';
 export { EdgeTab } from './EdgeTab';

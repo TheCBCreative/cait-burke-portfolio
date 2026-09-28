@@ -33,7 +33,7 @@ src/
   pages/         One component per route
   routes.tsx     The route table
   components/
-    ui/          Reusable building blocks (Button, Reveal, TwoTone, EdgeTab, Lightbox…)
+    ui/          Reusable building blocks (Button, Reveal, TwoTone, EdgeTab, Lightbox, BrowserFrame…)
     layout/      Page chrome (PageContainer, Masthead, ContactFooter, SkipLink)
     sections/    Homepage sections (Hero, SelectedWork + WorkRow, About, Testimonial)
     case-study/  Case study sections (hero, demo band, stats, design decisions, brand board,
@@ -86,7 +86,7 @@ Replace `public/cait-burke-resume.pdf`, keeping the file name. It's linked from 
 - **Screenshots:** JPEG, at most 2400px wide, around 150KB. Heroes and break images are full-bleed and cropped with `object-fit: cover`; set `position` on the image to choose what stays in frame.
 - **Home rows:** use the project's `thumbnail`, cropped to 4:3 from the top left.
 - **Hover previews (optional):** a short, silent MP4 loop of the real UI, set as `preview` on the project. The row plays it on hover and focus, and shows a "Hover to preview" hint only when one exists.
-- **Clips (optional):** any image in a case study can carry a `video`, a short screen recording that loops in its place, with the image as its poster and reduced-motion still. Keep them in `public/media/work/<slug>/` as H.264 MP4s with no audio, 1200px wide (1440px for full-bleed), each beside a JPEG still of the same name.
+- **Clips (optional):** any image in a case study can carry a `video`, a short screen recording that loops in its place, with the image as its poster and reduced-motion still. A hero or break image with a clip sits inset in a browser frame showing the project's site, so it doesn't read as part of this one. Keep them in `public/media/work/<slug>/` as H.264 MP4s with no audio, 1200px wide (1440px for full-bleed), each beside a JPEG still of the same name.
 - **Portrait:** `public/images/about/portrait.jpg`, 10:13, at least 800px wide.
 - **Names:** lowercase and hyphenated, describing what's shown (`homepage.jpg`, `post-editor.jpg`).
 - **`alt` text:** every image needs it in its data entry.

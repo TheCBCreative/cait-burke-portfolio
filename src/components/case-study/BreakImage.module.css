@@ -8,3 +8,15 @@
   height: clamp(17.5rem, 47vw, 42.5rem);
   object-fit: cover;
 }
+
+.stage {
+  padding-block: var(--space-10);
+  background-color: var(--color-paper);
+}
+
+.clip {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1440 / 718;
+  object-fit: cover;
+}

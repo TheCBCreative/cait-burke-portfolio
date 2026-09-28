@@ -36,6 +36,7 @@ export function CaseStudyPage() {
 
 function CaseStudy({ project }: { project: Project }) {
   const { caseStudy: study } = project;
+  const liveHost = new URL(project.live.href).host.replace(/^www\./, '');
   useDocumentTitle(`${project.title} — ${SITE.name}`);
 
   return (
@@ -44,7 +45,7 @@ function CaseStudy({ project }: { project: Project }) {
       <Masthead />
       <main id="main-content">
         <CaseStudyHero project={project} />
-        <HeroImage image={study.heroImage} slug={project.slug} />
+        <HeroImage image={study.heroImage} slug={project.slug} url={liveHost} />
         <CaseStudyCallout content={study.callout} />
 
         <CaseStudySection
@@ -94,7 +95,7 @@ function CaseStudy({ project }: { project: Project }) {
           <Tradeoffs items={study.leftOut.items} />
         </CaseStudySection>
 
-        <BreakImage image={study.breakImage} />
+        <BreakImage image={study.breakImage} url={liveHost} />
 
         <CaseStudySection
           id="outcome"
