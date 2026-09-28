@@ -18,6 +18,11 @@
   pointer-events: none;
 }
 
+/* Back-to-back ink sections get a hairline between them. */
+.ink + .ink {
+  border-top: 1px solid var(--color-on-dark-line);
+}
+
 .paper {
   background-color: var(--color-paper);
 }

@@ -48,7 +48,7 @@ export function CaseStudySection({
             />
             {intro && (
               <Reveal variant="fade" delay={150}>
-                <p className={styles.intro}>{intro}</p>
+                <p className={cx(styles.intro, surface === 'ink' && styles.introOnDark)}>{intro}</p>
               </Reveal>
             )}
             {leadFooter}

@@ -9,6 +9,7 @@ import {
   CodeDecisions,
   DesignDecisions,
   HeroImage,
+  MotionClips,
   NextProjectNav,
   NextSteps,
   NoteRow,
@@ -58,6 +59,18 @@ function CaseStudy({ project }: { project: Project }) {
         <CaseStudySection id="design" eyebrow="02 — Design decisions" heading={study.design.heading}>
           <DesignDecisions figure={study.design.figure} decisions={study.design.decisions} />
         </CaseStudySection>
+
+        {study.motion && (
+          <CaseStudySection
+            id="motion"
+            eyebrow="In motion"
+            heading={study.motion.heading}
+            intro={study.motion.intro}
+            surface="ink"
+          >
+            <MotionClips clips={study.motion.clips} />
+          </CaseStudySection>
+        )}
 
         <CaseStudySection
           id="engineering"

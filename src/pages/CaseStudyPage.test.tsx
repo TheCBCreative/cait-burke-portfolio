@@ -10,8 +10,8 @@ describe.each(PROJECTS)('$title case study', (project) => {
     const study = project.caseStudy;
     expect(headings).toEqual([
       study.callout.heading,
-      ...[study.context, study.design, study.engineering, study.leftOut, study.outcome].map(({ heading }) =>
-        [heading.lead, heading.emphasis].filter(Boolean).join(' '),
+      ...[study.context, study.design, study.motion, study.engineering, study.leftOut, study.outcome].flatMap((section) =>
+        section ? [[section.heading.lead, section.heading.emphasis].filter(Boolean).join(' ')] : [],
       ),
     ]);
   });
@@ -21,6 +21,17 @@ describe.each(PROJECTS)('$title case study', (project) => {
     const section = document.getElementById('design')!;
     const items = within(section).getAllByRole('heading', { level: 3 });
     expect(items.map((item) => item.textContent)).toEqual(project.caseStudy.design.decisions.map((d) => d.title));
+  });
+
+  it('titles each motion clip', () => {
+    renderRoute(`/work/${project.slug}`);
+    const section = document.getElementById('motion');
+    const clips = project.caseStudy.motion?.clips ?? [];
+    expect(section === null).toBe(clips.length === 0);
+    if (!section) return;
+    expect(within(section).getAllByRole('heading', { level: 3 }).map((item) => item.textContent)).toEqual(
+      clips.map((clip) => clip.title),
+    );
   });
 
   it('links to the next project, or back to all work after the last', () => {

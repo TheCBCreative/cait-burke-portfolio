@@ -26,6 +26,10 @@
   color: var(--color-ink-soft);
 }
 
+.introOnDark {
+  color: var(--color-on-dark-soft);
+}
+
 
 @media (min-width: 1000px) {
   .inner {

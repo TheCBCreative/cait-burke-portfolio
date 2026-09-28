@@ -67,6 +67,12 @@ export interface ArchitectureNode {
 
 export interface CodeDecision extends Decision {
   code: string;
+  media?: ImageSlot;
+}
+
+/** A screen recording with a short title and caption. */
+export interface Clip extends Decision {
+  media: ImageSlot;
 }
 
 export interface Tradeoff extends Decision {
@@ -82,6 +88,7 @@ export interface CaseStudy {
   callout: CalloutContent;
   context: { heading: Heading; body: string; stats: Stat[]; statsNote: string };
   design: { heading: Heading; figure: DesignFigure; decisions: Decision[] };
+  motion?: { heading: Heading; intro: string; clips: Clip[] };
   engineering: {
     heading: Heading;
     /** The main flow, drawn with arrows between nodes. */

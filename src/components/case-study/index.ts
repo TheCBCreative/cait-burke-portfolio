@@ -6,6 +6,7 @@ export { CaseStudySection } from './CaseStudySection';
 export { CodeDecisions } from './CodeDecisions';
 export { DesignDecisions } from './DesignDecisions';
 export { HeroImage } from './HeroImage';
+export { MotionClips } from './MotionClips';
 export { NextProjectNav } from './NextProjectNav';
 export { NextSteps } from './NextSteps';
 export { NoteRow } from './NoteRow';
