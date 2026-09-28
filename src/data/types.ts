@@ -8,6 +8,8 @@ export interface Heading {
 export interface ImageSlot {
   src?: string;
   alt: string;
+  /** A muted loop played in place of the image, which stays as its poster. */
+  video?: string;
   caption?: string;
   /** CSS object-position for crops, e.g. "left top". */
   position?: string;
