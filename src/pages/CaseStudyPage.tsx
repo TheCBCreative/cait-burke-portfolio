@@ -20,6 +20,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { getProject } from '../data/projects';
 import { SITE } from '../data/site';
 import type { Project } from '../data/types';
+import { displayHost } from '../utils/displayHost';
 import { NotFoundPage } from './NotFoundPage';
 
 export function CaseStudyPage() {
@@ -36,7 +37,7 @@ export function CaseStudyPage() {
 
 function CaseStudy({ project }: { project: Project }) {
   const { caseStudy: study } = project;
-  const liveHost = new URL(project.live.href).host.replace(/^www\./, '');
+  const liveHost = displayHost(project.live.href);
   useDocumentTitle(`${project.title} — ${SITE.name}`);
 
   return (

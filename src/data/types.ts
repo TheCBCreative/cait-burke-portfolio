@@ -111,7 +111,7 @@ export interface Project {
   title: string;
   thumbnail: ImageSlot;
   /** Short muted clip of the real UI, played when the home row is hovered. */
-  preview?: string;
+  preview?: { video: string; poster: string };
   summary: string;
   highlights: { design: string[]; engineering: string[] };
   live: LinkItem;

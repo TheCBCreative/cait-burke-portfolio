@@ -17,8 +17,7 @@
   background-color: var(--color-paper);
 }
 
-.image,
-.video {
+.image {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -34,13 +33,26 @@
   scale: var(--hover-zoom-scale);
 }
 
-.video {
+.preview {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  padding: var(--space-5);
+  background-color: var(--color-paper);
   opacity: 0;
   transition: opacity 400ms ease;
 }
 
-.row:is(:hover, :focus-within) .video {
+.row:is(:hover, :focus-within) .preview {
   opacity: 1;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1200 / 598;
+  object-fit: cover;
 }
 
 .hint {

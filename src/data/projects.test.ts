@@ -38,7 +38,10 @@ describe.each(PROJECTS)('$title data', (project) => {
       if (image.video) expect(existsInPublic(image.video)).toBe(true);
       expect(image.alt.length).toBeGreaterThan(0);
     }
-    if (project.preview) expect(existsInPublic(project.preview)).toBe(true);
+    if (project.preview) {
+      expect(existsInPublic(project.preview.video)).toBe(true);
+      expect(existsInPublic(project.preview.poster)).toBe(true);
+    }
   });
 
   it('keeps figure pins on the figure and one decision per pin', () => {

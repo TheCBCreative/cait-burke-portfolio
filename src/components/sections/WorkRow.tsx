@@ -1,10 +1,11 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Eyebrow, Reveal, nudgeOnHover } from '../ui';
+import { BrowserFrame, Button, Eyebrow, Reveal, nudgeOnHover } from '../ui';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useScrollLinked } from '../../hooks/useScrollLinked';
 import type { Project } from '../../data/types';
 import { cx } from '../../utils/cx';
+import { displayHost } from '../../utils/displayHost';
 import scrollLinked from '../../styles/scrollLinked.module.css';
 import styles from './WorkRow.module.css';
 
@@ -19,7 +20,7 @@ export function WorkRow({ project, reversed = false }: WorkRowProps) {
   const imageRef = useRef<HTMLImageElement>(null);
   useScrollLinked(imageRef, 'drift');
   const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
-  const canPreview = Boolean(project.preview) && !prefersReducedMotion;
+  const preview = prefersReducedMotion ? undefined : project.preview;
   const href = `/work/${project.slug}`;
 
   const play = () => void videoRef.current?.play().catch(() => {});
@@ -28,10 +29,10 @@ export function WorkRow({ project, reversed = false }: WorkRowProps) {
   return (
     <li
       className={cx(styles.row, reversed && styles.reversed, nudgeOnHover)}
-      onPointerEnter={canPreview ? play : undefined}
-      onPointerLeave={canPreview ? stop : undefined}
-      onFocus={canPreview ? play : undefined}
-      onBlur={canPreview ? stop : undefined}
+      onPointerEnter={preview ? play : undefined}
+      onPointerLeave={preview ? stop : undefined}
+      onFocus={preview ? play : undefined}
+      onBlur={preview ? stop : undefined}
     >
       <Reveal variant="wipe" className={styles.mediaReveal}>
         {/* A second way into the case study for pointer users; the text link below is the accessible one. */}
@@ -45,9 +46,23 @@ export function WorkRow({ project, reversed = false }: WorkRowProps) {
             className={cx(styles.image, scrollLinked.drift)}
             style={{ objectPosition: project.thumbnail.position, viewTransitionName: `project-${project.slug}` }}
           />
-          {canPreview && (
+          {preview && (
             <>
-              <video ref={videoRef} className={styles.video} src={project.preview} muted loop playsInline preload="none" />
+              {/* Framed and fit to width, since the recording is wider than the 4:3 thumbnail. */}
+              <div className={styles.preview}>
+                <BrowserFrame url={displayHost(project.live.href)}>
+                  <video
+                    ref={videoRef}
+                    className={styles.video}
+                    src={preview.video}
+                    poster={preview.poster}
+                    muted
+                    loop
+                    playsInline
+                    preload="none"
+                  />
+                </BrowserFrame>
+              </div>
               <span className={styles.hint}>
                 <svg viewBox="0 0 10 10" width="10" height="10" fill="currentColor" aria-hidden="true">
                   <path d="M2 1l7 4-7 4z" />
