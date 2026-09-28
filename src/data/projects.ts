@@ -1,4 +1,13 @@
-import type { Project } from './types';
+import type { ImageSlot, Project } from './types';
+
+const CB_MEDIA = '/media/work/the-cb-creative';
+
+/** A screen recording from The CB Creative, with its still as the poster. */
+const clip = (name: string, alt: string): ImageSlot => ({
+  src: `${CB_MEDIA}/${name}.jpg`,
+  video: `${CB_MEDIA}/${name}.mp4`,
+  alt,
+});
 
 /** In display order: the home rows, and each case study's "next project" link. */
 export const PROJECTS: Project[] = [
@@ -176,20 +185,26 @@ types.setTypeParser(20,
     index: '02',
     category: 'Brand · Studio Site',
     title: 'The CB Creative',
-    thumbnail: { src: '/images/the-cb-creative/homepage.jpg', alt: 'The CB Creative studio site homepage', position: 'left top' },
+    thumbnail: { src: '/images/the-cb-creative/homepage.jpg', alt: 'The CB Creative studio site homepage', position: 'center top' },
+    preview: `${CB_MEDIA}/card-flip.mp4`,
     summary:
       "A solo design studio's brand and site, designed and built from the ground up — logo system, design system, and production code.",
     highlights: {
       design: ['Logo system, palette and type built from scratch', 'WCAG AA contrast across every page'],
-      engineering: ['Custom static site generator in Node', 'Serverless contact form, covered by tests'],
+      engineering: ['Pre-rendered React Router and TypeScript', 'Serverless contact form, covered by tests'],
     },
     live: { label: 'Live site', href: 'https://www.thecbcreative.com' },
     caseStudy: {
       dek: 'My own studio’s brand and website, designed and built from a blank page — identity, design system, content model and production code.',
       role: 'Brand, design & development, solo',
-      stack: 'Vanilla JavaScript · Custom static site generator · Tailwind v4 · Vercel · Resend',
+      stack: 'React Router (pre-rendered) · TypeScript · Tailwind v4 · Motion · Vercel · Resend',
       github: 'https://github.com/TheCBCreative/thecbcreative',
-      heroImage: { src: '/images/the-cb-creative/homepage.jpg', alt: 'The CB Creative homepage', position: 'left top' },
+      heroImage: {
+        src: '/images/the-cb-creative/homepage.jpg',
+        video: `${CB_MEDIA}/hero-entrance.mp4`,
+        alt: 'The CB Creative homepage: the hero lines clear in over misty forest footage',
+        position: 'center top',
+      },
       callout: {
         eyebrow: 'Live site',
         heading: 'See it live, not just described.',
@@ -201,39 +216,66 @@ types.setTypeParser(20,
         heading: { lead: 'A studio needed a brand', emphasis: 'before it could pitch one.' },
         body: 'After Amazon Prime and AWS, I started The CB Creative to design and build websites for small businesses. A studio’s own site is its first pitch — every cold email I send links to it — so it had to show the craft I was selling before I had a single client project to point to.',
         stats: [
-          { value: '4', label: 'pages — home, contact, portfolio and thank-you — built from one content file' },
-          { value: '7', label: 'reusable sections, each rendered from a shared template' },
+          { value: '6', label: 'pages pre-rendered to static HTML — home, contact, three service pages and the 404' },
+          { value: '100', label: 'Lighthouse accessibility score on every page tested, mobile and desktop' },
         ],
-        statsNote: 'From the repo',
+        statsNote: 'From the repo and PageSpeed Insights',
       },
       design: {
         heading: { lead: 'Earthy, editorial,', emphasis: 'and unmistakably human.' },
         figure: { kind: 'brand-board' },
         decisions: [
           {
-            title: 'A palette from the Pacific Northwest',
-            body: 'Cream paper, near-black ink and two greens — forest for accents on light, sage on dark. Every pairing is checked to WCAG AA; even the form’s error red is 7.5:1 on cream.',
+            title: 'A palette from the fog line',
+            body: 'Pine, Snow and Mist come from the forest footage behind the site, with Brass as the one warm accent. Brass itself is kept to lines, outlines and the button fill; text gets Brass Light on the video (8.8:1) and Brass Deep on cream (4.9:1), so every accent clears WCAG AA. Form errors use Rust at 6.3:1.',
           },
           {
-            title: 'Three typefaces, three jobs',
-            body: 'Playfair Display for headlines, Cormorant Garamond italic for accents and quote marks, Geist for everything you read or tap. One italic word per headline carries the voice.',
+            title: 'Four typefaces, four jobs',
+            body: 'Italiana for the big display lines, Aboreto for small-caps eyebrows and the nav, Fraunces italic for the accent lines, and Work Sans for everything you read or tap.',
           },
           {
-            title: 'One file of brand tokens',
-            body: 'Every color, font and spacing value is defined once, in one file, and every page reads from it. Email clients can’t load stylesheets, so the inquiry emails carry a copy of the same values.',
+            title: 'Tokens from Figma, and nothing else',
+            body: 'Every color, type size and opacity is a variable in the CB Tokens collection in Figma, mirrored one to one in the Tailwind theme. Tailwind’s own defaults are cleared, so a value that isn’t in Figma can’t be used in code. Email clients can’t read CSS variables, so the inquiry emails carry a copy of the same palette.',
           },
           {
             title: 'Answer the AI question',
-            body: 'Small businesses are asking why they shouldn’t just use an AI site builder. A dedicated section answers plainly — including that I use AI tools every day and know where they fall short.',
+            body: 'Small businesses are asking why they shouldn’t just use an AI site builder. A dedicated section answers plainly, including that I use AI tools every day and know when to put them down. The Custom Website page also explains AEO: building so ChatGPT and other AI assistants can find and recommend the business.',
+          },
+        ],
+      },
+      motion: {
+        heading: { lead: 'Motion that', emphasis: 'guides the eye.' },
+        intro:
+          'Short loops recorded from the live site. Every movement points somewhere — to the nav, the next point, the next page — and all of it switches off with the system’s reduced-motion setting.',
+        clips: [
+          {
+            title: 'The brand follows you down the page',
+            body: 'The hero mark hands off to the nav logo as you scroll, after the button fills with Brass on hover.',
+            media: clip('logo-handoff', 'The Let’s talk button filling with Brass, then the hero logo handing off to the nav on scroll'),
+          },
+          {
+            title: 'An introduction that arrives in order',
+            body: 'The headshot, then the 01–06 list, arrive one at a time as the section comes into view.',
+            media: clip('about-reveal', 'The About section revealing the headshot, then its six points one at a time'),
+          },
+          {
+            title: '“Average,” crossed out as you read it',
+            body: 'The line through “average” draws in as the word takes focus, and undraws on the way back up.',
+            media: clip('average-strike', 'A line drawing through the word average as the page scrolls'),
+          },
+          {
+            title: 'Browse services without losing your place',
+            body: 'Next moves through the three service pages; Close flips back to the card you opened.',
+            media: clip('service-next-close', 'Moving through the three service pages, then closing back to the service cards'),
           },
         ],
       },
       engineering: {
-        heading: { lead: 'No framework,', emphasis: 'by choice.' },
+        heading: { lead: 'Pre-rendered pages,', emphasis: 'app-like motion.' },
         flow: [
-          { name: 'content.json', note: 'all the copy' },
-          { name: 'build.js', note: 'builds pages', highlight: true },
-          { name: '7 sections', note: 'page blocks' },
+          { name: 'Data files', note: 'copy & services' },
+          { name: 'React Router', note: 'pre-renders', highlight: true },
+          { name: '6 pages', note: '+ sitemap, llms.txt' },
           { name: 'Static HTML', note: 'what loads' },
         ],
         services: [
@@ -242,45 +284,59 @@ types.setTypeParser(20,
         ],
         decisions: [
           {
-            title: 'A tiny page builder I wrote myself',
-            body: 'Instead of using a framework like React, I wrote a small template engine (136 lines) that pours the site’s copy into reusable page sections. It only does three things — fill in text, repeat a block, show or hide a block — which is all this site needs. It escapes text by default, so a stray character in the copy can’t break the page.',
-            code: `{{#each faq}}
-  <h3>{{question}}</h3>
-  <p>{{answer}}</p>
-{{/each}}`,
+            title: 'Pre-rendered, no server',
+            body: 'React Router builds every page to static HTML at deploy time, so visitors get finished pages from the CDN and React takes over for the motion. The same build step writes the sitemap, robots.txt and an llms.txt summary for AI crawlers from the same service data the pages use, so they can’t drift apart.',
+            code: `const PAGES = ['/', '/contact',
+  ...SERVICES.map((s) => \`/services/\${s.slug}\`)];
+
+export default {
+  ssr: false,
+  prerender: [...PAGES, '/404'],
+};`,
+          },
+          {
+            title: 'A video loop with no visible seam',
+            body: 'The mountain footage plays behind every page, and a plain loop jumps where it restarts. So two copies take turns: near the end of one, the other starts from the top and crossfades in over 2.5 seconds. Only the first copy downloads up front, phones get a smaller portrait cut with its own poster, and reduced motion shows the still.',
+            code: `if (current.duration - current.currentTime
+    > VIDEO_CROSSFADE + VIDEO_LEAD) return;
+next.currentTime = 0;
+next.play();`,
+          },
+          {
+            title: 'The card that becomes the page',
+            body: 'Each service card turns over to its cream back, then grows to fill the screen before the service page takes over. Close runs it in reverse and puts keyboard focus back on the card. With reduced motion, it’s a plain page change.',
+            code: `// Card → page: turn over, then grow.
+export const FLIP = {
+  turn: 0.5, grow: 0.6, perspective: 1600,
+};`,
+            media: clip('card-flip', 'A service card turning over and growing into the Custom Website page'),
           },
           {
             title: 'Spam protection that can’t be skipped',
-            body: 'The form blocks bots in the browser with a hidden field real people never see and a minimum time to fill it out. But a bot can skip the page and send data straight to the server, so the server runs the same checks again. When it catches one, it pretends the message went through — so the bot doesn’t try again.',
+            body: 'The form carries a hidden field real people never see, plus how long it was open before sending. A bot can skip the page and post straight to the server, so that’s where both are checked. When it catches one, it pretends the message went through, so the bot doesn’t try again.',
             code: `const HONEYPOT_FIELD = 'website';
 const MIN_SUBMIT_ELAPSED_MS = 1500;
 const MAX_TOTAL_ATTACHMENT_BYTES =
   3.5 * 1024 * 1024;`,
-          },
-          {
-            title: 'The bug that only showed up live',
-            body: 'The contact form worked on my laptop but failed once it was deployed. The cause was a pair of quotation marks: my local settings file needs them around the sender’s email address and removes them automatically, but the hosting dashboard kept them — and the email service rejected the address. The code now strips extra quotes, so the setting works in both places.',
-            code: `// "Name <a@b.com>" → Name <a@b.com>
-raw.trim().replace(
-  /^(["'])([\\s\\S]*)\\1$/, '$2');`,
+            media: clip('send-to-thank-you', 'Sending the contact form, then the thank-you card filling its place'),
           },
         ],
         testing:
-          'The contact form has 60 automated checks, and a11y-gate — an accessibility checker I built and published on npm — scans every page on each push and blocks anything serious. Current result: no serious or critical issues on any of the four pages.',
+          'The contact form’s server code has 18 tests (63 assertions) in Vitest, and a11y-gate — an accessibility checker I built and published on npm — crawls every page on each push. It checks each one at desktop, mobile and a 320px reflow width, opens menus and modals, tests for keyboard traps and visible focus, and blocks anything serious.',
       },
       leftOut: {
         heading: { lead: 'Smaller on purpose.' },
         intro: 'Every one of these was a choice, not a gap — and each has a clear trigger for when it changes.',
         items: [
           {
-            title: 'No framework',
-            body: 'A marketing site with seven sections doesn’t need React. Pages are plain HTML and CSS, so they load fast and there’s no extra JavaScript for visitors to download.',
-            tradeoff: 'Anything interactive has to be written by hand. If the site ever needs app-like features, that’s when I’d move it to a framework.',
+            title: 'Not zero JavaScript',
+            body: 'The motion runs on React and Motion: the card flip, the logo handoff from hero to nav, and the strike drawn through “average” as you scroll. That’s about 180 KB of JavaScript, compressed. The pages are pre-rendered, so the content arrives as HTML, and the scripts add 0 ms of blocking time on every page tested.',
+            tradeoff: 'It’s more to download than the plain-HTML version was, so the next step is a size budget in CI.',
           },
           {
             title: 'No big file uploads',
             body: 'People can attach screenshots of sites they love, but only up to 3.5 MB in total. The host rejects anything over 4.5 MB before my code even runs, so I set the limit lower and show a friendly message instead of a blank error.',
-            tradeoff: 'Large files can’t come through the form — so it has a separate field for inspiration links, and people can share bigger files that way.',
+            tradeoff: 'Large files can’t come through the form — so it has a separate field for helpful links, and people can share bigger files that way.',
           },
           {
             title: 'No extra packages on the server',
@@ -289,25 +345,22 @@ raw.trim().replace(
           },
         ],
       },
-      breakImage: {
-        src: '/images/the-cb-creative/contact-section.jpg',
-        alt: 'The CB Creative contact section with the inquiry form',
-      },
+      breakImage: clip('closing-cta-to-contact', 'The closing call to action leading into the contact page'),
       outcome: {
         heading: { lead: 'A site that does', emphasis: 'its own pitching.' },
-        body: 'The site is live and it’s the link in every piece of outreach I send. It’s also how I build now: one content file, reusable sections and a small, tested backend — the same approach I bring to client work.',
+        body: 'The site is live and it’s the link in every piece of outreach I send. It’s also how I build now: design in Figma variables, the same tokens in code, pre-rendered pages and a small, tested backend — the same approach I bring to client work.',
         proof: {
-          value: '2 days',
-          label: 'From an empty repo to a working site with a live contact form, then refined over the next three weeks.',
+          value: '1 day',
+          label: 'Designed in Figma and rebuilt in React Router and TypeScript, from a new brand to a live site.',
         },
         next: [
           {
             title: 'A performance budget in CI',
-            body: 'Fail the build if a page gets too heavy or too slow, the same way a11y-gate already fails it on accessibility issues.',
+            body: 'Fail the build if a page’s JavaScript or media grows past a set size, the same way a11y-gate already fails it on accessibility issues.',
           },
           {
-            title: 'FAQ and service schema',
-            body: 'The site already publishes ProfessionalService data; the Why not AI answers and each service could be marked up too, so AI assistants can quote them directly.',
+            title: 'FAQ schema',
+            body: 'Services and breadcrumbs are already marked up. The Why not AI answers could be marked up as an FAQ, so AI assistants can quote them directly.',
           },
           { title: 'Responsive images in the build', body: 'Generate sizes and modern formats at build time instead of exporting them by hand.' },
           { title: 'Visual regression tests', body: 'Screenshot the key pages in CI so a CSS change can’t quietly break a section.' },

@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { PROJECTS, getNextProject, getProject } from './projects';
 
+const PUBLIC_FILES = new Set(Object.keys(import.meta.glob('/public/**/*.{jpg,png,svg,mp4}')).map((path) => path.slice('/public'.length)));
+const existsInPublic = (path?: string) => path !== undefined && PUBLIC_FILES.has(path);
+
 describe('getProject', () => {
   it('finds a project by slug', () => {
     expect(getProject('blog-composer')?.title).toBe('Blog Composer');
@@ -28,11 +31,14 @@ describe('getNextProject', () => {
 describe.each(PROJECTS)('$title data', (project) => {
   const study = project.caseStudy;
 
-  it('has site-relative image paths with alt text', () => {
-    for (const image of [project.thumbnail, study.heroImage, study.breakImage]) {
-      expect(image.src).toMatch(/^\/images\//);
+  it('points every image and clip at a file in public/, with alt text', () => {
+    const clips = [...(study.motion?.clips ?? []), ...study.engineering.decisions].flatMap(({ media }) => media ?? []);
+    for (const image of [project.thumbnail, study.heroImage, study.breakImage, ...clips]) {
+      expect(existsInPublic(image.src)).toBe(true);
+      if (image.video) expect(existsInPublic(image.video)).toBe(true);
       expect(image.alt.length).toBeGreaterThan(0);
     }
+    if (project.preview) expect(existsInPublic(project.preview)).toBe(true);
   });
 
   it('keeps figure pins on the figure and one decision per pin', () => {
