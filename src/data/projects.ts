@@ -185,7 +185,7 @@ types.setTypeParser(20,
     index: '02',
     category: 'Brand · Studio Site',
     title: 'The CB Creative',
-    thumbnail: { src: '/images/the-cb-creative/homepage.jpg', alt: 'The CB Creative studio site homepage', position: 'center top' },
+    thumbnail: { src: '/images/the-cb-creative/thumbnail.jpg', alt: 'The CB Creative studio site homepage' },
     preview: `${CB_MEDIA}/card-flip.mp4`,
     summary:
       "A solo design studio's brand and site, designed and built from the ground up — logo system, design system, and production code.",
