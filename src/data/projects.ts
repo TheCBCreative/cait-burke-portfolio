@@ -1,13 +1,19 @@
 import type { ImageSlot, Project } from './types';
 
+const BC_MEDIA = '/media/work/blog-composer';
 const CB_MEDIA = '/media/work/the-cb-creative';
 
-/** A screen recording from The CB Creative, with its still as the poster. */
-const clip = (name: string, alt: string): ImageSlot => ({
-  src: `${CB_MEDIA}/${name}.jpg`,
-  video: `${CB_MEDIA}/${name}.mp4`,
-  alt,
-});
+/** A screen recording from `folder`, with its still as the poster. */
+const clipsFrom =
+  (folder: string) =>
+  (name: string, alt: string): ImageSlot => ({
+    src: `${folder}/${name}.jpg`,
+    video: `${folder}/${name}.mp4`,
+    alt,
+  });
+
+const bcClip = clipsFrom(BC_MEDIA);
+const cbClip = clipsFrom(CB_MEDIA);
 
 /** In display order: the home rows, and each case study's "next project" link. */
 export const PROJECTS: Project[] = [
@@ -17,6 +23,7 @@ export const PROJECTS: Project[] = [
     category: 'Admin UI · CMS',
     title: 'Blog Composer',
     thumbnail: { src: '/images/blog-composer/dashboard.jpg', alt: 'Blog Composer admin dashboard', position: 'left top' },
+    preview: { video: `${BC_MEDIA}/publish-post.mp4`, poster: `${BC_MEDIA}/publish-post.jpg` },
     summary:
       "A self-hosted, themeable blog admin that slots into any client site — so publishing doesn't mean wrestling a bloated platform.",
     highlights: {
@@ -29,7 +36,10 @@ export const PROJECTS: Project[] = [
       role: 'Design & development, solo',
       stack: 'TypeScript · Astro · Neon Postgres · Better-Auth · Resend',
       github: 'https://github.com/TheCBCreative/blog-admin',
-      heroImage: { src: '/images/blog-composer/dashboard.jpg', alt: 'Blog Composer dashboard overview', position: 'left top' },
+      heroImage: bcClip(
+        'write-post',
+        'Starting a new post from the dashboard: a headline, subheadline, heading and numbered list typed into the editor',
+      ),
       callout: {
         eyebrow: 'Live demo',
         heading: 'See it running, not just described.',
@@ -81,6 +91,33 @@ export const PROJECTS: Project[] = [
           },
         ],
       },
+      motion: {
+        heading: { lead: 'Publishing,', emphasis: 'start to finish.' },
+        intro:
+          'Short loops recorded from the live demo: scheduling, adding a featured image, previewing and finding posts, the way a client would.',
+        clips: [
+          {
+            title: 'A date, then a deliberate Schedule',
+            body: 'Picking a date doesn’t publish anything. The post is scheduled only when Schedule is pressed, and the editor confirms it saved.',
+            media: bcClip('schedule-post', 'Choosing a date and time for a post, then pressing Schedule and seeing Saved'),
+          },
+          {
+            title: 'Sample photos bring their alt text',
+            body: 'Picking a photo fills in its URL and alt text together. Uploads from the media library show up in the same row.',
+            media: bcClip('featured-image', 'Picking a featured image from a row of photos, which fills in the image URL and its alt text'),
+          },
+          {
+            title: 'Preview before it goes live',
+            body: 'Preview shows the post in the reader’s layout, under a banner saying when it’s scheduled to go live.',
+            media: bcClip('preview-post', 'Opening Preview to see the post with its featured image, as a reader would'),
+          },
+          {
+            title: 'Every post, by where it stands',
+            body: 'All Posts filters to drafts, scheduled, published or archived posts, so what’s going out next is one click away.',
+            media: bcClip('status-tabs', 'Switching the All Posts list between All, Draft, Scheduled, Published and Archived'),
+          },
+        ],
+      },
       engineering: {
         heading: { lead: 'Built to be swapped,', emphasis: 'not rewritten.' },
         flow: [
@@ -104,6 +141,13 @@ export const PROJECTS: Project[] = [
 }`,
           },
           {
+            title: "The login limit that wasn't",
+            body: 'Testing the login limit, I noticed I could retry right away. Postgres was handing timestamps back as text, so adding the time window glued strings together instead of doing math. One line fixed it — and now the limit actually holds.',
+            code: `// read bigint as a number, not text
+types.setTypeParser(20,
+  (value) => Number(value));`,
+          },
+          {
             title: 'Never trust the editor',
             body: "Whatever comes out of the rich-text editor gets cleaned on the server before it's saved. Only an approved list of tags and link types gets through, so a pasted script or sketchy link never reaches the database.",
             code: `sanitizeHtml(dirty, {
@@ -111,13 +155,7 @@ export const PROJECTS: Project[] = [
   allowedSchemes: ['http', 'https',
     'mailto', 'tel'],
 });`,
-          },
-          {
-            title: "The login limit that wasn't",
-            body: 'Testing the login limit, I noticed I could retry right away. Postgres was handing timestamps back as text, so adding the time window glued strings together instead of doing math. One line fixed it — and now the limit actually holds.',
-            code: `// read bigint as a number, not text
-types.setTypeParser(20,
-  (value) => Number(value));`,
+            media: bcClip('format-preview', 'A post with bold, italics, two headings and a list in the editor, then the same post in Preview'),
           },
           {
             title: 'A public demo nobody can break',
@@ -126,6 +164,7 @@ types.setTypeParser(20,
   // copy-on-write: the original never changes
   return base.create({ ...post, ...input });
 }`,
+            media: bcClip('sign-in', 'Signing in to the demo with the shared credentials shown on the login card, then landing on the dashboard'),
           },
         ],
         testing:
@@ -153,11 +192,10 @@ types.setTypeParser(20,
           },
         ],
       },
-      breakImage: {
-        src: '/images/blog-composer/media-library.jpg',
-        alt: 'Blog Composer media library: a grid of photos, four across, each with its size, a copy-URL button and a delete button',
-        position: 'left top',
-      },
+      breakImage: bcClip(
+        'media-library',
+        'The media library: a grid of photos, each with its file size, a Copy URL button and a delete button',
+      ),
       outcome: {
         heading: { lead: 'A CMS layer I can hand off,', emphasis: 'not maintain forever.' },
         body: 'A lightweight publishing tool built to be reused — each new client site gets a tested admin instead of a CMS built from scratch.',
@@ -251,22 +289,22 @@ types.setTypeParser(20,
           {
             title: 'The brand follows you down the page',
             body: 'The hero mark hands off to the nav logo as you scroll, after the button fills with Brass on hover.',
-            media: clip('logo-handoff', 'The Let’s talk button filling with Brass, then the hero logo handing off to the nav on scroll'),
+            media: cbClip('logo-handoff', 'The Let’s talk button filling with Brass, then the hero logo handing off to the nav on scroll'),
           },
           {
             title: 'An introduction that arrives in order',
             body: 'The headshot, then the 01–06 list, arrive one at a time as the section comes into view.',
-            media: clip('about-reveal', 'The About section revealing the headshot, then its six points one at a time'),
+            media: cbClip('about-reveal', 'The About section revealing the headshot, then its six points one at a time'),
           },
           {
             title: '“Average,” crossed out as you read it',
             body: 'The line through “average” draws in as the word takes focus, and undraws on the way back up.',
-            media: clip('average-strike', 'A line drawing through the word average as the page scrolls'),
+            media: cbClip('average-strike', 'A line drawing through the word average as the page scrolls'),
           },
           {
             title: 'Browse services without losing your place',
             body: 'Next moves through the three service pages; Close flips back to the card you opened.',
-            media: clip('service-next-close', 'Moving through the three service pages, then closing back to the service cards'),
+            media: cbClip('service-next-close', 'Moving through the three service pages, then closing back to the service cards'),
           },
         ],
       },
@@ -309,7 +347,7 @@ next.play();`,
 export const FLIP = {
   turn: 0.5, grow: 0.6, perspective: 1600,
 };`,
-            media: clip('card-flip', 'A service card turning over and growing into the Custom Website page'),
+            media: cbClip('card-flip', 'A service card turning over and growing into the Custom Website page'),
           },
           {
             title: 'Spam protection that can’t be skipped',
@@ -318,7 +356,7 @@ export const FLIP = {
 const MIN_SUBMIT_ELAPSED_MS = 1500;
 const MAX_TOTAL_ATTACHMENT_BYTES =
   3.5 * 1024 * 1024;`,
-            media: clip('send-to-thank-you', 'Sending the contact form, then the thank-you card filling its place'),
+            media: cbClip('send-to-thank-you', 'Sending the contact form, then the thank-you card filling its place'),
           },
         ],
         testing:
@@ -345,7 +383,7 @@ const MAX_TOTAL_ATTACHMENT_BYTES =
           },
         ],
       },
-      breakImage: clip('closing-cta-to-contact', 'The closing call to action leading into the contact page'),
+      breakImage: cbClip('closing-cta-to-contact', 'The closing call to action leading into the contact page'),
       outcome: {
         heading: { lead: 'A site that does', emphasis: 'its own pitching.' },
         body: 'The site is live and it’s the link in every piece of outreach I send. It’s also how I build now: design in Figma variables, the same tokens in code, pre-rendered pages and a small, tested backend — the same approach I bring to client work.',
