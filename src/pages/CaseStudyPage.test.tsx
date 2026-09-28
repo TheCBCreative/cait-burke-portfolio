@@ -51,7 +51,9 @@ describe.each(PROJECTS)('$title case study', (project) => {
 describe('BrandBoard', () => {
   it('labels each swatch with its measured contrast', () => {
     renderRoute('/work/the-cb-creative');
-    expect(screen.getByText('Ink on paper').nextSibling).toHaveTextContent('15.1:1 · AAA');
-    expect(screen.getByText('Ink on sage').nextSibling).toHaveTextContent('6.4:1 · AA');
+    const ratio = (name: string) => screen.getByText(name, { selector: 'li > span' }).parentElement!.lastChild;
+    expect(ratio('Pine')).toHaveTextContent('14.9:1 · AAA');
+    expect(ratio('Brass Deep')).toHaveTextContent('4.9:1 · AA');
+    expect(ratio('Rust')).toHaveTextContent('6.3:1 · AA');
   });
 });

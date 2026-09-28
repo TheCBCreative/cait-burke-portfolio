@@ -1,20 +1,20 @@
 /* Set in the studio's own typefaces and colors, not the portfolio's. */
 .board {
-  --cb-paper: #f6f3ec;
-  --cb-ink: #1c1f16;
-  --cb-forest: #2f3a1f;
-  --cb-sage: #93a876;
-  --cb-border: #d9d5c9;
-  --cb-muted: #6e6b5d;
-  --cb-serif: 'Playfair Display', Georgia, serif;
-  --cb-accent: 'Cormorant Garamond', Georgia, serif;
-  --cb-sans: 'Geist', system-ui, sans-serif;
-  --cb-mono: 'Geist Mono', ui-monospace, monospace;
+  --cb-pine: #1b2318;
+  --cb-snow: #f6f6f1;
+  --cb-brass: #b08d57;
+  --cb-brass-light: #d1bd9e;
+  --cb-brass-deep: #85663a;
+  --cb-border: #dcdcd3;
+  --cb-display: 'Italiana', Georgia, serif;
+  --cb-eyebrow: 'Aboreto', Georgia, serif;
+  --cb-accent: 'Fraunces', Georgia, serif;
+  --cb-sans: 'Work Sans', system-ui, sans-serif;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   font-family: var(--cb-sans);
-  color: var(--cb-ink);
+  color: var(--cb-pine);
 }
 
 .row {
@@ -37,24 +37,15 @@
   justify-content: center;
   gap: 1.25rem;
   min-height: 15rem;
-  background-color: var(--cb-forest);
-  color: var(--cb-paper);
+  background-color: var(--cb-pine);
+  color: var(--cb-snow);
 }
 
 .wordmark {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.9375rem;
-  letter-spacing: 0.36em;
+  font-family: var(--cb-eyebrow);
+  font-size: 0.8125rem;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-}
-
-.wordmarkThe {
-  font-size: 0.75rem;
-  font-weight: 300;
-  opacity: 0.7;
 }
 
 .type {
@@ -64,7 +55,7 @@
   gap: 1.5rem;
   padding: 1.5rem 1.5rem 1.375rem;
   border: 1px solid var(--cb-border);
-  background-color: var(--cb-paper);
+  background-color: var(--cb-snow);
 }
 
 .specimens {
@@ -75,16 +66,15 @@
   line-height: 1;
 }
 
-.serif {
-  font-family: var(--cb-serif);
-  font-weight: 600;
+.display {
+  font-family: var(--cb-display);
 }
 
 .accent {
   font-family: var(--cb-accent);
   font-style: italic;
-  font-weight: 500;
-  color: var(--cb-forest);
+  font-weight: 400;
+  color: var(--cb-brass-deep);
 }
 
 .roles {
@@ -111,51 +101,52 @@
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--cb-muted);
+  color: var(--cb-brass-deep);
+}
+
+.paletteWrap {
+  position: relative;
 }
 
 .palette {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(6.25rem, 1fr));
   overflow: hidden;
   border-radius: var(--radius-md);
 }
 
 .swatch {
-  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 8.75rem;
-  padding: 1.125rem 1.125rem 1rem;
+  padding: 1rem 0.75rem 0.875rem;
 }
 
-.swatch:first-child {
+.swatch:nth-child(2) {
   box-shadow: inset 0 0 0 1px var(--cb-border);
 }
 
 .swatchName {
-  font-family: var(--cb-serif);
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-family: var(--cb-display);
+  font-size: 1.125rem;
+  line-height: 1.1;
 }
 
 .hex {
   margin-top: 0.25rem;
-  font-family: var(--cb-mono);
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
-  opacity: 0.85;
 }
 
 .pairing {
   margin-top: auto;
   font-size: 0.625rem;
-  opacity: 0.85;
 }
 
 .ratio {
   margin-top: 0.1875rem;
   font-size: 0.6875rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .inUse {
@@ -164,8 +155,8 @@
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.75rem;
-  background-color: var(--cb-ink);
-  color: var(--cb-paper);
+  background-color: var(--cb-pine);
+  color: var(--cb-snow);
 }
 
 .inUseCopy {
@@ -175,30 +166,27 @@
 }
 
 .inUseLabel {
+  font-family: var(--cb-eyebrow);
   font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--cb-sage);
+  color: var(--cb-brass-light);
 }
 
 .inUseHeading {
-  font-family: var(--cb-serif);
+  font-family: var(--cb-display);
   font-size: 1.75rem;
-  font-weight: 600;
   line-height: 1.15;
 }
 
-.inUseAccent {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  font-family: var(--cb-accent);
-  font-size: 1.875rem;
-  font-style: italic;
-  font-weight: 500;
+.inUseLine {
+  font-family: var(--cb-display);
+  font-size: 2.125rem;
   line-height: 1.1;
-  color: var(--cb-sage);
+}
+
+.inUseAccent {
+  color: var(--cb-brass-light);
 }
 
 .buttons {
@@ -206,24 +194,21 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .primary,
 .ghost {
   padding: 0.875rem 1.625rem;
-  border: 1px solid var(--cb-paper);
+  border: 1px solid var(--cb-snow);
 }
 
 .primary {
-  background-color: var(--cb-paper);
-  color: var(--cb-ink);
-}
-
-.ghost {
-  border-color: rgb(246 243 236 / 0.5);
+  border-color: var(--cb-brass);
+  background-color: var(--cb-brass);
+  color: var(--cb-pine);
 }
 
 .tokens {
@@ -239,9 +224,9 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--cb-mono);
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
-  color: var(--cb-muted);
+  color: var(--cb-brass-deep);
 }
 
 .file::before {
@@ -249,7 +234,7 @@
   width: 0.375rem;
   height: 0.375rem;
   border-radius: 50%;
-  background-color: var(--cb-sage);
+  background-color: var(--cb-brass);
 }
 
 .code {
@@ -257,7 +242,7 @@
   flex-direction: column;
   gap: 0.4375rem;
   margin: 0;
-  font-family: var(--cb-mono);
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
 }
 
@@ -268,7 +253,7 @@
 }
 
 .token dt {
-  color: var(--cb-forest);
+  color: var(--cb-brass-deep);
 }
 
 .token dd {
@@ -282,9 +267,5 @@
 
   .row:last-child {
     grid-template-columns: 1.46fr 1fr;
-  }
-
-  .palette {
-    grid-template-columns: repeat(4, 1fr);
   }
 }
