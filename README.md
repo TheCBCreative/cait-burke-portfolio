@@ -113,7 +113,7 @@ The CB Creative case study's brand board is a live component built from that stu
 - **Reveals:** everything else reveals once as it scrolls into view (`useReveal`, `Reveal`): `rise` for headings, `fade` for text, `wipe` for images.
 - **Card to case study:** a project's home row image morphs into its case study hero with the View Transitions API (the two share a `view-transition-name`), while the page crossfades.
 - **Scroll-linked images:** the full-bleed break image and the home row images drift and settle as they cross the viewport. The About portrait only settles from 1.04 to 1. Browsers with scroll-driven animations run it in CSS (`animation-timeline: view()`); others use `useScrollLinked`.
-- **Case study clips:** play muted while on screen and pause when scrolled away (`LoopingClip`).
+- **Case study clips:** full-width clips play muted while on screen; clips in the In motion grid and engineering cards wait for a hover or their Play button, so only one moves at a time (`LoopingClip`).
 - **Fern edge strip:** as the hero scrolls away, the footage pans from its top to its base and a thin line grows down the strip.
 - **One hover language:** boxed CTAs fill from the left, text links draw an underline from the left, and arrows nudge. Hover and keyboard focus behave the same.
 

@@ -9,7 +9,7 @@ export function MotionClips({ clips }: { clips: Clip[] }) {
     <ul className={styles.clips}>
       {clips.map((clip, index) => (
         <Reveal as="li" variant="fade" delay={(index % 2) * 150} key={clip.title} className={styles.clip}>
-          <LoopingClip media={clip.media} className={styles.media} />
+          <LoopingClip media={clip.media} playOn="hover" className={styles.media} />
           <h3 className={styles.title}>{clip.title}</h3>
           <p className={styles.body}>{clip.body}</p>
         </Reveal>

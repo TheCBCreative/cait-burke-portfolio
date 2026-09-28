@@ -9,7 +9,7 @@ export function CodeDecisions({ decisions }: { decisions: CodeDecision[] }) {
     <ul className={styles.cards}>
       {decisions.map((decision, index) => (
         <Reveal as="li" variant="fade" delay={(index % 2) * 150} key={decision.title} className={styles.card}>
-          {decision.media && <LoopingClip media={decision.media} className={styles.media} />}
+          {decision.media && <LoopingClip media={decision.media} playOn="hover" className={styles.media} />}
           <h3 className={styles.title}>{decision.title}</h3>
           <p className={styles.body}>{decision.body}</p>
           <pre className={styles.code} tabIndex={0} aria-label={`Code: ${decision.title}`}>
