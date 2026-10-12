@@ -180,7 +180,7 @@ types.setTypeParser(20,
           },
         ],
         testing:
-          '252 unit tests across the package and 11 for the demo’s visitor sandbox run on every push, plus integration tests against a real Neon database. It’s designed so client sites install tagged, versioned releases, and nothing changes on a live site until I upgrade it.',
+          '252 unit tests across the package and 32 for the demo (its visitor sandbox, the locked-down sign-in routes and upload types) run on every push, plus integration tests against a real Neon database. It’s designed so client sites install tagged, versioned releases, and nothing changes on a live site until I upgrade it.',
       },
       leftOut: {
         heading: { lead: 'Smaller on purpose.' },
@@ -375,7 +375,7 @@ const MAX_TOTAL_ATTACHMENT_BYTES =
           },
         ],
         testing:
-          'The contact form’s server code has 18 tests (63 assertions) in Vitest, and a11y-gate — an accessibility checker I built and published on npm — crawls every page on each push. It checks each one at desktop, mobile and a 320px reflow width, opens menus and modals, tests for keyboard traps and visible focus, and blocks anything serious.',
+          'The contact form’s server code has 34 tests in Vitest, covering spam checks, field limits and file types, and a11y-gate — an accessibility checker I built and published on npm — crawls every page on each push. It checks each one at desktop, mobile and a 320px reflow width, opens menus and modals, tests for keyboard traps and visible focus, and blocks anything serious.',
       },
       leftOut: {
         heading: { lead: 'Smaller on purpose.' },
