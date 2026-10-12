@@ -12,6 +12,14 @@ const clipsFrom =
     alt,
   });
 
+/** A JPEG plus the WebP copies scripts/optimize-images.mjs writes at `widths`, the JPEG staying the largest. */
+const responsive = (src: string, width: number, height: number, widths: number[]) => ({
+  src,
+  width,
+  height,
+  srcSet: [...widths.map((w) => `${src.replace(/\.jpg$/, `-${w}.webp`)} ${w}w`), `${src} ${width}w`].join(', '),
+});
+
 const bcClip = clipsFrom(BC_MEDIA);
 const cbClip = clipsFrom(CB_MEDIA);
 
@@ -22,7 +30,11 @@ export const PROJECTS: Project[] = [
     index: '01',
     category: 'Admin UI · CMS',
     title: 'Blog Composer',
-    thumbnail: { src: '/images/blog-composer/dashboard.jpg', alt: 'Blog Composer admin dashboard', position: 'left top' },
+    thumbnail: {
+      ...responsive('/images/blog-composer/dashboard.jpg', 2400, 1282, [480, 800, 1200, 1600]),
+      alt: 'Blog Composer admin dashboard',
+      position: 'left top',
+    },
     preview: { video: `${BC_MEDIA}/publish-post.mp4`, poster: `${BC_MEDIA}/publish-post.jpg` },
     summary:
       "A self-hosted, themeable blog admin that slots into any client site — so publishing doesn't mean wrestling a bloated platform.",
@@ -61,7 +73,7 @@ export const PROJECTS: Project[] = [
         figure: {
           kind: 'screenshot',
           image: {
-            src: '/images/blog-composer/post-editor.jpg',
+            ...responsive('/images/blog-composer/post-editor.jpg', 1636, 1500, [480, 800, 1200, 1600]),
             alt: 'Blog Composer post editor: the post body on the left, settings in a side column, and Preview, Save Draft, Schedule and Publish buttons',
           },
           aspectRatio: '1636 / 1500',
@@ -168,7 +180,7 @@ types.setTypeParser(20,
           },
         ],
         testing:
-          '252 unit tests across the package and 11 for the demo’s visitor sandbox run on every push, plus integration tests against a real Neon database. Client sites install tagged, versioned releases, so nothing changes on a live site until I upgrade it.',
+          '252 unit tests across the package and 11 for the demo’s visitor sandbox run on every push, plus integration tests against a real Neon database. It’s designed so client sites install tagged, versioned releases, and nothing changes on a live site until I upgrade it.',
       },
       leftOut: {
         heading: { lead: 'Smaller on purpose.' },
@@ -183,7 +195,7 @@ types.setTypeParser(20,
             title: 'One database per site, not a shared platform',
             body: 'Each client’s posts live in their own database. No chance of one client seeing another’s content, and a site can leave without a migration project.',
             tradeoff:
-              'Fixes don’t reach every site automatically. Each site is pinned to a tagged release and upgrades when I bump its version — slower, but nothing changes on a client’s site by surprise.',
+              'Fixes don’t reach every site automatically. Each site is designed to pin a tagged release and upgrade when I bump its version — slower, but nothing changes on a client’s site by surprise.',
           },
           {
             title: 'One admin to start',
@@ -199,7 +211,7 @@ types.setTypeParser(20,
       outcome: {
         heading: { lead: 'A CMS layer I can hand off,', emphasis: 'not maintain forever.' },
         body: 'A lightweight publishing tool built to be reused — each new client site gets a tested admin instead of a CMS built from scratch.',
-        proof: { value: '~1 day', label: 'Integrated and themed for a client site in about a day.' },
+        proof: { value: '~1 day', label: 'Designed to be integrated and themed for a client site in about a day.' },
         next: [
           {
             title: 'Built-in AEO',
@@ -223,7 +235,10 @@ types.setTypeParser(20,
     index: '02',
     category: 'Brand · Studio Site',
     title: 'The CB Creative',
-    thumbnail: { src: '/images/the-cb-creative/thumbnail.jpg', alt: 'The CB Creative studio site homepage' },
+    thumbnail: {
+      ...responsive('/images/the-cb-creative/thumbnail.jpg', 1491, 1118, [480, 800, 1200]),
+      alt: 'The CB Creative studio site homepage',
+    },
     preview: { video: `${CB_MEDIA}/card-flip.mp4`, poster: `${CB_MEDIA}/card-flip.jpg` },
     summary:
       "A solo design studio's brand and site, designed and built from the ground up — logo system, design system, and production code.",
@@ -284,7 +299,7 @@ types.setTypeParser(20,
       motion: {
         heading: { lead: 'Motion that', emphasis: 'guides the eye.' },
         intro:
-          'Short loops recorded from the live site. Every movement points somewhere — to the nav, the next point, the next page — and all of it switches off with the system’s reduced-motion setting.',
+          'Short loops recorded from the live site. Every movement points somewhere — to the nav, the next point, the next page. With the system’s reduced-motion setting on, movement switches off; fades stay subtle.',
         clips: [
           {
             title: 'The brand follows you down the page',

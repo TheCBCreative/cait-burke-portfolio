@@ -1,5 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ],
   "rewrites": [
     {
       "source": "/work/blog-composer/demo/:path*",
@@ -10,8 +16,12 @@
       "destination": "https://cb-blog-demo.vercel.app/_astro/:path*"
     },
     {
-      "source": "/(.*)",
+      "source": "/",
       "destination": "/index.html"
+    },
+    {
+      "source": "/((?!assets/).*)",
+      "destination": "/app.html"
     }
   ]
 }

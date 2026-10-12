@@ -13,6 +13,10 @@ export interface ImageSlot {
   caption?: string;
   /** CSS object-position for crops, e.g. "left top". */
   position?: string;
+  /** Smaller copies of `src` for `srcset`, and its own size in pixels. */
+  srcSet?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface LinkItem {

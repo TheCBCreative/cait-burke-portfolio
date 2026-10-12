@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PROJECTS, getNextProject, getProject } from './projects';
 
-const PUBLIC_FILES = new Set(Object.keys(import.meta.glob('/public/**/*.{jpg,png,svg,mp4}')).map((path) => path.slice('/public'.length)));
+const PUBLIC_FILES = new Set(Object.keys(import.meta.glob('/public/**/*.{jpg,webp,png,svg,mp4}')).map((path) => path.slice('/public'.length)));
 const existsInPublic = (path?: string) => path !== undefined && PUBLIC_FILES.has(path);
 
 describe('getProject', () => {
@@ -33,9 +33,11 @@ describe.each(PROJECTS)('$title data', (project) => {
 
   it('points every image and clip at a file in public/, with alt text', () => {
     const clips = [...(study.motion?.clips ?? []), ...study.engineering.decisions].flatMap(({ media }) => media ?? []);
-    for (const image of [project.thumbnail, study.heroImage, study.breakImage, ...clips]) {
+    const figure = study.design.figure.kind === 'screenshot' ? [study.design.figure.image] : [];
+    for (const image of [project.thumbnail, study.heroImage, study.breakImage, ...figure, ...clips]) {
       expect(existsInPublic(image.src)).toBe(true);
       if (image.video) expect(existsInPublic(image.video)).toBe(true);
+      for (const candidate of image.srcSet?.split(', ') ?? []) expect(existsInPublic(candidate.split(' ')[0])).toBe(true);
       expect(image.alt.length).toBeGreaterThan(0);
     }
     if (project.preview) {

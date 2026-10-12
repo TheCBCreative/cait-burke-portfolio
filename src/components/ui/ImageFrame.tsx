@@ -12,10 +12,12 @@ interface ImageFrameProps {
   className?: string;
   /** Click to open in a lightbox. Leave off where the image is already inside a link. */
   enlargeable?: boolean;
+  /** The `sizes` for `image.srcSet`: how wide the frame is drawn at each breakpoint. */
+  sizes?: string;
 }
 
 /** An image, or a same-sized placeholder until `image.src` is set. */
-export function ImageFrame({ image, aspectRatio, className, enlargeable = false }: ImageFrameProps) {
+export function ImageFrame({ image, aspectRatio, className, enlargeable = false, sizes }: ImageFrameProps) {
   const [isEnlarged, setIsEnlarged] = useState(false);
   const classes = cx(styles.frame, className);
 
@@ -30,6 +32,10 @@ export function ImageFrame({ image, aspectRatio, className, enlargeable = false 
   const img = (
     <img
       src={image.src}
+      srcSet={image.srcSet}
+      sizes={image.srcSet ? sizes : undefined}
+      width={image.width}
+      height={image.height}
       alt={image.alt}
       loading="lazy"
       decoding="async"

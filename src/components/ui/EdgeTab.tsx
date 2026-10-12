@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { cx } from '../../utils/cx';
 import { scrolledPast } from '../../utils/scrollMotion';
 import { FernClip } from '../media/FernClip';
@@ -17,6 +18,8 @@ interface EdgeTabProps {
  */
 export function EdgeTab({ label, tone = 'default', className }: EdgeTabProps) {
   const ref = useRef<HTMLDivElement>(null);
+  // Matches the breakpoint in EdgeTab.module.css. Below it the tab is hidden, so the clip isn't mounted or downloaded.
+  const shown = useMediaQuery('(min-width: 1100px)');
 
   useEffect(() => {
     const tab = ref.current;
@@ -45,7 +48,7 @@ export function EdgeTab({ label, tone = 'default', className }: EdgeTabProps) {
 
   return (
     <div ref={ref} className={cx(styles.tab, styles[tone], className)} aria-hidden="true">
-      <FernClip className={styles.clip} />
+      {shown && <FernClip className={styles.clip} />}
       <div className={styles.scrim} />
       <span className={styles.progress} />
       <span className={styles.label}>{label}</span>

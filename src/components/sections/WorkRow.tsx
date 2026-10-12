@@ -15,6 +15,15 @@ interface WorkRowProps {
   reversed?: boolean;
 }
 
+/**
+ * `sizes` for the thumbnail: the media column in WorkRow.module.css, widened by however much
+ * `object-fit: cover` enlarges an image wider than the 4:3 frame.
+ */
+function thumbnailSizes({ width, height }: Project['thumbnail']) {
+  const scale = width && height ? Math.max(1, (width / height) * (3 / 4)) : 1;
+  return `(min-width: 1000px) ${(45 * scale).toFixed(2)}rem, calc((100vw - 3rem) * ${scale.toFixed(2)})`;
+}
+
 export function WorkRow({ project, reversed = false }: WorkRowProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -40,6 +49,10 @@ export function WorkRow({ project, reversed = false }: WorkRowProps) {
           <img
             ref={imageRef}
             src={project.thumbnail.src}
+            srcSet={project.thumbnail.srcSet}
+            sizes={project.thumbnail.srcSet ? thumbnailSizes(project.thumbnail) : undefined}
+            width={project.thumbnail.width}
+            height={project.thumbnail.height}
             alt=""
             loading="lazy"
             decoding="async"
